@@ -58,3 +58,7 @@
 	width: 22px;
 	height: 22px;
 }
+
+a{
+	cursor: pointer;
+}
