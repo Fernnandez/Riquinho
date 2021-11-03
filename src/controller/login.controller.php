@@ -16,7 +16,6 @@
         $email = addslashes($_POST['email']);
         $senha = addslashes($_POST['senha']);
 
-        error_log('lia do coco entrou');
         error_log($email);
         error_log($senha);
         error_log('********');
@@ -24,7 +23,6 @@
 
         if($u->login($email,$senha) == true){
             if(isset($_SESSION['id'])){
-                error_log('entrou na autenticação');
              header("location: ../../../../src/view/home.php");
      
             }else{
