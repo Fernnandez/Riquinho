@@ -1,3 +1,8 @@
+CREATE SEQUENCE usuario_usuario_number_seq;
+CREATE SEQUENCE carteira_carteira_number_seq;
+CREATE SEQUENCE transacoes_transacoes_number_seq;
+
+
 CREATE TABLE IF NOT EXISTS PUBLIC.USUARIO
 (
 	ID integer NOT NULL DEFAULT nextval('usuario_usuario_number_seq'::regclass),
@@ -7,6 +12,9 @@ CREATE TABLE IF NOT EXISTS PUBLIC.USUARIO
 	CONSTRAINT USUARIO_PKEY PRIMARY KEY (id),
 	CONSTRAINT USUARIO_EMAIL UNIQUE (EMAIL)
 );
+
+ALTER SEQUENCE usuario_usuario_number_seq
+OWNED BY USUARIO.ID;
 
 CREATE TABLE IF NOT EXISTS PUBLIC.CARTEIRA
 (
@@ -22,6 +30,10 @@ CREATE TABLE IF NOT EXISTS PUBLIC.CARTEIRA
         ON DELETE SET NULL
 );
 
+ALTER SEQUENCE carteira_carteira_number_seq
+OWNED BY CARTEIRA.ID;
+
+
 CREATE TABLE IF NOT EXISTS PUBLIC.TRANSACOES
 (
 	ID integer NOT NULL DEFAULT nextval('transacoes_transacoes_number_seq'::regclass),
@@ -36,4 +48,7 @@ CREATE TABLE IF NOT EXISTS PUBLIC.TRANSACOES
         REFERENCES public.CARTEIRA (id) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE SET NULL
-)
+);
+
+ALTER SEQUENCE transacoes_transacoes_number_seq
+OWNED BY TRANSACOES.ID;
