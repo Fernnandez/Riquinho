@@ -135,9 +135,9 @@
 			</div>
 			<div class="form-login">
 				<h2 class="titulo-form-login">Entrar</h2>
-				<form action="#" class="form-from-login">
-					<input type="text" placeholder="Email" required>
-					<input type="password" placeholder="Senha" required>
+				<form action="./src/controller/login.controller.php" class="form-from-login" method="POST">
+					<input type="email" placeholder="Email" required name="email">
+					<input type="password" placeholder="Senha" required name="senha">
 
 					<div class="btns-form-list">
 						<button class="form-bnt">
@@ -149,6 +149,34 @@
 				<p class="form-rec-senha">Esqueceu a senha?</p>
 			</div>
 		</section>
+
+
+
+
+
+		<section class="cadastro">
+			<div class="form-cadastro">
+				<h2 class="titulo-form-cadastro">CADASTRAR</h2>
+				<form action="./src/controller/usuario.controller.php" class="form-from-cadastro" method="POST">
+				<input type="email" name="email" placeholder="email">
+			<input type="text" name="nome" placeholder="nome">
+			<input type="password" name="senha" placeholder="senha">
+			<input type="password" name="confirmarSenha" placeholder="confirmar senha">
+
+					<div class="btns-form-list">
+						<button class="form-bnt">
+							<img src="../../public/assets/Vector.png" alt="Icone Facebook">
+												</button>
+												<button class="form-bnt">></button>
+											</div>
+				</form>
+				<p class="form-rec-senha">Esqueceu a senha?</p>
+			</div>
+			<div class="info-cadastro">
+				<img src="../../public/assets/usuario-frente-porta.png" alt="homem olhando para uma porta" class="img-cadastro">
+			</div>
+		</section>
+
 	</body>
 </html>
 

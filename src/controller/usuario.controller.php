@@ -1,7 +1,7 @@
 <?php
 
 require_once('../model/usuario.model.php');
-
+error_log('entrou em cadastrar usuario');
 function cirarcontroller() {
   $nome = $_POST['nome'];
   $email = $_POST['email'];
@@ -24,4 +24,6 @@ $metodo = $_SERVER['REQUEST_METHOD'];
 
 if ($metodo === 'POST') {
   cirarcontroller();
+  //var_dump('salvou');
+  header("location: ../../../../index.php");
 }
