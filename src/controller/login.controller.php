@@ -23,6 +23,7 @@
 
         if($u->login($email,$senha) == true){
             if(isset($_SESSION['id'])){
+                $_SESSION['autorizado'] = true;
              header("location: ../../../../src/view/home.php");
      
             }else{
