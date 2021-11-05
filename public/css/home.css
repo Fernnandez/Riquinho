@@ -28,9 +28,10 @@
 	gap: 50px;
 	margin-left: 30px;
 }
+
 .info h1 {
-	font-size: 56px;
-	font-weight: 500;
+	font-size: 50px;
+	font-weight: 100;
 }
 .info .atent {
 	color: #000;
@@ -44,7 +45,16 @@
 }
 
 embed {
-	margin-right: 200px;
+	margin-right: 150px;
+}
+.cofre{
+	width: 50%;
+	height:50%;
+}
+.imgs{
+	height:50%;
+	width: 50%;
+
 }
 
 #bemVindo,
@@ -74,7 +84,6 @@ embed {
 	height: 900px;
 	/* border: 2px solid red; */
 	padding: 20px;
-
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
