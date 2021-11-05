@@ -18,38 +18,19 @@
 
 <body>
 	<header class="header">
-		<embed class="logo" src="../../public/assets/logo.svg" alt="Logo" />
-		<div class="buttons-header">
+		<nav>
+			<img class="logo" src="public/assets/wallet.png" alt="">
+			<ul class="nav-list">
+				<li><a href="#"> vantagens para você </a> </li>
+				<li><a href="#"> vantagens para sua empresa</a> </li>
+				<li><a href="#"> O Riquinho</a> </li>
+				<li><a href="#"> Perguntas Frequentes</a> </li>
+			</ul>
 			<button class="button">
-				Vantagens para você
 				<span>
-					<img src="../../public/assets/down.svg" alt="icon" />
-				</span>
+					<img src="../../public/assets/enter.svg" alt="icon" /> </span>Login
 			</button>
-			<button class="button">
-				Vantagens para você
-				<span>
-					<img src="../../public/assets/down.svg" alt="icon" />
-				</span>
-			</button>
-			<button class="button">
-				Vantagens para a empresas
-				<span>
-					<img src="../../public/assets/down.svg" alt="icon" />
-				</span>
-			</button>
-			<button class="button">
-				O Riquinho
-				<span>
-					<img src="../../public/assets/down.svg" alt="icon" />
-				</span>
-			</button>
-			<button class="button">Perguntas Frequentes</button>
-		</div>
-		<button class="button">
-			<span>
-				<img src="../../public/assets/enter.svg" alt="icon" /> </span>Login
-		</button>
+		</nav>
 	</header>
 	<main class="container">
 		<section id="bemVindo">
@@ -58,7 +39,7 @@
 					<h1>BEM VINDO AO</h1>
 					<h1 class="atent">$ RIQUINHO $</h1>
 				</div>
-				<p>
+				<p class="fontcard">
 					A sua plataforma para aprender a
 					<span class="color">economizar</span> de forma simples e
 					prática. Aqui você irá receber as melhores
@@ -71,9 +52,8 @@
 					<embed src="../../public/assets/Arrow.svg" type="" />
 				</button>
 			</div>
-
 			<!-- Embed ao invés de img na hora de renderizar os svgs-->
-			<embed src="../../public/assets/Rectangle.svg" alt="" />
+			<embed class="cofre" src="../../public/assets/Rectangle.svg" alt="" />
 		</section>
 		<section id="aprenda">
 			<div class="info">
@@ -82,7 +62,7 @@
 					<h1>COMO</h1>
 					<h1 class="atent">ECONOMIZAR</h1>
 				</div>
-				<p>
+				<p clclass="fontcard">
 					Lorem ipsum dolor sit amet consectetur adipisicing elit.
 					Quasi, saepe voluptate totam obcaecati repellat
 					temporibus quidem. Deleniti, consectetur. Repellendus
@@ -96,7 +76,7 @@
 			</div>
 
 			<!-- Embed ao invés de img na hora de renderizar os svgs-->
-			<embed src="../../public/assets/astronauta.svg" alt="" />
+			<embed class="imgs" src="../../public/assets/astronauta.svg" alt="" />
 		</section>
 		<section id="saibaTudo">
 			<div class="info">
@@ -106,7 +86,7 @@
 					<h1>É CAPAZ DE FAZER</h1>
 					<h1>POR VOCÊ</h1>
 				</div>
-				<p>
+				<p class="fontcard">
 					Lorem ipsum dolor sit amet consectetur adipisicing elit.
 					Quasi, saepe voluptate totam obcaecati repellat
 					temporibus quidem. Deleniti, consectetur. Repellendus
@@ -120,7 +100,7 @@
 			</div>
 
 			<!-- Embed ao invés de img na hora de renderizar os svgs-->
-			<embed src="../../public/assets/alura.svg" alt="" />
+			<embed class="imgs" src="../../public/assets/alura.svg" alt="" />
 		</section>
 	</main>
 	<section class="login">
