@@ -1,40 +1,37 @@
 <?php
 
-    $email = '';
-    $senha = '';
-    error_log('entrou na autenticação');
+require '../../database/conectar.php';
+require '../../src/model/usuario.model.php';
 
-    if (isset($_POST['email']) != null && isset($_POST['senha']) != null && !empty($_POST['email']) && !empty($_POST['senha'])) {
+function redirect($path)
+{
+  header("Location: $path");
+}
 
+function login($email, $senha)
+{
+  if (isset($email) != null && isset($senha) != null && !empty($email) && !empty($senha)) {
+    $usuario = getUsuario($email, sha1($senha));
+    if (count($usuario) > 0) {
+      session_start();
+      $_SESSION['id'] = $usuario['email'];
+      redirect("../view/home.php");
+    }
+  }
+}
 
-        require '../../database/conectcar.php';
-
-        require '../../src/model/login.model.php';
-        $u = new Usuario();
-
-
-        $email = addslashes($_POST['email']);
-        $senha = addslashes($_POST['senha']);
-
-        error_log($email);
-        error_log($senha);
-        error_log('********');
-
-
-        if($u->login($email,$senha) == true){
-            if(isset($_SESSION['id'])){
-                $_SESSION['autorizado'] = true;
-             header("location: ../../../../src/view/home.php");
-     
-            }else{
-             header("location: ../../../../index.php");
-            }
-         }else{
-             header("location: ../../../../index.php");
-         }
-     }else{
-         header("location: ../../../../index.php");
-     }
+function logout()
+{
+  session_start();
+  session_destroy();
+  redirect("../view/login.php");
+}
 
 
-?>
+$metodo = $_SERVER['REQUEST_METHOD'];
+
+if ($metodo === 'POST') {
+  login($_POST['email'], $_POST['senha']);
+} else if ($metodo === 'GET') {
+  logout();
+}
