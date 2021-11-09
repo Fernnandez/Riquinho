@@ -1,0 +1,85 @@
+.main {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-around;
+}
+
+.logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+	font-size: 40px;
+}
+
+.logo img {
+	height: 60px;
+	width: 60px;
+}
+
+.receitas,
+.gastos {
+	margin-top: calc(110px + 5%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.title-section {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+}
+
+.title-section img {
+	transition: ease all 0.7s;
+	cursor: pointer;
+}
+
+.title-section img:hover {
+	opacity: 0.7;
+}
+
+.lista-transacoes {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 15px;
+	margin-top: 40px;
+	font-size: 20px;
+	list-style: none;
+	width: 500px;
+	height: 600px;
+	overflow: auto;
+}
+
+.lista-transacoes-row {
+	border-radius: 15px;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 20px;
+	padding: 10px 20px;
+	width: 95%;
+}
+.lista-transacoes-row span {
+	cursor: default;
+}
+
+.receitas .lista-transacoes-row {
+	border: solid 0.5px var(--verde);
+}
+
+.gastos .lista-transacoes-row {
+	border: solid 0.5px var(--vermelho);
+}
+
+.row-info {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	max-width: 200px;
+}
