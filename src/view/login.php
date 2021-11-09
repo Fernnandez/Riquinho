@@ -26,6 +26,13 @@
       </form>
     </div>
   </div>
+
+  <script>
+    const query = window.location.search;
+    const urlParams = new URLSearchParams(query);
+
+    if (urlParams.get('msg')) alert(urlParams.get('msg'));
+  </script> 
 </body>
 
 </html>

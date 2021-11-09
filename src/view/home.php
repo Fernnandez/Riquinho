@@ -1,7 +1,7 @@
 <!--Esta parte de codigo verifica se o usuario esta logado, dando acesso a pagina de cadastro  !-->
 <?php
 session_start();
-if ((!isset($_SESSION['id']) === true)) {
+if ((!isset($_SESSION['usuario']) === true)) {
   header('Location: ./login.php');
 }
 ?>
@@ -23,6 +23,7 @@ if ((!isset($_SESSION['id']) === true)) {
     <h2 class="logo">
       <img src="../../public/assets/wallet.png" alt="logo" />Riquinho
     </h2>
+    <span>Bem-vindo <?= $_SESSION['usuario']['nome'] ?></span>
     <a class="button" href="../controller/login.controller.php">Sair</a>
   </header>
   <div class="main">

@@ -12,11 +12,15 @@ function login($email, $senha)
 {
   if (isset($email) != null && isset($senha) != null && !empty($email) && !empty($senha)) {
     $usuario = getUsuario($email, sha1($senha));
-    if (count($usuario) > 0) {
+    if ($usuario) {
       session_start();
-      $_SESSION['id'] = $usuario['email'];
+      $_SESSION['usuario'] = $usuario;
       redirect("../view/home.php");
+    } else {
+      throw new Exception('E-mail ou senha inválido');
     }
+  } else {
+    throw new Exception('Preencha todos os campos.');
   }
 }
 
@@ -31,7 +35,11 @@ function logout()
 $metodo = $_SERVER['REQUEST_METHOD'];
 
 if ($metodo === 'POST') {
-  login($_POST['email'], $_POST['senha']);
+  try {
+    login($_POST['email'], $_POST['senha']);
+  } catch (Exception $e) {
+    header('Location: ../view/login.php?msg=' . $e->getMessage());
+  }
 } else if ($metodo === 'GET') {
   logout();
 }
