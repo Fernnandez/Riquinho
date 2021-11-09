@@ -25,5 +25,5 @@ $metodo = $_SERVER['REQUEST_METHOD'];
 
 if ($metodo === 'POST') {
   cadastroUsuario();
-  // header("location: ../view/login.php");
+  header("location: ../view/login.php");
 }

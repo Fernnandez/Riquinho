@@ -4,7 +4,7 @@ function criarUsuario($dados)
 {
   try {
     global $pdo;
-    $query = $pdo->prepare('INSERT INTO usuario (nome, email, senha) VALUES (:nome, :email, :senha)');
+    $query = $pdo->prepare('INSERT INTO usuario (name, email, senha) VALUES (:nome, :email, :senha)');
     $query->execute($dados);
   } catch (PDOException $e) {
     echo $e->getMessage();
