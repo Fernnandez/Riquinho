@@ -4,12 +4,4 @@ Aplicação de controle financeiro desenvolvida para cadeiras de Projeto e Desen
 
 # Importante
 
-Ao clonar o projeto é necessário criar um arquivo .env na raiz com as seguintes informações sem linhas em branco
-
-DB_NAME=nome da base
-
-DB_HOST=host
-
-DB_USER=usuario
-
-DB_PASS=senha
+Ao clonar o projeto é necessário copiar o arquivo .env.example para um novo arquivo .env na raiz do projeto.
