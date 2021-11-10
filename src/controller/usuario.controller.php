@@ -1,6 +1,9 @@
 <?php
 
+require '../util/enviroment.php';
 require_once '../model/usuario.model.php';
+
+load('../../');
 
 function cadastroUsuario()
 {
