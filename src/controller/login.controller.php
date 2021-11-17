@@ -1,8 +1,5 @@
 <?php
 
-require '../util/enviroment.php';
-load('../../');
-
 require '../../database/conectar.php';
 require '../../src/model/usuario.model.php';
 
