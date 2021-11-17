@@ -14,7 +14,7 @@ function criarUsuario($dados)
 function getUsuario($email, $senha)
 {
   try {
-    global $pdo;
+      global $pdo;
     $sql = "SELECT email, senha, nome FROM USUARIO WHERE email = :email AND senha = :senha";
     $sql = $pdo->prepare($sql);
     $sql->bindValue("email", $email);
