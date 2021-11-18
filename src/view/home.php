@@ -4,6 +4,10 @@ session_start();
 if ((!isset($_SESSION['usuario']) === true)) {
   header('Location: ./login.php');
 }
+require "../controller/transacao.controller.php";
+
+$receita = transa();
+
 ?>
 
 <!DOCTYPE html>
@@ -34,22 +38,18 @@ if ((!isset($_SESSION['usuario']) === true)) {
       </h1>
       <h2>R$ 2250,00</h2>
       <ul class="lista-transacoes">
-        <li class="lista-transacoes-row">
-          <span>R$ 1500,00</span>
-          <span>08/11/2021</span>
-          <span class="row-info" title="Salário">Salário</span>
-        </li>
-        <li class="lista-transacoes-row">
-          <span>R$ 500,00</span>
-          <span>25/10/2021</span>
-          <span class="row-info" title="Frella">Frella </span>
-        </li>
-        <li class="lista-transacoes-row">
-          <span>R$ 250,00</span>
-          <span>08/11/2021</span>
-          <span class="row-info" title="Manutenção de sistema">Manutenção de sistema</span>
-        </li>
-      </ul>
+        <?php foreach ($receita as $itens) : ?>
+        <?php if ($itens['TIPO_TRANSA'] == 'receita') :?>
+            <li class="lista-transacoes-row">
+            <span> R$ <?= $itens['VALOR_TRANSA'] ?></span>
+            <span><?= $itens['DATA_TRANSA'] ?></span>
+            <span class="row-info" title="<?= $itens['INFO'] ?>"><?= $itens['INFO'] ?></span>
+            <a href="../controller/delete.controller.php?id=<?=$itens['ID']?>">Remover</a>
+          </li>
+          <?php endif ?>
+          <?php endforeach ?>
+        </ul>
+        <!-- <?php var_dump($itens)?> -->
     </div>
     <div class="gastos">
       <h1 class="title-section">
