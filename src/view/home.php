@@ -93,6 +93,10 @@ if ((!isset($_SESSION['usuario']) === true)) {
         <form method="POST" action="../controller/transacao.controller.php">
           <div class="camposText">
             <div class="input">
+              <label for="text"><b>tipo</b></label></b>
+              <input type="text" id="tipo-receita" name="tipo" value="receita">
+            </div>
+            <div class="input">
               <label for="data"><b>Data</b></label></b>
               <input type="date" id="data" name="data">
             </div>
@@ -107,7 +111,7 @@ if ((!isset($_SESSION['usuario']) === true)) {
           </div>
           <div class="btnOpcoes">
             <button class="salvar">Salvar</button>
-            <button class="cancelar">Cancelar</button></a>
+            <a href='home.php' class="cancelar">Cancelar</a>
           </div>
         </form>
       </div>
@@ -125,6 +129,10 @@ if ((!isset($_SESSION['usuario']) === true)) {
         <form method="POST" action="../controller/transacao.controller.php">
           <div class="camposText">
             <div class="input">
+              <label for="text"><b>tipo</b></label></b>
+              <input type="text" id="tipo-gasto" name="tipo" value="gasto">
+            </div>
+            <div class="input">
               <label for="data"><b>Data</b></label></b>
               <input type="date" id="data" name="data">
             </div>
@@ -139,7 +147,7 @@ if ((!isset($_SESSION['usuario']) === true)) {
           </div>
           <div class="btnOpcoes">
             <button class="salvar">Salvar</button>
-            <button class="cancelar">Cancelar</button></a>
+            <a href='home.php' class="cancelar">Cancelar</a>
           </div>
         </form>
       </div>

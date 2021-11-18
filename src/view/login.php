@@ -32,7 +32,7 @@
     const urlParams = new URLSearchParams(query);
 
     if (urlParams.get('msg')) alert(urlParams.get('msg'));
-  </script> 
+  </script>
 </body>
 
 </html>
