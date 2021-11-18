@@ -15,6 +15,7 @@ function login($email, $senha)
     if ($usuario) {
       session_start();
       $_SESSION['usuario'] = $usuario;
+      $_SESSION['id'] = $usuario->id;
       redirect("../view/home.php");
     } else {
       throw new Exception('E-mail ou senha inválido');
@@ -30,7 +31,6 @@ function logout()
   session_destroy();
   redirect("../view/login.php");
 }
-
 
 $metodo = $_SERVER['REQUEST_METHOD'];
 

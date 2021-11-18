@@ -14,8 +14,8 @@ function criarUsuario($dados)
 function getUsuario($email, $senha)
 {
   try {
-      global $pdo;
-    $sql = "SELECT email, senha, nome , id FROM USUARIO WHERE email = :email AND senha = :senha";
+    global $pdo;
+    $sql = "SELECT id, email, senha, nome FROM USUARIO WHERE email = :email AND senha = :senha";
     $sql = $pdo->prepare($sql);
     $sql->bindValue("email", $email);
     $sql->bindValue("senha", $senha);
@@ -27,14 +27,15 @@ function getUsuario($email, $senha)
   
 }
 
-function buscarUsuarioEmail($email) {
+function buscarUsuarioEmail($email)
+{
   try {
     global $pdo;
     $sql = "SELECT email, senha FROM USUARIO WHERE email = :email";
     $sql = $pdo->prepare($sql);
     $sql->bindValue("email", $email);
     $sql->execute();
-  return $sql->fetch();
+    return $sql->fetch();
   } catch (PDOException $e) {
     echo $e->getMessage();
   }

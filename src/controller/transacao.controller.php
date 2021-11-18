@@ -11,7 +11,7 @@ function Transacao()
   //$carteira = buscarCarteira($_SESSION['usuario']['id']);
   $usuario = $_SESSION['usuario']['id'];
   $dados = [
-    'ID_USUARIO' => $usuario,
+    'ID_USUARIO' => $_SESSION['usuario']['id'],
     'TIPO_TRANSA' => $_POST['tipo'],
     'DATA_TRANSA' => $today,
     'VALOR_TRANSA' => $_POST['valor'],
@@ -31,6 +31,9 @@ function transa()
   $dados = buscarTransacao($usuario);
 
   return $dados;
+
+  criarTransacao($dados);
+  header("Location: ../view/home.php");
 }
 
 $metodo = $_SERVER['REQUEST_METHOD'];
