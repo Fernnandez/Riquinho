@@ -83,3 +83,137 @@
 	white-space: nowrap;
 	max-width: 200px;
 }
+
+.modal-container {
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.7);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-container.ativo {
+	display: flex;
+}
+
+.modal {
+	background-color: #fff;
+	width: 40%;
+	height: 50%;
+	min-width: 300px;
+	padding: 50px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+@keyframes modal {
+	from {
+		opacity: 0;
+		transform: translate3d(0, -60px, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.ativo .modal {
+	animation: modal 2s;
+}
+
+#close-receita,
+#close-gasto {
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border: 4px solid white;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+.infoTran {
+	display: flex;
+	justify-content: space-around;
+	flex-direction: column;
+}
+
+.tituloTran {
+	color: black;
+	font-size: 50px;
+}
+
+#tipoReceita {
+	color: green;
+	font-size: 40px;
+	text-align: center;
+}
+
+#tipoGasto {
+	color: var(--vermelho);
+	font-size: 40px;
+	text-align: center;
+}
+
+input {
+	width: 200px;
+	height: 50px;
+	border: 1px solid green;
+}
+
+label {
+	color: black;
+	font-size: 20px;
+}
+
+.input {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.camposText {
+	display: flex;
+	width: 700px;
+	height: 200px;
+	justify-content: space-around;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin: 10px 0;
+}
+
+.btnOpcoes {
+	display: flex;
+	justify-content: space-around;
+	height: 100px;
+	align-items: center;
+}
+
+.salvar {
+	width: 200px;
+	height: 50px;
+	background-color: var(--azul-escuro);
+	color: white;
+	font-size: 20px;
+	border: none;
+}
+
+.cancelar {
+	width: 200px;
+	height: 50px;
+	border: 1px solid red;
+	background-color: white;
+	color: red;
+	font-size: 20px;
+}

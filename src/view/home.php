@@ -16,138 +16,6 @@ if ((!isset($_SESSION['usuario']) === true)) {
   <link rel="stylesheet" href="../../public/css/styles.css" />
   <link rel="stylesheet" href="../../public/css/homepage.css" />
   <title>Riquinho</title>
-  <style>
-    .modal {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: rgba(0,0,0,0.8);
-  z-index: 99999;
-  opacity:0;
-  -webkit-transition: opacity 400ms ease-in;
-  -moz-transition: opacity 400ms ease-in;
-  transition: opacity 400ms ease-in;
-  pointer-events: none;
-}
-
-.modal:target {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.modal {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: rgba(0,0,0,0.8);
-  z-index: 99999;
-  opacity:0;
-  -webkit-transition: opacity 400ms ease-in;
-  -moz-transition: opacity 400ms ease-in;
-  transition: opacity 400ms ease-in;
-  pointer-events: none;
-}
-
-.modal:target {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.modal > div {
-  position: relative;
-  margin: 10% auto;
-  padding: 15px 20px;
-  background: #fff;
-}
-
-.formtran{
-  width: 900px;
-  height: 700px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
-}
-
-.infoTran{
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-}
-
-#tituloTran{
-  color: black;
-  font-size: 50px;
-}
-
-#tipoTran{
-  color: green;
-  font-size: 40px;
-  text-align: center;
-}
-
-input{
- width: 300px;
- height: 70px;
- border: 1px solid green;
-}
-
-label{
-  color: black;
-  font-size: 20px;
-}
-
-.input{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-flex-direction: column;
-}
-
-.fromTranInput{
-   width: 700px;
-   height: 500px;
-}
-
-.camposText{
-  display: flex;
-  width: 700px;
-  height: 300px;
-  justify-content: space-around;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.btnOpcoes{
-  display: flex;
-  justify-content: space-around;
-  height: 200px;
-  align-items: center;
-}
-
-.salvar{
-  width: 250px;
-  height: 70px;
-  background-color: blue;
-  color: white;
-  font-size: 30px;
-  border: none;
-}
-.cancelar{
-  width: 250px;
-  height: 70px;
-  border: 1px solid red;
-  background-color: white;
-  color: red;
-  font-size: 30px;
-}
-  </style>
 </head>
 
 <body>
@@ -160,12 +28,11 @@ flex-direction: column;
   </header>
   <div class="main">
     <div class="receitas">
-    <a href="#abrirModal"><h1 class="title-section">
-        <img src="../../public/assets/mais.png" alt="icon-mais" />
+      <h1 class="title-section">
+        <img src="../../public/assets/mais.png" alt="icon-mais" id="abre-receita" />
         Receitas
-      </h1></a>
+      </h1>
       <h2>R$ 2250,00</h2>
-
       <ul class="lista-transacoes">
         <li class="lista-transacoes-row">
           <span>R$ 1500,00</span>
@@ -186,7 +53,7 @@ flex-direction: column;
     </div>
     <div class="gastos">
       <h1 class="title-section">
-        <img src="../../public/assets/botao-de-menos.png" alt="icon-menos" />
+        <img src="../../public/assets/botao-de-menos.png" alt="icon-menos" id="abre-gasto" />
         Gastos
       </h1>
       <h2>R$ 900,00</h2>
@@ -215,52 +82,102 @@ flex-direction: column;
     </div>
   </div>
 
-
-
-
-<div id="abrirModal" class="modal">
-  
-<div class="formtran">
-
-<div class="infoTran">
-<h1 id="tituloTran">Nova Transação</h1>
-<h2 id="tipoTran">Receita</h2>
-
-</div>
-<section class="fromTranInput">
-  <form action="#">
-    <section class="camposText">
-    <div class="input">
-  <label for="data"><b>Data</b></label></b>
-  <input type="text" id="data" name="data">
-
+  <div id="modal-receita" class="modal-container">
+    <div class="modal">
+      <button id="close-receita">x</button>
+      <div class="infoTran">
+        <h1 class="tituloTran">Nova Transação</h1>
+        <h2 id="tipoReceita">Receita</h2>
       </div>
-      <div class="input">
-      <label for="valor"><b>Valor</b></label></b>
-  <input type="text" id="valor" name="valor">
-
+      <div class="fromTranInput">
+        <form method="POST" action="../controller/transacao.controller.php">
+          <div class="camposText">
+            <div class="input">
+              <label for="data"><b>Data</b></label></b>
+              <input type="date" id="data" name="data">
+            </div>
+            <div class="input">
+              <label for="valor"><b>Valor</b></label></b>
+              <input type="text" id="valor" name="valor">
+            </div>
+            <div class="input">
+              <label for="info"><b>Info</b></label></b>
+              <input type="text" id="info" name="info" style="width: 500px;">
+            </div>
+          </div>
+          <div class="btnOpcoes">
+            <button class="salvar">Salvar</button>
+            <button class="cancelar">Cancelar</button></a>
+          </div>
+        </form>
       </div>
-      <div class="input">
-      <label for="info"><b>Info</b></label></b>
-  <input type="text" id="info" name="info" style="width: 500px;">
+    </div>
+  </div>
 
+  <div id="modal-gasto" class="modal-container">
+    <div class="modal">
+      <button id="close-gasto">x</button>
+      <div class="infoTran">
+        <h1 class="tituloTran">Nova Transação</h1>
+        <h2 id="tipoGasto">Gasto</h2>
       </div>
+      <div class="fromTranInput">
+        <form method="POST" action="../controller/transacao.controller.php">
+          <div class="camposText">
+            <div class="input">
+              <label for="data"><b>Data</b></label></b>
+              <input type="date" id="data" name="data">
+            </div>
+            <div class="input">
+              <label for="valor"><b>Valor</b></label></b>
+              <input type="text" id="valor" name="valor">
+            </div>
+            <div class="input">
+              <label for="info"><b>Info</b></label></b>
+              <input type="text" id="info" name="info" style="width: 500px;">
+            </div>
+          </div>
+          <div class="btnOpcoes">
+            <button class="salvar">Salvar</button>
+            <button class="cancelar">Cancelar</button></a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
 
+  <script>
+    function abreModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.classList.add("ativo");
+    }
 
-    </section>
+    function fechaModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.classList.remove("ativo");
+    }
 
-  <section class="btnOpcoes">
-  <button class="salvar">Salvar</button>
-  <a href="#fechar" title="Fechar" class="fechar">
-<button class="cancelar">Cancelar</button></a>
-</section>
+    // modal receita
+    const btn_receita = document.getElementById("abre-receita");
+    btn_receita.addEventListener("click", () => {
+      abreModal("modal-receita");
+    });
+    const close_receita = document.getElementById("close-receita")
+    close_receita.addEventListener("click", () => {
+      fechaModal('modal-receita')
+    })
 
-  </form>
-</section>
-</div>
-</div>
-
-
+    // modal gasto
+    const btn_gasto = document.getElementById("abre-gasto");
+    btn_gasto.addEventListener("click", () => {
+      abreModal("modal-gasto");
+    });
+    const close_gasto = document.getElementById("close-gasto")
+    close_gasto.addEventListener("click", () => {
+      fechaModal('modal-gasto')
+    })
+  </script>
 </body>
 
 </html>
