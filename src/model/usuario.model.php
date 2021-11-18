@@ -15,7 +15,7 @@ function getUsuario($email, $senha)
 {
   try {
       global $pdo;
-    $sql = "SELECT email, senha, nome FROM USUARIO WHERE email = :email AND senha = :senha";
+    $sql = "SELECT email, senha, nome , id FROM USUARIO WHERE email = :email AND senha = :senha";
     $sql = $pdo->prepare($sql);
     $sql->bindValue("email", $email);
     $sql->bindValue("senha", $senha);
@@ -24,6 +24,7 @@ function getUsuario($email, $senha)
   } catch (PDOException $e) {
     echo $e->getMessage();
   }
+  
 }
 
 function buscarUsuarioEmail($email) {
