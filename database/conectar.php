@@ -2,8 +2,8 @@
 
 $host = "localhost";
 $dbname = "riquinho";
-$username = "rot";
-$password = "parzival29";
+$username = "root";
+$password = "";
 
 global $pdo;
 

@@ -1,9 +1,11 @@
-.main {
+.header {
 	display: flex;
-	align-items: flex-start;
-	justify-content: space-around;
+	align-items: center;
+	justify-content: space-between;
+	width: 95%;
+	padding: 0 10px;
+	height: 100px;
 }
-
 .logo {
 	display: flex;
 	align-items: center;
@@ -16,10 +18,40 @@
 	height: 60px;
 	width: 60px;
 }
+.main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	width: 100%;
+	height: 100%;
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+}
+
+.icon img {
+	padding: 0;
+	margin: 0;
+	font-size: 20px;
+}
+
+.lists {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 100px;
+	width: 80%;
+	margin-top: 20px;
+}
 
 .receitas,
 .gastos {
-	margin-top: calc(110px + 5%);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -59,12 +91,19 @@
 .lista-transacoes-row {
 	border-radius: 15px;
 	display: flex;
-	align-items: flex-start;
-	justify-content: flex-start;
+	align-items: center;
+	justify-content: space-between;
 	gap: 20px;
 	padding: 10px 20px;
-	width: 95%;
+	width: 100%;
 }
+
+.lista-transacoes-row .texts {
+	display: flex;
+	gap: 15px;
+	justify-content: flex-start;
+}
+
 .lista-transacoes-row span {
 	cursor: default;
 }
@@ -85,8 +124,8 @@
 }
 
 .modal-container {
-	width: 100vw;
-	height: 100vh;
+	width: 100%;
+	height: 100%;
 	background: rgba(0, 0, 0, 0.7);
 	position: fixed;
 	top: 0;
@@ -105,7 +144,7 @@
 	background-color: #fff;
 	width: 40%;
 	height: 50%;
-	min-width: 300px;
+	min-width: 400px;
 	padding: 50px;
 	position: relative;
 	display: flex;
@@ -141,6 +180,43 @@
 	cursor: pointer;
 	font-size: 20px;
 }
+#tipoReceita {
+	color: green;
+	font-size: 40px;
+	text-align: center;
+}
+#tipoGasto {
+	color: var(--vermelho);
+	font-size: 40px;
+	text-align: center;
+}
+
+input {
+	height: 50px;
+	width: 300px;
+	border: 1px solid green;
+	font-size: 20px;
+	text-align: center;
+}
+
+label {
+	color: black;
+	font-size: 20px;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+}
+
+.input-sup,
+.input-inf {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
 
 .infoTran {
 	display: flex;
@@ -153,46 +229,12 @@
 	font-size: 50px;
 }
 
-#tipoReceita {
-	color: green;
-	font-size: 40px;
-	text-align: center;
-}
-
-#tipoGasto {
-	color: var(--vermelho);
-	font-size: 40px;
-	text-align: center;
-}
-
-input {
-	width: 200px;
-	height: 50px;
-	border: 1px solid green;
-	font-size: 20px;
-	text-align: center;
-}
-
-label {
-	color: black;
-	font-size: 20px;
-}
-
 .input {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-}
-
-.camposText {
-	display: flex;
-	width: 700px;
-	height: 200px;
-	justify-content: space-around;
-	flex-direction: row;
-	flex-wrap: wrap;
-	margin: 10px 0;
+	width: 100%;
 }
 
 .btnOpcoes {
@@ -221,4 +263,80 @@ label {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+@media (max-width: 1224px) {
+	.modal {
+		width: 35%;
+	}
+
+	input {
+		width: 150px;
+		height: 50px;
+		border: 1px solid green;
+		font-size: 18px;
+		text-align: center;
+	}
+	.salvar {
+		width: 150px;
+		height: 40px;
+		background-color: var(--azul-escuro);
+		color: white;
+		font-size: 20px;
+		border: none;
+	}
+
+	.cancelar {
+		width: 150px;
+		height: 40px;
+		border: 1px solid red;
+		background-color: white;
+		color: red;
+		font-size: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.tituloTran {
+		color: black;
+		font-size: 30px;
+	}
+
+	.lists {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 50px;
+		width: 70%;
+		margin-top: 20px;
+	}
+	.lista-transacoes {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		gap: 15px;
+		margin-top: 40px;
+		font-size: 20px;
+		list-style: none;
+		width: 450px;
+		height: 600px;
+		overflow: auto;
+	}
+	.lista-transacoes-row {
+		border-radius: 15px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 15px;
+		padding: 10px 15px;
+		width: 100%;
+		font-size: 18px;
+	}
+
+	.lista-transacoes-row .texts {
+		display: flex;
+		gap: 10px;
+		justify-content: flex-start;
+	}
 }

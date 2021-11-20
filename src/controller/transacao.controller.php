@@ -9,12 +9,11 @@ function Transacao()
 
   $today = date("Y-m-d");
   //$carteira = buscarCarteira($_SESSION['usuario']['id']);
-  $usuario = $_SESSION['usuario']['id'];
   $dados = [
     'ID_USUARIO' => $_SESSION['usuario']['id'],
-    'TIPO_TRANSA' => $_POST['tipo'],
-    'DATA_TRANSA' => $today,
-    'VALOR_TRANSA' => $_POST['valor'],
+    'TIPO_TRAN' => $_POST['tipo'],
+    'DATA_TRAN' => $today,
+    'VALOR_TRAN' => $_POST['valor'],
     'INFO' => $_POST['info']
   ];
   // var_dump($dados);
@@ -24,7 +23,6 @@ function Transacao()
 
 function transa()
 {
-  session_start();
 
   $usuario = $_SESSION['usuario']['id'];
 
@@ -34,6 +32,23 @@ function transa()
 
   criarTransacao($dados);
   header("Location: ../view/home.php");
+}
+
+function total($dados)
+{
+  $totalReceita = 0;
+  $totalGasto = 0;
+  foreach ($dados as $item) {
+    if ($item['TIPO_TRAN'] == 'receita') {
+      $totalReceita = $totalReceita + intval($item['VALOR_TRAN']);
+    } else {
+      $totalGasto = $totalGasto + intval($item['VALOR_TRAN']);
+    }
+  }
+  $result['RECEITA'] = $totalReceita;
+  $result['GASTO'] = $totalGasto;
+
+  return $result;
 }
 
 $metodo = $_SERVER['REQUEST_METHOD'];

@@ -6,8 +6,8 @@ function criarTransacao($dados)
   // var_dump($dados);
   try {
     global $pdo;
-    $query = $pdo->prepare('INSERT INTO TRANSACOES (ID_USUARIO, TIPO_TRANSA, DATA_TRANSA, VALOR_TRANSA, INFO)
-     VALUES (:ID_USUARIO,:TIPO_TRANSA, :DATA_TRANSA, :VALOR_TRANSA, :INFO)');
+    $query = $pdo->prepare('INSERT INTO TRANSACOES (ID_USUARIO, TIPO_TRAN, DATA_TRAN, VALOR_TRAN, INFO)
+     VALUES (:ID_USUARIO,:TIPO_TRAN, :DATA_TRAN, :VALOR_TRAN, :INFO)');
     $query->execute($dados);
   } catch (PDOException $e) {
     echo $e->getMessage();
@@ -16,14 +16,13 @@ function criarTransacao($dados)
 
 function buscarTransacao($user)
 {
-try{
+  try {
     global $pdo;
-    $query = $pdo->prepare("SELECT ID, TIPO_TRANSA, DATA_TRANSA, VALOR_TRANSA, INFO FROM TRANSACOES 
+    $query = $pdo->prepare("SELECT ID, TIPO_TRAN, DATA_TRAN, VALOR_TRAN, INFO FROM TRANSACOES 
     WHERE ID_USUARIO = $user");
     $query->execute();
     return $query->fetchAll();
-}
-catch(Exception $e){
-  echo $e->getMessage();
-}
+  } catch (Exception $e) {
+    echo $e->getMessage();
+  }
 }

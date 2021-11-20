@@ -7,7 +7,7 @@ if ((!isset($_SESSION['usuario']) === true)) {
 require "../controller/transacao.controller.php";
 
 $receita = transa();
-
+$total = total($receita);
 ?>
 
 <!DOCTYPE html>
@@ -23,63 +23,62 @@ $receita = transa();
 </head>
 
 <body>
-  <header class="header">
-    <h2 class="logo">
-      <img src="../../public/assets/wallet.png" alt="logo" />Riquinho
-    </h2>
-    <span>Bem-vindo <?= $_SESSION['usuario']['nome'] ?></span>
-    <a class="button" href="../controller/login.controller.php">Sair</a>
-  </header>
   <div class="main">
-    <div class="receitas">
-      <h1 class="title-section">
-        <img src="../../public/assets/mais.png" alt="icon-mais" id="abre-receita" />
-        Receitas
-      </h1>
-      <h2>R$ 2250,00</h2>
-      <ul class="lista-transacoes">
-        <?php foreach ($receita as $itens) : ?>
-        <?php if ($itens['TIPO_TRANSA'] == 'receita') :?>
-            <li class="lista-transacoes-row">
-            <span> R$ <?= $itens['VALOR_TRANSA'] ?></span>
-            <span><?= $itens['DATA_TRANSA'] ?></span>
-            <span class="row-info" title="<?= $itens['INFO'] ?>"><?= $itens['INFO'] ?></span>
-            <a href="../controller/delete.controller.php?id=<?=$itens['ID']?>">Remover</a>
-          </li>
-          <?php endif ?>
+    <header class="header">
+      <h2 class="logo">
+        <img src="../../public/assets/wallet.png" alt="logo" />Riquinho
+      </h2>
+      <a class="button" href="../controller/login.controller.php">Sair</a>
+    </header>
+    <div class="info">
+      <span>Bem-vindo <?= $_SESSION['usuario']['nome'] ?></span>
+      <h1>Saldo Livre</h1>
+      <h2>R$<?= $total['RECEITA'] - $total['GASTO'] ?></h2>
+    </div>
+    <div class="lists">
+      <div class="receitas">
+        <h1 class="title-section">
+          <img src="../../public/assets/mais.png" alt="icon-mais" id="abre-receita" />
+          Receitas
+        </h1>
+        <h2>R$<?= $total['RECEITA'] ?></h2>
+        <ul class="lista-transacoes">
+          <?php foreach ($receita as $itens) : ?>
+            <?php if ($itens['TIPO_TRAN'] == 'receita') : ?>
+              <li class="lista-transacoes-row">
+                <div class="texts">
+                  <span>R$<?= $itens['VALOR_TRAN'] ?></span>
+                  <span><?= str_replace("00:00:00", "", $itens['DATA_TRAN']) ?></span>
+                  <span class="row-info" title="<?= $itens['INFO'] ?>"><?= $itens['INFO'] ?></span>
+                </div>
+                <a class="icon" href="../controller/delete.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
+              </li>
+            <?php endif ?>
           <?php endforeach ?>
         </ul>
-        <!-- <?php var_dump($itens)?> -->
-    </div>
-    <div class="gastos">
-      <h1 class="title-section">
-        <img src="../../public/assets/botao-de-menos.png" alt="icon-menos" id="abre-gasto" />
-        Gastos
-      </h1>
-      <h2>R$ 900,00</h2>
-      <ul class="lista-transacoes">
-        <li class="lista-transacoes-row">
-          <span>R$ 500,00</span>
-          <span>01/11/2021</span>
-          <span class="row-info" title="Alimentação">Alimentação</span>
-        </li>
-        <li class="lista-transacoes-row">
-          <span>R$ 200,00</span>
-          <span>25/10/2021</span>
-          <span class="row-info" title="Festa no sábado">Festa no sábado</span>
-        </li>
-        <li class="lista-transacoes-row">
-          <span>R$ 100,00</span>
-          <span>20/10/2021</span>
-          <span class="row-info" title="Internet">Internet</span>
-        </li>
-        <li class="lista-transacoes-row">
-          <span>R$ 100,00</span>
-          <span>20/10/2021</span>
-          <span class="row-info" title="Roupas e sapato para fim de ano">Roupas e sapato para fim de ano</span>
-        </li>
-      </ul>
-    </div>
+      </div>
+      <div class="gastos">
+        <h1 class="title-section">
+          <img src="../../public/assets/botao-de-menos.png" alt="icon-menos" id="abre-gasto" />
+          Gastos
+        </h1>
+        <h2>R$-<?= $total['GASTO'] ?></h2>
+        <ul class="lista-transacoes">
+          <?php foreach ($receita as $itens) : ?>
+            <?php if ($itens['TIPO_TRAN'] == 'gasto') : ?>
+              <li class="lista-transacoes-row">
+                <div class="texts">
+                  <span>R$<?= $itens['VALOR_TRAN'] ?></span>
+                  <span><?= str_replace("00:00:00", "", $itens['DATA_TRAN']) ?></span>
+                  <span class="row-info" title="<?= $itens['INFO'] ?>"><?= $itens['INFO'] ?></span>
+                </div>
+                <a class="icon" href="../controller/delete.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
+              </li>
+            <?php endif ?>
+          <?php endforeach ?>
+        </ul>
+      </div>
+    </div class="lists">
   </div>
 
   <div id="modal-receita" class="modal-container">
@@ -89,32 +88,33 @@ $receita = transa();
         <h1 class="tituloTran">Nova Transação</h1>
         <h2 id="tipoReceita">Receita</h2>
       </div>
-      <div class="fromTranInput">
-        <form method="POST" action="../controller/transacao.controller.php">
-          <div class="camposText">
-            <div class="input">
-              <label for="text"><b>tipo</b></label></b>
-              <input type="text" id="tipo-receita" name="tipo" value="receita">
-            </div>
-            <div class="input">
-              <label for="data"><b>Data</b></label></b>
-              <input type="date" id="data" name="data">
-            </div>
-            <div class="input">
-              <label for="valor"><b>Valor</b></label></b>
-              <input type="text" id="valor" name="valor">
-            </div>
-            <div class="input">
-              <label for="info"><b>Info</b></label></b>
-              <input type="text" id="info" name="info" style="width: 500px;">
-            </div>
+      <form class="form" method="POST" action="../controller/transacao.controller.php">
+        <div class="input-sup">
+          <div class="input">
+            <label for="text"><b>tipo</b></label></b>
+            <input type="text" id="tipo-gasto" name="tipo" value="gasto">
           </div>
-          <div class="btnOpcoes">
-            <button class="salvar">Salvar</button>
-            <a href='home.php' class="cancelar">Cancelar</a>
+          <div class="input">
+            <label for="data"><b>Data</b></label></b>
+            <input type="date" id="data" name="data">
           </div>
-        </form>
-      </div>
+        </div>
+
+        <div class="input-inf">
+          <div class="input">
+            <label for="valor"><b>Valor</b></label></b>
+            <input type="text" id="valor" name="valor">
+          </div>
+          <div class="input">
+            <label for="info"><b>Info</b></label></b>
+            <input type="text" id="info" name="info">
+          </div>
+        </div>
+        <div class="btnOpcoes">
+          <button class="salvar">Salvar</button>
+          <a href='home.php' class="cancelar">Cancelar</a>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -125,35 +125,36 @@ $receita = transa();
         <h1 class="tituloTran">Nova Transação</h1>
         <h2 id="tipoGasto">Gasto</h2>
       </div>
-      <div class="fromTranInput">
-        <form method="POST" action="../controller/transacao.controller.php">
-          <div class="camposText">
-            <div class="input">
-              <label for="text"><b>tipo</b></label></b>
-              <input type="text" id="tipo-gasto" name="tipo" value="gasto">
-            </div>
-            <div class="input">
-              <label for="data"><b>Data</b></label></b>
-              <input type="date" id="data" name="data">
-            </div>
-            <div class="input">
-              <label for="valor"><b>Valor</b></label></b>
-              <input type="text" id="valor" name="valor">
-            </div>
-            <div class="input">
-              <label for="info"><b>Info</b></label></b>
-              <input type="text" id="info" name="info" style="width: 500px;">
-            </div>
+      <form class="form" method="POST" action="../controller/transacao.controller.php">
+        <div class="input-sup">
+          <div class="input">
+            <label for="text"><b>tipo</b></label></b>
+            <input type="text" id="tipo-gasto" name="tipo" value="gasto">
           </div>
-          <div class="btnOpcoes">
-            <button class="salvar">Salvar</button>
-            <a href='home.php' class="cancelar">Cancelar</a>
+          <div class="input">
+            <label for="data"><b>Data</b></label></b>
+            <input type="date" id="data" name="data">
           </div>
-        </form>
-      </div>
+        </div>
+
+        <div class='input-inf'>
+          <div class="input">
+            <label for="valor"><b>Valor</b></label></b>
+            <input type="text" id="valor" name="valor">
+          </div>
+          <div class="input">
+            <label for="info"><b>Info</b></label></b>
+            <input type="text" id="info" name="info">
+          </div>
+        </div>
+        <div class="btnOpcoes">
+          <button class="salvar">Salvar</button>
+          <a href='home.php' class="cancelar">Cancelar</a>
+        </div>
+      </form>
     </div>
   </div>
-  </div>
+
 
   <script>
     function abreModal(modalId) {
