@@ -10,29 +10,33 @@
 </head>
 
 <body>
-  <div class="container">
-    <h1 class="logo"><img src="../../public/assets/wallet.png" alt="logo">Riquinho</h1>
-    <div class="login">
-      <h2>Login</h2>
-      <form action="../controller/login.controller.php" method="POST" class="form-login">
-        <label for="login-email">Email</label>
-        <input type="email" id='login-email' name="email">
-        <label for="login-senha">Senha</label>
-        <input type="password" id='login-senha' name="senha">
-        <div class="buttons">
-          <button class="btn">Entrar</button>
-          <a class="btn" href="./cadastro.php">Cadastrar</a>
-        </div>
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2 class="active"> Login</h2>
+      <a class="underlineHover" href="./cadastro.php">cadastrar</a>
+
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="../../public/assets/wallet.png" id="icon" alt="User Icon" />
+      </div>
+
+      <!-- Login Form -->
+      <form action="../controller/login.controller.php" method="POST">
+        <input type="text" id="email" class="fadeIn second" name="email" placeholder="email">
+        <input type="password" id="senha" class="fadeIn third" name="senha" placeholder="senha">
+        <input type="submit" class="fadeIn fourth" value="Entrar">
       </form>
+
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div>
+
     </div>
   </div>
 
-  <script>
-    const query = window.location.search;
-    const urlParams = new URLSearchParams(query);
 
-    if (urlParams.get('msg')) alert(urlParams.get('msg'));
-  </script>
 </body>
 
 </html>
