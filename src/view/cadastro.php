@@ -10,34 +10,27 @@
 </head>
 
 <body>
-  <div class="container">
-    <h1 class="logo"><img src="../../public/assets/wallet.png" alt="logo">Riquinho</h1>
-    <div class="cadastro">
-      <h2>Cadastro</h2>
-      <form action="../controller/usuario.controller.php" method="POST" class="form-cadastro">
-        <label for="cadastro-nome">Nome</label>
-        <input type="text" id='cadastro-nome' name="nome">
-        <label for="cadastro-email">Email</label>
-        <input type="email" id='cadastro-email' name="email">
-        <label for="cadastro-senha">Senha</label>
-        <input type="password" id='cadastro-senha' name="senha">
-        <label for="cadastro-senha">Confirmar Senha</label>
-        <input type="password" id='cadastro-confirmar-senha' name="confirmarSenha">
-        <div class="buttons">
-          <button class="btn">Cadastrar</button>
-          <a class="btn" href="./login.php">Logar</a>
-        </div>
-      </form>
-    </div>
-  </div>
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
 
-  <script>
-    const query = window.location.search;
-    const urlParams = new URLSearchParams(query);
-    
-    if (urlParams.get('msg')) alert(urlParams.get('msg'));
-    
-  </script> 
+      <!-- Tabs Titles -->
+      <h2 class="active"> cadastro</h2>
+      <a class="underlineHover" href="./login.php">Login</a>
+
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="../../public/assets/wallet.png" id="icon" alt="User Icon" />
+      </div>
+
+      <!-- Login Form -->
+      <form action="../controller/usuario.controller.php" method="POST">
+        <input type="text" id="nome" class="fadeIn second" name="nome" placeholder="nome">
+        <input type="text" id="email" class="fadeIn second" name="email" placeholder="email">
+        <input type="password" id="senha" class="fadeIn third" name="senha" placeholder="senha">
+        <input type="password" id='confirmar-senha' class="fadeIn third" name="confirmarSenha" placeholder="confirmar senha">
+        <input type="submit" class="fadeIn fourth" value="Entrar">
+      </form>
+
 </body>
 
 </html>
