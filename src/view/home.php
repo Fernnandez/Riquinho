@@ -72,7 +72,7 @@ $total = total($receita);
                   <span><?= str_replace("00:00:00", "", $itens['DATA_TRAN']) ?></span>
                   <span class="row-info" title="<?= $itens['INFO'] ?>"><?= $itens['INFO'] ?></span>
                 </div>
-                <a class="icon" href="../controller/delete.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
+                <a class="icon" href="../controller/delete.controller.php?id=<?= $itens['ID'] ?>" ><img src="../../public/assets/bin.png" alt="excluir"></a>
               </li>
             <?php endif ?>
           <?php endforeach ?>
@@ -92,7 +92,7 @@ $total = total($receita);
         <div class="input-sup">
           <div class="input">
             <label for="text"><b>tipo</b></label></b>
-            <input type="text" id="tipo-gasto" name="tipo" value="gasto">
+            <input type="text" id="tipo-gasto" name="tipo" value="receita">
           </div>
           <div class="input">
             <label for="data"><b>Data</b></label></b>
