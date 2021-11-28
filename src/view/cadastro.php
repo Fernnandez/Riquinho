@@ -14,8 +14,8 @@
     <div id="formContent">
 
       <!-- Tabs Titles -->
-      <h2 class="active"> cadastro</h2>
       <a class="underlineHover" href="./login.php">Login</a>
+      <h2 class="active"> cadastro</h2>
 
       <!-- Icon -->
       <div class="fadeIn first">
@@ -28,7 +28,7 @@
         <input type="text" id="email" class="fadeIn second" name="email" placeholder="email">
         <input type="password" id="senha" class="fadeIn third" name="senha" placeholder="senha">
         <input type="password" id='confirmar-senha' class="fadeIn third" name="confirmarSenha" placeholder="confirmar senha">
-        <input type="submit" class="fadeIn fourth" value="Entrar">
+        <input type="submit" class="fadeIn fourth" value="Cadastrar">
       </form>
 
 </body>
