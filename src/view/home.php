@@ -2,7 +2,7 @@
 <?php
 session_start();
 if ((!isset($_SESSION['usuario']) === true)) {
-  header('Location: ./login.php');
+    header('Location: ./login.php');
 }
 require "../controller/transacao.controller.php";
 
@@ -31,9 +31,11 @@ $total = total($receita);
       <a class="button" href="../controller/login.controller.php">Sair</a>
     </header>
     <div class="info">
-      <span>Bem-vindo <?= $_SESSION['usuario']['nome'] ?></span>
+    <span>Bem-vindo <?=$_SESSION['usuario']['nome']?></span>
+    <span>Bem-vindo <?=$_SESSION['usuario']['id']?></span>
+
       <h1>Saldo Livre</h1>
-      <h2>R$<?= $total['RECEITA'] - $total['GASTO'] ?></h2>
+      <h2>R$<?=$total['RECEITA'] - $total['GASTO']?></h2>
     </div>
     <div class="lists">
       <div class="receitas">
@@ -41,20 +43,20 @@ $total = total($receita);
           <img src="../../public/assets/mais.png" alt="icon-mais" id="abre-receita" />
           Receitas
         </h1>
-        <h2>R$<?= $total['RECEITA'] ?></h2>
+        <h2>R$<?=$total['RECEITA']?></h2>
         <ul class="lista-transacoes">
-          <?php foreach ($receita as $itens) : ?>
-            <?php if ($itens['TIPO_TRAN'] == 'receita') : ?>
+          <?php foreach ($receita as $itens): ?>
+            <?php if ($itens['TIPO_TRAN'] == 'receita'): ?>
               <li class="lista-transacoes-row">
                 <div class="texts">
-                  <span>R$<?= $itens['VALOR_TRAN'] ?></span>
-                  <span><?= str_replace("00:00:00", "", $itens['DATA_TRAN']) ?></span>
-                  <span class="row-info" title="<?= $itens['INFO'] ?>"><?= $itens['INFO'] ?></span>
+                  <span>R$<?=$itens['VALOR_TRAN']?></span>
+                  <span><?=str_replace("00:00:00", "", $itens['DATA_TRAN'])?></span>
+                  <span class="row-info" title="<?=$itens['INFO']?>"><?=$itens['INFO']?></span>
                 </div>
-                <a class="icon" href="../controller/delete.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
+                <a class="icon" href="../controller/delete.controller.php?id=<?=$itens['ID']?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
               </li>
-            <?php endif ?>
-          <?php endforeach ?>
+            <?php endif?>
+          <?php endforeach?>
         </ul>
       </div>
       <div class="gastos">
@@ -62,20 +64,26 @@ $total = total($receita);
           <img src="../../public/assets/botao-de-menos.png" alt="icon-menos" id="abre-gasto" />
           Gastos
         </h1>
-        <h2>R$-<?= $total['GASTO'] ?></h2>
+        <h2>R$-<?=$total['GASTO']?></h2>
         <ul class="lista-transacoes">
-          <?php foreach ($receita as $itens) : ?>
-            <?php if ($itens['TIPO_TRAN'] == 'gasto') : ?>
+          <?php foreach ($receita as $itens): ?>
+            <?php if ($itens['TIPO_TRAN'] == 'gasto'): ?>
               <li class="lista-transacoes-row">
                 <div class="texts">
-                  <span>R$<?= $itens['VALOR_TRAN'] ?></span>
-                  <span><?= str_replace("00:00:00", "", $itens['DATA_TRAN']) ?></span>
-                  <span class="row-info" title="<?= $itens['INFO'] ?>"><?= $itens['INFO'] ?></span>
+                  <span>R$<?=number_format($itens['VALOR_TRAN'], 2, ",", ".")?></span>
+                  <span><?=str_replace("00:00:00", "", $itens['DATA_TRAN'])?></span>
+                  <span class="row-info" title="<?=$itens['INFO']?>"><?=$itens['INFO']?></span>
                 </div>
-                <a class="icon" href="../controller/delete.controller.php?id=<?= $itens['ID'] ?>" ><img src="../../public/assets/bin.png" alt="excluir"></a>
+                <a class="icon" href="../controller/delete.controller.php?id=<?=$itens['ID']?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
+                <form action="../controller/redirect.controller.php" method="POST">
+                <input type="number" name="id_transacao" value= "<?=$itens
+['ID']?>" style="display:none"/>
+                <button type="submit">Editar</button>
+              </form>
               </li>
-            <?php endif ?>
-          <?php endforeach ?>
+
+            <?php endif?>
+          <?php endforeach?>
         </ul>
       </div>
     </div class="lists">
@@ -92,7 +100,7 @@ $total = total($receita);
         <div class="input-sup">
           <div class="input">
             <label for="text"><b>tipo</b></label></b>
-            <input type="text" id="tipo-gasto" name="tipo" value="receita">
+            <input type="text" id="tipo-gasto" name="tipo" value="Receita" disabled>
           </div>
           <div class="input">
             <label for="data"><b>Data</b></label></b>
