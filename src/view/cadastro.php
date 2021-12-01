@@ -22,6 +22,12 @@
         <img src="../../public/assets/wallet.png" id="icon" alt="User Icon" />
       </div>
 
+      <?php if (isset($_GET['msg']) && $_GET['msg'] !== null) : ?>
+        <div id="msg">
+          <h3><?= $_GET['msg'] ?></h3>
+        </div>
+      <?php endif ?>
+
       <!-- Login Form -->
       <form action="../controller/usuario.controller.php" method="POST">
         <input type="text" id="nome" class="fadeIn second" name="nome" placeholder="nome">

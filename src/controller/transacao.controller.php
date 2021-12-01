@@ -8,7 +8,6 @@ function Transacao()
   session_start();
 
   $today = date("Y-m-d");
-  //$carteira = buscarCarteira($_SESSION['usuario']['id']);
   $dados = [
     'ID_USUARIO' => $_SESSION['usuario']['id'],
     'TIPO_TRAN' => $_POST['tipo'],
@@ -16,7 +15,6 @@ function Transacao()
     'VALOR_TRAN' => $_POST['valor'],
     'INFO' => $_POST['info']
   ];
-  // var_dump($dados);
   criarTransacao($dados);
   header("Location: ../view/home.php");
 }
@@ -58,14 +56,5 @@ if ($metodo === 'POST') {
     Transacao();
   } catch (Exception $e) {
     header("location: ../view/cadastro.php?msg=" . $e->getMessage());
-    // var_dump($e->getMessage());
   }
 }
-
-// if ($metodo === 'GET') {
-//   try {
-//     transa()
-//   } catch (Exception $e) {
-//     //throw $th;
-//   }
-// }

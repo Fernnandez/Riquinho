@@ -11,6 +11,10 @@ function cadastroUsuario()
     'confirmarSenha' => $_POST['confirmarSenha']
   ];
 
+  if ($dados['senha'] !== $dados['confirmarSenha']) {
+    throw new Exception("As senhas são difrentes.");
+  }
+
   $usuario = buscarUsuarioEmail($dados['email']);
 
   foreach ($dados as $key => $value) {
@@ -21,10 +25,6 @@ function cadastroUsuario()
 
   if ($usuario) {
     throw new Exception("E-mail já cadastrado.");
-  }
-
-  if ($dados['senha'] !== $dados['confirmarSenha']) {
-    throw new Exception("As senhas são difrentes.");
   }
 
   criarUsuario([

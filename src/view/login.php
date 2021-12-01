@@ -20,9 +20,14 @@
       <div class="fadeIn first">
         <img src="../../public/assets/wallet.png" id="icon" alt="User Icon" />
       </div>
-
+      <?php if (isset($_GET['msg']) && $_GET['msg'] !== null) : ?>
+        <div id="msg">
+          <h3><?= $_GET['msg'] ?></h3>
+        </div>
+      <?php endif ?>
       <!-- Login Form -->
       <form action="../controller/login.controller.php" method="POST">
+
         <input type="text" id="email" class="fadeIn second" name="email" placeholder="email">
         <input type="password" id="senha" class="fadeIn third" name="senha" placeholder="senha">
         <input type="submit" class="fadeIn fourth" value="Entrar">
