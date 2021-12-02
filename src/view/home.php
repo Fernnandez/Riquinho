@@ -99,22 +99,22 @@ $total = total($receita);
         <div class="input-sup">
           <div class="input">
             <label for="text"><b>tipo</b></label></b>
-            <input type="text" id="tipo-gasto" name="tipo" value="Receita" disabled>
+            <input type="text" id="tipo-receita" name="receita" class="receita" value="receita" disable>
           </div>
           <div class="input">
             <label for="data"><b>Data</b></label></b>
-            <input type="date" id="data" name="data">
+            <input type="date" id="data" name="data" class="receita">
           </div>
         </div>
 
         <div class="input-inf">
           <div class="input">
             <label for="valor"><b>Valor</b></label></b>
-            <input type="text" id="valor" name="valor">
+            <input type="text" id="valor" name="valor" class="receita">
           </div>
           <div class="input">
             <label for="info"><b>Info</b></label></b>
-            <input type="text" id="info" name="info">
+            <input type="text" id="info" name="info" class="receita">
           </div>
         </div>
         <div class="btnOpcoes">
