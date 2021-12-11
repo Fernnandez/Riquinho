@@ -4,4 +4,4 @@ Aplicação de controle financeiro desenvolvida para cadeiras de Projeto e Desen
 
 # Importante
 
-Ao clonar o projeto é necessário copiar o arquivo .env.example para um novo arquivo .env na raiz do projeto.
+Ao clonar o projeto é necessário mudar as credencias do banco no database/conectar.php
