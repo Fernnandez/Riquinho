@@ -14,7 +14,7 @@
     <div id="formContent">
       <!-- Tabs Titles -->
       <h2 class="active"> Login</h2>
-      <a class="underlineHover" href="./cadastro.php">cadastrar</a>
+      <a class="underlineHover" href="./cadastro.php">cadastro</a>
 
       <!-- Icon -->
       <div class="fadeIn first">
