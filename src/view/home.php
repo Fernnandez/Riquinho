@@ -54,6 +54,11 @@ $total = total($receita);
                   <span class="row-info" title="<?= $itens['INFO'] ?>"><?= $itens['INFO'] ?></span>
                 </div>
                 <a class="icon" href="../controller/delete.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
+                <form action="../controller/redirect.controller.php" method="POST">
+                  <input type="number" name="id_transacao" value="<?= $itens['ID'] ?>" style="display:none" />
+                  <button type="submit">Editar</button>
+                </form>
+
               </li>
             <?php endif ?>
           <?php endforeach ?>
