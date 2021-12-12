@@ -52,9 +52,11 @@ if ($_GET['id_transa'] == null || $_GET['id_transa'] == "") {
             'INFO' => $_POST['info'],
             'ID_TRANSACAO' => $_POST['ID'],
         ];
+
+        $msg = "Transação atualizada com sucesso";
         // var_dump($dados);
         updateTransacao($dados);
-        header("Location: ../view/home.php");
+        header("Location: ../view/home.php?msgsuccess=$msg");
     }
     return transacaoUpdate();
 }

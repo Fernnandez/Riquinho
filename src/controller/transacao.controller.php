@@ -5,6 +5,7 @@ require_once '../model/carteira.model.php';
 
 function Transacao()
 {
+  $msg = "Transação cadastrada com sucesso";
   session_start();
 
   $today = date("Y-m-d");
@@ -16,7 +17,7 @@ function Transacao()
     'INFO' => $_POST['info']
   ];
   criarTransacao($dados);
-  header("Location: ../view/home.php");
+  header("Location: ../view/home.php?msgsuccess=$msg");
 }
 
 function transa()

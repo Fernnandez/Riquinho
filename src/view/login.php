@@ -20,7 +20,7 @@ if($_GET['msg'] && $_GET['msg'] != null && strlen($_GET['msg']) != 0){
 
 if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsuccess']) != 0){
   $msg = $_GET['msgsuccess'];
- echo("<h2 class='sucessmsg'> $msg </h2>");
+ echo("<h2 class='sucessmsgcad'> $msg </h2>");
 }
 
 ?>
