@@ -18,10 +18,10 @@ function login($email, $senha)
       $_SESSION['id'] = $usuario->id;
       redirect("../view/home.php");
     } else {
-      throw new Exception('E-mail ou senha inválido');
+      throw new Exception('E-mail ou senha inválidos');
     }
   } else {
-    throw new Exception('Preencha todos os campos.');
+    throw new Exception('Preencha todos os campos');
   }
 }
 

@@ -300,3 +300,20 @@ input[type=text]:placeholder {
 * {
   box-sizing: border-box;
 }
+
+
+.erromsg{
+  width: 400px;
+  height: 80px;
+
+  color: white;
+  font-size: 20px;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-content: center;
+
+  
+}

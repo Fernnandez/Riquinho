@@ -12,7 +12,11 @@ function cadastroUsuario()
   ];
 
   if ($dados['senha'] !== $dados['confirmarSenha']) {
-    throw new Exception("As senhas são difrentes.");
+    throw new Exception("As senhas são difrentes");
+  }
+
+  if(strlen($dados['senha']) < 8){
+    throw new Exception("Senha muito pequena"); 
   }
 
   $usuario = buscarUsuarioEmail($dados['email']);
@@ -37,9 +41,10 @@ function cadastroUsuario()
 $metodo = $_SERVER['REQUEST_METHOD'];
 
 if ($metodo === 'POST') {
+  $msgsuccess = "Usuário cadastrado com sucesso";
   try {
     cadastroUsuario();
-    header("location: ../view/login.php");
+    header("location: ../view/login.php?msgsuccess=$msgsuccess");
   } catch (Exception $e) {
     header("location: ../view/cadastro.php?msg=" . $e->getMessage());
     var_dump($e->getMessage());

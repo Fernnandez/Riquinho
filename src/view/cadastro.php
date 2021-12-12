@@ -6,10 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../public/css/cadastro.css">
+  <link rel="stylesheet" href="../../public/css/global.css">
   <title>Cadastro</title>
 </head>
 
 <body>
+<?php 
+if($_GET['msg'] && $_GET['msg'] != null && strlen($_GET['msg']) != 0){
+  $msg = $_GET['msg'];
+ echo("<h2 class='erromsg'> $msg </h2>");
+}
+
+?>
+
   <div class="wrapper fadeInDown">
     <div id="formContent">
 

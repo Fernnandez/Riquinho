@@ -6,10 +6,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../public/css/login.css">
+  <link rel="stylesheet" href="../../public/css/global.css">
   <title>Login</title>
 </head>
-
 <body>
+
+
+<?php 
+if($_GET['msg'] && $_GET['msg'] != null && strlen($_GET['msg']) != 0){
+  $msg = $_GET['msg'];
+ echo("<h2 class='erromsg'> $msg </h2>");
+}
+
+if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsuccess']) != 0){
+  $msg = $_GET['msgsuccess'];
+ echo("<h2 class='sucessmsg'> $msg </h2>");
+}
+
+?>
+
   <div class="wrapper fadeInDown">
     <div id="formContent">
       <!-- Tabs Titles -->

@@ -1,0 +1,31 @@
+.erromsg{
+    width: 450px;
+    height: 80px;
+  
+    color: white;
+    font-size: 20px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+  
+    
+  }
+
+  .sucessmsg{
+    width: 450px;
+    height: 80px;
+  
+    color: white;
+    font-size: 20px;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+  
+    
+  }
