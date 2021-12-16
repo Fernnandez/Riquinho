@@ -47,7 +47,6 @@ if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsucces
     </header>
     <div class="info">
       <span>Bem-vindo <?= $_SESSION['usuario']['nome'] ?></span>
-      <span>Bem-vindo <?= $_SESSION['usuario']['id'] ?></span>
 
       <h1>Saldo Livre</h1>
       <h2>R$<?= $total['RECEITA'] - $total['GASTO'] ?></h2>
@@ -119,22 +118,22 @@ if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsucces
         <div class="input-sup">
           <div class="input">
             <label for="text"><b>tipo</b></label></b>
-            <input type="text" id="tipo-gasto" name="tipo" value="Receita" disabled>
+            <input type="text" id="tipo-receita" name="tipo" value="Receita" class="receita">
           </div>
           <div class="input">
             <label for="data"><b>Data</b></label></b>
-            <input type="date" id="data" name="data">
+            <input type="date" id="data" name="data"class="receita">
           </div>
         </div>
 
         <div class="input-inf">
           <div class="input">
             <label for="valor"><b>Valor</b></label></b>
-            <input type="text" id="valor" name="valor">
+            <input type="text" id="valor" name="valor"class="receita">
           </div>
           <div class="input">
             <label for="info"><b>Info</b></label></b>
-            <input type="text" id="info" name="info">
+            <input type="text" id="info" name="info" class="receita">
           </div>
         </div>
         <div class="btnOpcoes">
@@ -156,22 +155,22 @@ if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsucces
         <div class="input-sup">
           <div class="input">
             <label for="text"><b>tipo</b></label></b>
-            <input type="text" id="tipo-gasto" name="tipo" value="gasto">
+            <input type="text" id="tipo-gasto" name="tipo" value="Gasto" class="gasto">
           </div>
           <div class="input">
             <label for="data"><b>Data</b></label></b>
-            <input type="date" id="data" name="data">
+            <input type="date" id="data" name="data" class="gasto">
           </div>
         </div>
 
         <div class='input-inf'>
           <div class="input">
             <label for="valor"><b>Valor</b></label></b>
-            <input type="text" id="valor" name="valor">
+            <input type="text" id="valor" name="valor"class="gasto">
           </div>
           <div class="input">
             <label for="info"><b>Info</b></label></b>
-            <input type="text" id="info" name="info">
+            <input type="text" id="info" name="info" class="gasto">
           </div>
         </div>
         <div class="btnOpcoes">
