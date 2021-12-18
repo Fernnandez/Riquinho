@@ -38,7 +38,7 @@ function total($dados)
   $totalReceita = 0;
   $totalGasto = 0;
   foreach ($dados as $item) {
-    if ($item['TIPO_TRAN'] == 'receita') {
+    if ($item['TIPO_TRAN'] == 'Receita') {
       $totalReceita = $totalReceita + intval($item['VALOR_TRAN']);
     } else {
       $totalGasto = $totalGasto + intval($item['VALOR_TRAN']);
