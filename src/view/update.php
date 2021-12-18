@@ -38,12 +38,14 @@ $receita = transa();
             <h1 class="tituloTran">Atualizar Transação</h1>
             <h2 id="tipoGasto">Gasto</h2>
           </div>
+
           <form class="form" method="POST" action="../controller/update.controller.php">
             <div class="input-sup">
               <div class="input">
                 <label for="text"><b>tipo</b></label></b>
-                <input type="text" id="tipo-gasto" name="tipo" value="gasto" value="<?= $receita[0]["TIPO_TRAN"] ?>">
+                <input type="text" id="tipo-gasto" name="tipo" value="Gasto" value="<?= $receita[0]["TIPO_TRAN"] ?>">
               </div>
+
               <div class="input">
                 <?php
                 $receita[0]["DATA_TRAN"] = substr($receita[0]["DATA_TRAN"], 0, 10); // retorna "abcde"
