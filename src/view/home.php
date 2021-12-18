@@ -57,10 +57,11 @@ if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsucces
           <img src="../../public/assets/mais.png" alt="icon-mais" id="abre-receita" />
           Receitas
         </h1>
+
         <h2>R$<?= $total['RECEITA'] ?></h2>
         <ul class="lista-transacoes">
           <?php foreach ($receita as $itens) : ?>
-            <?php if ($itens['TIPO_TRAN'] == 'receita') : ?>
+            <?php if ($itens['TIPO_TRAN'] == 'Receita') : ?>
               <li class="lista-transacoes-row">
                 <div class="texts">
                   <span>R$<?= $itens['VALOR_TRAN'] ?></span>
@@ -68,7 +69,8 @@ if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsucces
                   <span class="row-info" title="<?= $itens['INFO'] ?>"><?= $itens['INFO'] ?></span>
                 </div>
                 <a class="icon" href="../controller/delete.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
-                <form action="../controller/redirect.controller.php" method="POST">
+               
+                <form action="../controller/redirect_receita.php" method="POST">
                   <input type="number" name="id_transacao" value="<?= $itens['ID'] ?>" style="display:none" />
                   <button type="submit">Editar</button>
                 </form>
@@ -86,20 +88,23 @@ if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsucces
         <h2>R$-<?= $total['GASTO'] ?></h2>
         <ul class="lista-transacoes">
           <?php foreach ($receita as $itens) : ?>
-            <?php if ($itens['TIPO_TRAN'] == 'gasto') : ?>
+            <?php if ($itens['TIPO_TRAN'] == 'Gasto') : ?>
               <li class="lista-transacoes-row">
                 <div class="texts">
                   <span>R$<?= number_format($itens['VALOR_TRAN'], 2, ",", ".") ?></span>
                   <span><?= str_replace("00:00:00", "", $itens['DATA_TRAN']) ?></span>
                   <span class="row-info" title="<?= $itens['INFO'] ?>"><?= $itens['INFO'] ?></span>
                 </div>
+
                 <a class="icon" href="../controller/delete.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
+
                 <form action="../controller/redirect.controller.php" method="POST">
                   <input type="number" name="id_transacao" value="<?= $itens['ID'] ?>" style="display:none" />
+                  <input type="hidden" name="tipo" value="<?= $itens['TIPO_TRAN'] ?>">
                   <button type="submit">Editar</button>
                 </form>
-              </li>
 
+              </li>
             <?php endif ?>
           <?php endforeach ?>
         </ul>
@@ -129,7 +134,7 @@ if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsucces
         <div class="input-inf">
           <div class="input">
             <label for="valor"><b>Valor</b></label></b>
-            <input type="text" id="valor" name="valor"class="receita">
+            <input type="number" id="valor" name="valor" class="receita">
           </div>
           <div class="input">
             <label for="info"><b>Info</b></label></b>
@@ -166,7 +171,7 @@ if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsucces
         <div class='input-inf'>
           <div class="input">
             <label for="valor"><b>Valor</b></label></b>
-            <input type="text" id="valor" name="valor"class="gasto">
+            <input type="number" id="valor" name="valor"class="gasto">
           </div>
           <div class="input">
             <label for="info"><b>Info</b></label></b>
