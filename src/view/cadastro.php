@@ -11,14 +11,6 @@
 </head>
 
 <body>
-<?php 
-if($_GET['msg'] && $_GET['msg'] != null && strlen($_GET['msg']) != 0){
-  $msg = $_GET['msg'];
- echo("<h2 class='erromsg'> $msg </h2>");
-}
-
-?>
-
   <div class="wrapper fadeInDown">
     <div id="formContent">
 
