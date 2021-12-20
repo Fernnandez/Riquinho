@@ -9,7 +9,6 @@ require "../controller/transacao.controller.php";
 $receita = transa();
 $total = total($receita);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,29 +24,23 @@ $total = total($receita);
 
 <body>
 
-<?php 
-if($_GET['msg'] && $_GET['msg'] != null && strlen($_GET['msg']) != 0){
-  $msg = $_GET['msg'];
- echo("<h2 class='erromsg'> $msg </h2>");
-}
-
-if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsuccess']) != 0){
-  $msg = $_GET['msgsuccess'];
- echo("<h2 class='sucessmsg' style='margin-left:20px;'> $msg </h2>");
-}
-
-?>
 
   <div class="main">
     <header class="header">
       <h2 class="logo">
         <img src="../../public/assets/wallet.png" alt="logo" />Riquinho
       </h2>
+      <div id="div-teste">
+        <?php if (isset($_GET['msgsuccess']) && $_GET['msgsuccess'] !== null) : ?>
+          <h3 class="sucessmsg"> <?= $_GET['msgsuccess'] ?></h3>
+        <?php endif ?>
+      </div>
       <a class="button" href="../controller/login.controller.php">Sair</a>
+
     </header>
+
     <div class="info">
       <span>Bem-vindo <?= $_SESSION['usuario']['nome'] ?></span>
-
       <h1>Saldo Livre</h1>
       <h2>R$<?= $total['RECEITA'] - $total['GASTO'] ?></h2>
     </div>
@@ -69,7 +62,7 @@ if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsucces
                   <span class="row-info" title="<?= $itens['INFO'] ?>"><?= $itens['INFO'] ?></span>
                 </div>
                 <a class="icon" href="../controller/delete.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
-               
+
                 <form action="../controller/redirect_receita.php" method="POST">
                   <input type="number" name="id_transacao" value="<?= $itens['ID'] ?>" style="display:none" />
                   <button type="submit">Editar</button>
@@ -127,7 +120,7 @@ if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsucces
           </div>
           <div class="input">
             <label for="data"><b>Data</b></label></b>
-            <input type="date" id="data" name="data"class="receita">
+            <input type="date" id="data" name="data" class="receita">
           </div>
         </div>
 
@@ -171,7 +164,7 @@ if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsucces
         <div class='input-inf'>
           <div class="input">
             <label for="valor"><b>Valor</b></label></b>
-            <input type="number" id="valor" name="valor"class="gasto">
+            <input type="number" id="valor" name="valor" class="gasto">
           </div>
           <div class="input">
             <label for="info"><b>Info</b></label></b>
@@ -217,6 +210,14 @@ if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsucces
     close_gasto.addEventListener("click", () => {
       fechaModal('modal-gasto')
     })
+    setTimeout(function() {
+
+      var a = document.getElementById("div-teste");
+
+      a.style = "display:none"
+
+
+    }, 3000);
   </script>
 </body>
 
