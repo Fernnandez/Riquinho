@@ -11,20 +11,6 @@
 </head>
 <body>
 
-
-<?php 
-if($_GET['msg'] && $_GET['msg'] != null && strlen($_GET['msg']) != 0){
-  $msg = $_GET['msg'];
- echo("<h2 class='erromsg'> $msg </h2>");
-}
-
-if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsuccess']) != 0){
-  $msg = $_GET['msgsuccess'];
- echo("<h2 class='sucessmsgcad'> $msg </h2>");
-}
-
-?>
-
   <div class="wrapper fadeInDown">
     <div id="formContent">
       <!-- Tabs Titles -->
