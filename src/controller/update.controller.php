@@ -24,13 +24,13 @@ if ($_GET['id_transa'] != null || $_GET['id_transa'] != "") {
 }
 
 if ($_GET['id_transa'] == null || $_GET['id_transa'] == "") {
+    
     function transacaoUpdate()
     {
-        error_log("entrou na função que realmente vai atualizar");
+   
         session_start();
 
         $today = date("Y-m-d");
-        //$carteira = buscarCarteira($_SESSION['usuario']['id']);
         $dados = [
             'ID_USUARIO' => $_SESSION['usuario']['id'],
             'TIPO_TRAN' => $_POST['tipo'],
@@ -41,9 +41,9 @@ if ($_GET['id_transa'] == null || $_GET['id_transa'] == "") {
         ];
 
         $msg = "Transação atualizada com sucesso";
-       // var_dump($dados);
         updateTransacao($dados);
         header("Location: ../view/home.php?msgsuccess=$msg");
+        
     }
     return transacaoUpdate();
 }
