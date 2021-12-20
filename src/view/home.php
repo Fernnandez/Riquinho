@@ -25,18 +25,18 @@ $total = total($receita);
 
 <body>
 
-<?php 
-if($_GET['msg'] && $_GET['msg'] != null && strlen($_GET['msg']) != 0){
-  $msg = $_GET['msg'];
- echo("<h2 class='erromsg'> $msg </h2>");
-}
+  <?php
+  // if($_GET['msg'] && $_GET['msg'] != null && strlen($_GET['msg']) != 0){
+  //   $msg = $_GET['msg'];
+  //  echo("<h2 class='erromsg'> $msg </h2>");
+  // }
 
-if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsuccess']) != 0){
-  $msg = $_GET['msgsuccess'];
- echo("<h2 class='sucessmsg' style='margin-left:20px;'> $msg </h2>");
-}
+  // if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsuccess']) != 0){
+  //   $msg = $_GET['msgsuccess'];
+  //  echo("<h2 class='sucessmsg' style='margin-left:20px;'> $msg </h2>");
+  // }
 
-?>
+  ?>
 
   <div class="main">
     <header class="header">
@@ -69,7 +69,7 @@ if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsucces
                   <span class="row-info" title="<?= $itens['INFO'] ?>"><?= $itens['INFO'] ?></span>
                 </div>
                 <a class="icon" href="../controller/delete.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
-               
+
                 <form action="../controller/redirect_receita.php" method="POST">
                   <input type="number" name="id_transacao" value="<?= $itens['ID'] ?>" style="display:none" />
                   <button type="submit">Editar</button>
@@ -127,7 +127,7 @@ if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsucces
           </div>
           <div class="input">
             <label for="data"><b>Data</b></label></b>
-            <input type="date" id="data" name="data"class="receita">
+            <input type="date" id="data" name="data" class="receita">
           </div>
         </div>
 
@@ -171,7 +171,7 @@ if($_GET['msgsuccess'] && $_GET['msgsuccess'] != null && strlen($_GET['msgsucces
         <div class='input-inf'>
           <div class="input">
             <label for="valor"><b>Valor</b></label></b>
-            <input type="number" id="valor" name="valor"class="gasto">
+            <input type="number" id="valor" name="valor" class="gasto">
           </div>
           <div class="input">
             <label for="info"><b>Info</b></label></b>
