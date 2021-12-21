@@ -55,7 +55,7 @@ $total = total($receita);
             <?php if ($itens['TIPO_TRAN'] == 'Receita') : ?>
               <li class="lista-transacoes-row">
                 <div class="texts">
-                  <span>R$<?= $itens['VALOR_TRAN'] ?></span>
+                <span>R$<?= number_format($itens['VALOR_TRAN'], 2, ",", ".") ?></span>
                   <span><?= str_replace("00:00:00", "", $itens['DATA_TRAN']) ?></span>
                   <span class="row-info" title="<?= $itens['INFO'] ?>"><?= $itens['INFO'] ?></span>
                 </div>
@@ -215,7 +215,7 @@ $total = total($receita);
       a.style = "display:none"
 
 
-    }, 3000);
+    }, 2000);
   </script>
 </body>
 
