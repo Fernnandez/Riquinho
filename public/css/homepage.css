@@ -6,6 +6,12 @@
 	padding: 0 10px;
 	height: 100px;
 }
+
+.navbar {
+	display: flex;
+	gap: 10px;
+}
+
 .logo {
 	display: flex;
 	align-items: center;

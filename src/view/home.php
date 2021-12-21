@@ -33,7 +33,10 @@ $total = total($receita);
           <h3 class="sucessmsg"> <?= $_GET['msgsuccess'] ?></h3>
         <?php endif ?>
       </div>
-      <a class="button" href="../controller/login.controller.php">Sair</a>
+      <div class="navbar">
+        <a class="button" href="../controller/login.controller.php">Carteiras</a>
+        <a class="button" href="../controller/login.controller.php">Sair</a>
+      </div>
 
     </header>
 
@@ -55,16 +58,12 @@ $total = total($receita);
             <?php if ($itens['TIPO_TRAN'] == 'Receita') : ?>
               <li class="lista-transacoes-row">
                 <div class="texts">
-                <span>R$<?= number_format($itens['VALOR_TRAN'], 2, ",", ".") ?></span>
+                  <span>R$<?= number_format($itens['VALOR_TRAN'], 2, ",", ".") ?></span>
                   <span><?= str_replace("00:00:00", "", $itens['DATA_TRAN']) ?></span>
                   <span class="row-info" title="<?= $itens['INFO'] ?>"><?= $itens['INFO'] ?></span>
                 </div>
                 <a class="icon" href="../controller/delete.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
-
-                <form action="../controller/redirect_receita.php" method="POST">
-                  <input type="number" name="id_transacao" value="<?= $itens['ID'] ?>" style="display:none" />
-                  <button type="submit">Editar</button>
-                </form>
+                <a class="icon" href="../controller/redirect_receita.php?id_transacao=<?= $itens['ID'] ?>"><img src="../../public/assets/editar.png" alt="editar"></a>
 
               </li>
             <?php endif ?>
@@ -88,12 +87,7 @@ $total = total($receita);
                 </div>
 
                 <a class="icon" href="../controller/delete.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
-
-                <form action="../controller/redirect.controller.php" method="POST">
-                  <input type="number" name="id_transacao" value="<?= $itens['ID'] ?>" style="display:none" />
-                  <input type="hidden" name="tipo" value="<?= $itens['TIPO_TRAN'] ?>">
-                  <button type="submit">Editar</button>
-                </form>
+                <a class="icon" href="../controller/redirect.controller.php?id_transacao=<?= $itens['ID'] ?>"><img src="../../public/assets/editar.png" alt="editar"></a>
 
               </li>
             <?php endif ?>
