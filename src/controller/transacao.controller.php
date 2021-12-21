@@ -18,8 +18,8 @@ function Transacao()
     'INFO' => $_POST['info']
   ];
   criarTransacao($dados);
- // header("Location: ../view/home.php?msgsuccess=$msg");
- var_dump($dados);
+  header("Location: ../view/home.php?msgsuccess=$msg");
+ //var_dump($dados);
 }
 
 function transa()
