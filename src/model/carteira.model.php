@@ -1,17 +1,17 @@
 <?php
 require '../../database/conectar.php';
 
-// function criarCarteira($dados)
-// {
-//   try {
-//     global $pdo;
-//     $query = $pdo->prepare('INSERT INTO CARTEIRA (NAME, ID_USUARIO, DESCRICAO) VALUES 
-//     (:NAME , :ID_USUARIO, :DESCRICAO)');
-//     $query->execute($dados);
-//   } catch (PDOException $e) {
-//     echo $e->getMessage();
-//   }
-// };
+function criarCarteira($dados)
+{
+  try {
+    global $pdo;
+    $query = $pdo->prepare('INSERT INTO CARTEIRA (NAME, ID_USUARIO, DESCRICAO) VALUES 
+    (:NAME , :ID_USUARIO, :DESCRICAO)');
+    $query->execute($dados);
+  } catch (PDOException $e) {
+    echo $e->getMessage();
+  }
+};
 
 function buscarCarteira($usuarioId)
 {

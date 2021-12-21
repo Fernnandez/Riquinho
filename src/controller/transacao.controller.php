@@ -11,6 +11,7 @@ function Transacao()
   $today = date("Y-m-d");
   $dados = [
     'ID_USUARIO' => $_SESSION['usuario']['id'],
+    'ID_CARTEIRA' => isset($_POST['carteira']) ? $_POST['carteira'] : null,
     'TIPO_TRAN' => $_POST['tipo'],
     'DATA_TRAN' => $today,
     'VALOR_TRAN' => $_POST['valor'],

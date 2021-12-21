@@ -23,8 +23,6 @@ $total = total($receita);
 </head>
 
 <body>
-
-
   <div class="main">
     <header class="header">
       <h2 class="logo">
