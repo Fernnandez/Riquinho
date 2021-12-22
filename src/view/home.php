@@ -6,7 +6,7 @@ if ((!isset($_SESSION['usuario']) === true)) {
 }
 require "../controller/transacao.controller.php";
 
-$receita = transa();
+$receita = findTransacao();
 $total = total($receita);
 ?>
 <!DOCTYPE html>
@@ -31,6 +31,9 @@ $total = total($receita);
       <div id="div-teste">
         <?php if (isset($_GET['msgsuccess']) && $_GET['msgsuccess'] !== null) : ?>
           <h3 class="sucessmsg"> <?= $_GET['msgsuccess'] ?></h3>
+        <?php endif ?>
+        <?php if (isset($_GET['errormsg']) && $_GET['errormsg'] !== null) : ?>
+          <h3 class="errormsg"> <?= $_GET['errormsg'] ?></h3>
         <?php endif ?>
       </div>
       <div class="navbar">

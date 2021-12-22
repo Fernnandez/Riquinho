@@ -6,32 +6,33 @@ require_once '../model/carteira.model.php';
 function Transacao()
 {
   $msg = "Transação cadastrada com sucesso";
+  $msgError = "Algo deu errado";
   session_start();
 
-  $today = date("Y-m-d");
+  $today = date("d-m-Y");
   $dados = [
     'ID_USUARIO' => $_SESSION['usuario']['id'],
     'ID_CARTEIRA' => isset($_POST['carteira']) ? $_POST['carteira'] : null,
     'TIPO_TRAN' => $_POST['tipo'],
-    'DATA_TRAN' => $today,
+    'DATA_TRAN' => isset($_POST['data']) ? $_POST['data'] : $today,
     'VALOR_TRAN' => $_POST['valor'],
     'INFO' => $_POST['info']
   ];
-  criarTransacao($dados);
-  header("Location: ../view/home.php?msgsuccess=$msg");
- //var_dump($dados);
+  if (criarTransacao($dados)) {
+    header("Location: ../view/home.php?msgsuccess=$msg");
+  } else {
+    header("Location: ../view/home.php?errormsg=$msgError");
+  }
 }
 
-function transa()
+function findTransacao()
 {
-
   $usuario = $_SESSION['usuario']['id'];
 
   $dados = buscarTransacao($usuario);
 
   return $dados;
 
-  criarTransacao($dados);
   header("Location: ../view/home.php");
 }
 
