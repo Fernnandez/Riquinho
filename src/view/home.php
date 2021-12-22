@@ -33,7 +33,7 @@ $total = total($receita);
           <h3 class="sucessmsg"> <?= $_GET['msgsuccess'] ?></h3>
         <?php endif ?>
         <?php if (isset($_GET['errormsg']) && $_GET['errormsg'] !== null) : ?>
-          <h3 class="errormsg"> <?= $_GET['errormsg'] ?></h3>
+          <h3 class="erromsg"> <?= $_GET['errormsg'] ?></h3>
         <?php endif ?>
       </div>
       <div class="navbar">
