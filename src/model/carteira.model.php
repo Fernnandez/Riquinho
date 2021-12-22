@@ -20,11 +20,9 @@ function buscarCarteira($usuarioId)
 {
   try {
     global $pdo;
-    $sql = "SELECT * FROM CARTEIRA INNER JOIN ";
-    $sql = $pdo->prepare($sql);
-    $sql->bindValue("ID_USUARIO", $usuarioId);
+    $sql = $pdo->prepare("SELECT ID, NOME, DESCRICAO FROM CARTEIRA WHERE ID_USUARIO = $usuarioId");
     $sql->execute();
-    return $sql->fetch();
+    return $sql->fetchAll();
   } catch (PDOException $e) {
     echo $e->getMessage();
   }

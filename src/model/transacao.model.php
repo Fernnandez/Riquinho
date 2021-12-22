@@ -15,9 +15,6 @@ function criarTransacao($dados)
 
 function updateTransacao($dados)
 {
-
-  error_log("entrou na atualização model");
-  var_dump($dados);
   try {
     global $pdo;
     $query = $pdo->prepare('UPDATE TRANSACOES SET TIPO_TRAN = :TIPO_TRAN, DATA_TRAN = :DATA_TRAN, VALOR_TRAN =  :VALOR_TRAN, INFO = :INFO WHERE ID_USUARIO = :ID_USUARIO AND ID = :ID_TRANSACAO');
@@ -42,8 +39,6 @@ function buscarTransacao($user)
 
 function buscarTransacaoEdit($user, $id_transacao)
 {
-  error_log("valor do id_transação");
-  error_log($id_transacao);
   try {
     global $pdo;
     $query = $pdo->prepare("SELECT ID, TIPO_TRAN, DATA_TRAN, VALOR_TRAN, INFO FROM TRANSACOES

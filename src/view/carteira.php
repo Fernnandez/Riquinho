@@ -1,9 +1,14 @@
 <!--Esta parte de codigo verifica se o usuario esta logado, dando acesso a pagina de cadastro  !-->
 <?php
 session_start();
+require "../controller/carteira.controller.php";
 if ((!isset($_SESSION['usuario']) === true)) {
   header('Location: ./login.php');
 }
+
+$carteiras = findCarteira();
+// var_dump($carteiras);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,19 +54,18 @@ if ((!isset($_SESSION['usuario']) === true)) {
           Criar Carteira
         </h1>
         <ul class="lista-transacoes">
-          <!-- <?php foreach ($receita as $itens) : ?>
-            <?php if ($itens['TIPO_TRAN'] == 'Receita') : ?>
+          <?php if (isset($carteiras) && $carteiras !== null) : ?>
+            <?php foreach ($carteiras as $carteira) : ?>
               <li class="lista-transacoes-row">
                 <div class="texts">
-                  <span>R$<?= number_format($itens['VALOR_TRAN'], 2, ",", ".") ?></span>
-                  <span><?= str_replace("00:00:00", "", $itens['DATA_TRAN']) ?></span>
-                  <span class="row-info" title="<?= $itens['INFO'] ?>"><?= $itens['INFO'] ?></span>
+                  <span><?= $carteira['NOME'] ?></span>
+                  <span><?= $carteira['DESCRICAO'] ?></span>
                 </div>
-                <a class="icon" href="../controller/delete.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
-                <a class="icon" href="../controller/redirect_receita.php?id_transacao=<?= $itens['ID'] ?>"><img src="../../public/assets/editar.png" alt="editar"></a>
+                <a class="icon" href="../controller/delete.controller.php?id=<?= $carteira['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
+                <a class="icon" href="../controller/redirect_receita.php?id_transacao=<?= $carteira['ID'] ?>"><img src="../../public/assets/editar.png" alt="editar"></a>
               </li>
-            <?php endif ?>
-          <?php endforeach ?> -->
+            <?php endforeach ?>
+          <?php endif ?>
         </ul>
       </div>
     </div class="lists">
