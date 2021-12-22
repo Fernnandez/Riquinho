@@ -34,7 +34,7 @@ $total = total($receita);
         <?php endif ?>
       </div>
       <div class="navbar">
-        <a class="button" href="../view/carteira.php">Carteiras</a>
+        <a class="button" href="../view/home.php">Transações</a>
         <a class="button" href="../controller/login.controller.php">Sair</a>
       </div>
 
@@ -42,15 +42,17 @@ $total = total($receita);
 
     <div class="info">
       <span>Bem-vindo <?= $_SESSION['usuario']['nome'] ?></span>
-      <h1>Saldo Livre</h1>
-      <h2>R$<?= $total['RECEITA'] - $total['GASTO'] ?></h2>
     </div>
     <div class="lists">
       <div class="receitas">
         <h1 class="title-section">
           <img src="../../public/assets/mais.png" alt="icon-mais" id="abre-receita" />
-          Receitas
+          Criar Carteira 
         </h1>
+
+
+
+
 
         <h2>R$<?= $total['RECEITA'] ?></h2>
         <ul class="lista-transacoes">
@@ -70,60 +72,27 @@ $total = total($receita);
           <?php endforeach ?>
         </ul>
       </div>
-      <div class="gastos">
-        <h1 class="title-section">
-          <img src="../../public/assets/botao-de-menos.png" alt="icon-menos" id="abre-gasto" />
-          Gastos
-        </h1>
-        <h2>R$-<?= $total['GASTO'] ?></h2>
-        <ul class="lista-transacoes">
-          <?php foreach ($receita as $itens) : ?>
-            <?php if ($itens['TIPO_TRAN'] == 'Gasto') : ?>
-              <li class="lista-transacoes-row">
-                <div class="texts">
-                  <span>R$<?= number_format($itens['VALOR_TRAN'], 2, ",", ".") ?></span>
-                  <span><?= str_replace("00:00:00", "", $itens['DATA_TRAN']) ?></span>
-                  <span class="row-info" title="<?= $itens['INFO'] ?>"><?= $itens['INFO'] ?></span>
-                </div>
-
-                <a class="icon" href="../controller/delete.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
-                <a class="icon" href="../controller/redirect.controller.php?id_transacao=<?= $itens['ID'] ?>"><img src="../../public/assets/editar.png" alt="editar"></a>
-
-              </li>
-            <?php endif ?>
-          <?php endforeach ?>
-        </ul>
-      </div>
     </div class="lists">
   </div>
+
+
+
 
   <div id="modal-receita" class="modal-container">
     <div class="modal">
       <button id="close-receita">x</button>
       <div class="infoTran">
-        <h1 class="tituloTran">Nova Transação</h1>
-        <h2 id="tipoReceita">Receita</h2>
+        <h1 class="tituloTran">Nova Carteira</h1>
       </div>
-      <form class="form" method="POST" action="../controller/transacao.controller.php">
+      <form class="form" method="POST" action="../controller/carteira.controller.php">
         <div class="input-sup">
           <div class="input">
-            <label for="text"><b>tipo</b></label></b>
-            <input type="text" id="tipo-receita" name="tipo" value="Receita" class="receita">
+            <label for="text"><b>Nome Da Carteira</b></label></b>
+            <input type="text" id="name" name="name"  class="receita">
           </div>
           <div class="input">
-            <label for="data"><b>Data</b></label></b>
-            <input type="date" id="data" name="data" class="receita">
-          </div>
-        </div>
-
-        <div class="input-inf">
-          <div class="input">
-            <label for="valor"><b>Valor</b></label></b>
-            <input type="number" id="valor" name="valor" class="receita">
-          </div>
-          <div class="input">
-            <label for="info"><b>Info</b></label></b>
-            <input type="text" id="info" name="info" class="receita">
+            <label for="text"><b>Descrição</b></label></b>
+            <textarea nid="description" name="description"  class="receita"cols="30" rows="10"></textarea>
           </div>
         </div>
         <div class="btnOpcoes">
