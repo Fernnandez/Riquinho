@@ -28,7 +28,7 @@ $total = total($receita);
       <h2 class="logo">
         <img src="../../public/assets/wallet.png" alt="logo" />Riquinho
       </h2>
-      <div id="div-teste">
+      <div id="msg">
         <?php if (isset($_GET['msgsuccess']) && $_GET['msgsuccess'] !== null) : ?>
           <h3 class="sucessmsg"> <?= $_GET['msgsuccess'] ?></h3>
         <?php endif ?>
@@ -65,7 +65,7 @@ $total = total($receita);
                   <span><?= str_replace("00:00:00", "", $itens['DATA_TRAN']) ?></span>
                   <span class="row-info" title="<?= $itens['INFO'] ?>"><?= $itens['INFO'] ?></span>
                 </div>
-                <a class="icon" href="../controller/delete.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
+                <a class="icon" href="../controller/delete.transacao.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
                 <a class="icon" href="../controller/redirect_receita.php?id_transacao=<?= $itens['ID'] ?>"><img src="../../public/assets/editar.png" alt="editar"></a>
 
               </li>
@@ -89,7 +89,7 @@ $total = total($receita);
                   <span class="row-info" title="<?= $itens['INFO'] ?>"><?= $itens['INFO'] ?></span>
                 </div>
 
-                <a class="icon" href="../controller/delete.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
+                <a class="icon" href="../controller/delete.transacao.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
                 <a class="icon" href="../controller/redirect.controller.php?id_transacao=<?= $itens['ID'] ?>"><img src="../../public/assets/editar.png" alt="editar"></a>
 
               </li>
@@ -206,12 +206,8 @@ $total = total($receita);
       fechaModal('modal-gasto')
     })
     setTimeout(function() {
-
-      var a = document.getElementById("div-teste");
-
+      var a = document.getElementById("msg");
       a.style = "display:none"
-
-
     }, 2000);
   </script>
 </body>

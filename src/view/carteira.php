@@ -29,7 +29,7 @@ $carteiras = findCarteira();
       <h2 class="logo">
         <img src="../../public/assets/wallet.png" alt="logo" />Riquinho
       </h2>
-      <div id="div-teste">
+      <div id="msg">
         <?php if (isset($_GET['msgsuccess']) && $_GET['msgsuccess'] !== null) : ?>
           <h3 class="sucessmsg"> <?= $_GET['msgsuccess'] ?></h3>
         <?php endif ?>
@@ -50,7 +50,7 @@ $carteiras = findCarteira();
     <div class="lists">
       <div class="receitas">
         <h1 class="title-section">
-          <img src="../../public/assets/mais.png" alt="icon-mais" id="abre-receita" />
+          <img src="../../public/assets/mais.png" alt="icon-mais" id="abre-carteira" />
           Criar Carteira
         </h1>
         <ul class="lista-transacoes">
@@ -61,7 +61,7 @@ $carteiras = findCarteira();
                   <span><?= $carteira['NOME'] ?></span>
                   <span><?= $carteira['DESCRICAO'] ?></span>
                 </div>
-                <a class="icon" href="../controller/delete.controller.php?id=<?= $carteira['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
+                <a class="icon" href="../controller/delete.carteira.controller.php?id=<?= $carteira['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
                 <a class="icon" href="../controller/redirect_receita.php?id_transacao=<?= $carteira['ID'] ?>"><img src="../../public/assets/editar.png" alt="editar"></a>
               </li>
             <?php endforeach ?>
@@ -71,9 +71,9 @@ $carteiras = findCarteira();
     </div class="lists">
   </div>
 
-  <div id="modal-receita" class="modal-container">
+  <div id="modal-carteira" class="modal-container">
     <div class="modal">
-      <button id="close-receita">x</button>
+      <button id="close-carteira">x</button>
       <div class="infoTran">
         <h1 class="tituloTran">Nova Carteira</h1>
       </div>
@@ -106,33 +106,19 @@ $carteiras = findCarteira();
       const modal = document.getElementById(modalId);
       modal.classList.remove("ativo");
     }
-
-    // modal receita
-    const btn_receita = document.getElementById("abre-receita");
-    btn_receita.addEventListener("click", () => {
-      abreModal("modal-receita");
-    });
-    const close_receita = document.getElementById("close-receita")
-    close_receita.addEventListener("click", () => {
-      fechaModal('modal-receita')
-    })
-
     // modal gasto
-    const btn_gasto = document.getElementById("abre-gasto");
-    btn_gasto.addEventListener("click", () => {
-      abreModal("modal-gasto");
+    const btn_carteira = document.getElementById("abre-carteira");
+    btn_carteira.addEventListener("click", () => {
+      abreModal("modal-carteira");
     });
-    const close_gasto = document.getElementById("close-gasto")
-    close_gasto.addEventListener("click", () => {
-      fechaModal('modal-gasto')
+    const close_carteira = document.getElementById("close-carteira")
+    close_carteira.addEventListener("click", () => {
+      fechaModal('modal-carteira')
     })
     setTimeout(function() {
-
-      var a = document.getElementById("div-teste");
-
+      var a = document.getElementById("msg");
+      console.log(a);
       a.style = "display:none"
-
-
     }, 2000);
   </script>
 </body>
