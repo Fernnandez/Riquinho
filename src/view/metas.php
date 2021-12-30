@@ -296,11 +296,11 @@
       <div class="infoTran">
         <h1 class="tituloTran" style="font-family: 'Righteous', cursive;">Nova Meta</h1>
       </div>
-      <form class="form" method="POST" action="../controller/carteira.controller.php">
+      <form class="form" method="POST" action="../controller/metas.controller.php">
         <div class="input-sup">
           <div class="input">
             <label for="text"><b>Valor do Objetivo</b></label></b>
-            <input type="text" id="name" name="name" class="receita">
+            <input type="text" id="name" name="value" class="receita">
           </div>
           <div class="input">
             <label for="text"><b>Data Final Conclusão</b></label></b>
@@ -315,14 +315,14 @@
         </div>
         <div class="input">
             <label for="text"><b>Urgencia</b></label></b>
-            <select >
-  <option value="Urgente">Urgente</option>
-  <option value="Moderado">Moderado</option>
-  <option value="Dispensavel">Dispensavel</option>
+            <select name="urgencia">
+  <option value="Urgente" name="urgencia">Urgente</option>
+  <option value="Moderado" name="urgencia">Moderado</option>
+  <option value="Dispensavel" name="urgencia">Dispensavel</option>
 </select>>
         <div class="btnOpcoes">
           <button class="salvar">Salvar</button>
-          <a href='home.php' class="cancelar">Cancelar</a>
+          <a href='metas.php' class="cancelar">Cancelar</a>
         </div>
       </form>
     </div>
