@@ -1,3 +1,15 @@
+<!--Esta parte de codigo verifica se o usuario esta logado, dando acesso a pagina de cadastro  !-->
+<?php
+session_start();
+if ((!isset($_SESSION['usuario']) === true)) {
+  header('Location: ./login.php');
+}
+require "../controller/transacao.controller.php";
+
+$receita = findTransacao();
+$total = total($receita);
+?>
+
 <!DOCTYPE html>
 <html lang="PT-BR">
 

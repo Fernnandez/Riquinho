@@ -37,7 +37,8 @@ $total = total($receita);
         <?php endif ?>
       </div>
       <div class="navbar">
-        <a class="button" href="../view/carteira.php">Carteiras</a>
+      <a class="button" href="../view/carteira.php">Carteiras</a>
+      <a class="button" href="../view/metas.php">Metas</a>
         <a class="button" href="../controller/login.controller.php">Sair</a>
       </div>
 
