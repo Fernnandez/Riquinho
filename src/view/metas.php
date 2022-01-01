@@ -4,10 +4,10 @@ session_start();
 if ((!isset($_SESSION['usuario']) === true)) {
   header('Location: ./login.php');
 }
-require "../controller/transacao.controller.php";
+require "../controller/metas.controller.php";
 
-$receita = findTransacao();
-$total = total($receita);
+$metas = listMetas();
+//var_dump($metas);
 ?>
 
 <!DOCTYPE html>
@@ -147,158 +147,35 @@ $total = total($receita);
         </h2>
     </nav>
     <div class="prioridades">
+
+
+    <?php foreach ($metas as $meta) : ?>
         <div class="prioridadesCard">
             <div id="nivelPrioridade">
+            <?php if ($meta['NIVEL_META'] == 'Urgente') : ?>
                 <div id="nivel" style="background-color: red;">
-                </div>
-            </div>
-            <div class="infoObj">
-                <p class="descricaoObj">
-                    Comprar Um SSD para o meu Notebook
-                </p>
-                <small>Dias Restantes: <b>270 Dias</b></small><br>
-                <small>Valor: <b>R$ 250,55</b></small>
-            </div>
-            <div class="op">
-                <button>Excluir</button>
-            </div>
-        </div>
-        <div class="prioridadesCard">
-            <div id="nivelPrioridade">
-                <div id="nivel" style="background-color: red;">
-                </div>
-            </div>
-            <div class="infoObj">
-                <p class="descricaoObj">
-                    Comprar um Celular com 120GB de memoria disponivel
-                </p>
-                <small>Dias Restantes: <b>270 Dias</b></small><br>
-                <small>Valor: <b>R$ 250,55</b></small>
-            </div>
-
-            <div class="op">
-                <button>Excluir</button>
-            </div>
-        </div>
-        <div class="prioridadesCard">
-            <div id="nivelPrioridade">
-                <div id="nivel" style="background-color: red;">
-                </div>
-            </div>
-            <div class="infoObj">
-                <p class="descricaoObj">
-                    Fazer a feira do Natal e do Ano novo
-                </p>
-                <small>Dias Restantes: <b>270 Dias</b></small><br>
-                <small>Valor: <b>R$ 250,55</b></small>
-            </div>
-
-            <div class="op">
-                <button>Excluir</button>
-            </div>
-        </div>
-        <div class="prioridadesCard">
-            <div id="nivelPrioridade">
+            <?php endif ?>
+            <?php if ($meta['NIVEL_META'] == 'Moderado') : ?>
                 <div id="nivel" style="background-color: green;">
-                </div>
-            </div>
-            <div class="infoObj">
-                <p class="descricaoObj">
-                    Comprar Um SSD para o meu Notebook
-                </p>
-                <small>Dias Restantes: <b>270 Dias</b></small><br>
-                <small>Valor: <b>R$ 250,55</b></small>
-            </div>
-
-            <div class="op">
-                <button>Excluir</button>
-            </div>
-        </div>
-        <div class="prioridadesCard">
-            <div id="nivelPrioridade">
-                <div id="nivel" style="background-color: green;">
-                </div>
-            </div>
-            <div class="infoObj">
-                <p class="descricaoObj">
-                    Comprar Um SSD para o meu Notebook
-                </p>
-                <small>Dias Restantes: <b>270 Dias</b></small><br>
-                <small>Valor: <b>R$ 250,55</b></small>
-            </div>
-
-            <div class="op">
-                <button>Excluir</button>
-            </div>
-        </div>
-        <div class="prioridadesCard">
-            <div id="nivelPrioridade">
-                <div id="nivel" style="background-color: green;">
-                </div>
-            </div>
-            <div class="infoObj">
-                <p class="descricaoObj">
-                    Comprar Um SSD para o meu Notebook
-                </p>
-                <small>Dias Restantes: <b>270 Dias</b></small><br>
-                <small>Valor: <b>R$ 250,55</b></small>
-            </div>
-
-            <div class="op">
-                <button>Excluir</button>
-            </div>
-        </div>
-        <div class="prioridadesCard">
-            <div id="nivelPrioridade">
+            <?php endif ?>
+            <?php if ($meta['NIVEL_META'] == 'Dispensavel') : ?>
                 <div id="nivel" style="background-color: yellow;">
+            <?php endif ?>
                 </div>
             </div>
             <div class="infoObj">
                 <p class="descricaoObj">
-                    Comprar Um SSD para o meu Notebook
+                <?= $meta['DESCRICAO_META'] ?>
                 </p>
-                <small>Dias Restantes: <b>270 Dias</b></small><br>
-                <small>Valor: <b>R$ 250,55</b></small>
+                <?php $diasRestantes = strtotime($meta['DATA_META']) - strtotime($meta['INICIO_META']) ?>
+                <small>Dias Restantes: <b><?= floor($diasRestantes / (60 * 60 * 24))?> Dias</b></small><br>
+                <small>Valor: <b>R$<?= number_format($meta['VALOR_META'], 2, ",", ".") ?></b></small>
             </div>
-
             <div class="op">
                 <button>Excluir</button>
             </div>
         </div>
-        <div class="prioridadesCard">
-            <div id="nivelPrioridade">
-                <div id="nivel" style="background-color: yellow;">
-                </div>
-            </div>
-            <div class="infoObj">
-                <p class="descricaoObj">
-                    Comprar Um SSD para o meu Notebook
-                </p>
-                <small>Dias Restantes: <b>270 Dias</b></small><br>
-                <small>Valor: <b>R$ 250,55</b></small>
-            </div>
-
-            <div class="op">
-                <button>Excluir</button>
-            </div>
-        </div>
-        <div class="prioridadesCard">
-            <div id="nivelPrioridade">
-                <div id="nivel" style="background-color: yellow;">
-                </div>
-            </div>
-            <div class="infoObj">
-                <p class="descricaoObj">
-                    Comprar Um SSD para o meu Notebook
-                </p>
-                <small>Dias Restantes: <b>270 Dias</b></small><br>
-                <small>Valor: <b>R$ 250,55</b></small>
-            </div>
-
-            <div class="op">
-                <button>Excluir</button>
-            </div>
-        </div>
+        <?php endforeach ?>
 
     </div>
 
@@ -331,7 +208,7 @@ $total = total($receita);
   <option value="Urgente" name="urgencia">Urgente</option>
   <option value="Moderado" name="urgencia">Moderado</option>
   <option value="Dispensavel" name="urgencia">Dispensavel</option>
-</select>>
+</select>
         <div class="btnOpcoes">
           <button class="salvar">Salvar</button>
           <a href='metas.php' class="cancelar">Cancelar</a>
