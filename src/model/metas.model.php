@@ -35,3 +35,15 @@ function searchMetas($user)
     echo $e->getMessage();
   }
 }
+
+function deleteMetas($user,$idMeta){
+    try {
+        global $pdo;
+        $query = $pdo->prepare("DELETE FROM METAS WHERE ID = ?");
+        $query->bindParam(1, $idMeta);
+        $query->execute();
+        return $query->fetchAll();
+      } catch (Exception $e) {
+        echo $e->getMessage();
+      }
+}
