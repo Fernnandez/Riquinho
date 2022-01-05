@@ -56,7 +56,7 @@ $total = total($receita);
           Receitas
         </h1>
 
-        <h2>R$<?= $total['RECEITA'] ?></h2>
+        <h2 style="color: green;font-size: 35px">R$<?= $total['RECEITA'] ?></h2>
         <ul class="lista-transacoes">
           <?php foreach ($receita as $itens) : ?>
             <?php if ($itens['TIPO_TRAN'] == 'Receita') : ?>
@@ -79,7 +79,7 @@ $total = total($receita);
           <img src="../../public/assets/botao-de-menos.png" alt="icon-menos" id="abre-gasto" />
           Gastos
         </h1>
-        <h2>R$-<?= $total['GASTO'] ?></h2>
+        <h2 style="color:red; font-size: 35px;">R$-<?= $total['GASTO'] ?></h2>
         <ul class="lista-transacoes">
           <?php foreach ($receita as $itens) : ?>
             <?php if ($itens['TIPO_TRAN'] == 'Gasto') : ?>
