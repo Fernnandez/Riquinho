@@ -1,13 +1,15 @@
-<!--Esta parte de codigo verifica se o usuario esta logado, dando acesso a pagina de cadastro  !-->
 <?php
+
 session_start();
+
 require "../controller/carteira.controller.php";
-if ((!isset($_SESSION['usuario']) === true)) {
+
+if ((!isset($_SESSION['usuario']) === true)) 
+{
   header('Location: ./login.php');
 }
 
 $carteiras = findCarteira();
-// var_dump($carteiras);
 
 ?>
 <!DOCTYPE html>
@@ -62,7 +64,7 @@ $carteiras = findCarteira();
                   <span><?= $carteira['DESCRICAO'] ?></span>
                 </div>
                 <a class="icon" href="../controller/delete.carteira.controller.php?id=<?= $carteira['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
-                <a class="icon" href="../controller/redirect_receita.php?id_transacao=<?= $carteira['ID'] ?>"><img src="../../public/assets/editar.png" alt="editar"></a>
+                <a class="icon" href="carteira.update.php?idcarteira=<?= $carteira['ID'] ?>"><img src="../../public/assets/editar.png" alt="editar"></a>
               </li>
             <?php endforeach ?>
           <?php endif ?>
