@@ -1,334 +1,348 @@
 .header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	width: 95%;
-	padding: 0 10px;
-	height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    padding: 0 10px;
+    height: 100px;
 }
+
 .logo {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 15px;
-	font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 40px;
 }
 
 .logo img {
-	height: 60px;
-	width: 60px;
+    height: 60px;
+    width: 60px;
 }
+
 .main {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: flex-start;
-	width: 100%;
-	height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
 }
 
 .info {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
 
 .icon img {
-	padding: 0;
-	margin: 0;
-	font-size: 20px;
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
 }
 
 .lists {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 100px;
-	width: 80%;
-	margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    width: 80%;
+    margin-top: 20px;
 }
 
 .receitas,
 .gastos {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .title-section {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
 }
 
 .title-section img {
-	transition: ease all 0.7s;
-	cursor: pointer;
+    transition: ease all 0.7s;
+    cursor: pointer;
 }
 
 .title-section img:hover {
-	opacity: 0.7;
+    opacity: 0.7;
 }
 
 .lista-transacoes {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: flex-start;
-	gap: 15px;
-	margin-top: 40px;
-	font-size: 20px;
-	list-style: none;
-	width: 500px;
-	height: 600px;
-	overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    margin-top: 40px;
+    font-size: 20px;
+    list-style: none;
+    width: 500px;
+    height: 600px;
+    overflow: auto;
 }
 
 .lista-transacoes-row {
-	border-radius: 15px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 20px;
-	padding: 10px 20px;
-	width: 100%;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 20px;
+    width: 100%;
 }
 
 .lista-transacoes-row .texts {
-	display: flex;
-	gap: 15px;
-	justify-content: flex-start;
+    display: flex;
+    gap: 15px;
+    justify-content: flex-start;
 }
 
 .lista-transacoes-row span {
-	cursor: default;
+    cursor: default;
 }
 
 .receitas .lista-transacoes-row {
-	border: solid 0.5px var(--verde);
+    border: solid 0.5px var(--verde);
 }
 
 .gastos .lista-transacoes-row {
-	border: solid 0.5px var(--vermelho);
+    border: solid 0.5px var(--vermelho);
 }
 
 .row-info {
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-	max-width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 200px;
 }
 
 .modal-container {
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.7);
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
     display: flex;
-	justify-content: center;
-	align-items: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-container.ativo {
-	display: flex;
+    display: flex;
 }
 
 .modal {
-	background-color: #fff;
-	width: 40%;
-	height:55%;
-	min-width: 400px;
-	padding: 50px;
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
+    background-color: #fff;
+    width: 40%;
+    height: 55%;
+    min-width: 400px;
+    padding: 50px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 @keyframes modal {
-	from {
-		opacity: 0;
-		transform: translate3d(0, -60px, 0);
-	}
-	to {
-		opacity: 1;
-		transform: translate3d(0, 0, 0);
-	}
+    from {
+        opacity: 0;
+        transform: translate3d(0, -60px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
 }
 
 .ativo .modal {
-	animation: modal 2s;
+    animation: modal 2s;
 }
+
 #tipoReceita {
-	color: green;
-	font-size: 40px;
-	text-align: center;
+    color: green;
+    font-size: 40px;
+    text-align: center;
 }
+
 #tipoGasto {
-	color: var(--vermelho);
-	text-align: center;
+    color: var(--vermelho);
+    font-size: 40px;
+    text-align: center;
+}
+
+#tipoCarteira {
+    color: blue;
+    font-size: 40px;
+    text-align: center;
 }
 
 input {
-	height: 50px;
-	width: 200px;
-	border: 1px solid red;
-	font-size: 20px;
-	text-align: center;
+    height: 50px;
+    width: 200px;
+    border: 1px solid red;
+    font-size: 20px;
+    text-align: center;
 }
 
 label {
-	color: black;
-	
+    color: black;
 }
 
 .form {
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .input-sup,
 .input-inf {
-	display: flex;
-	gap: 10px;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .infoTran {
-	display: flex;
-	justify-content: space-around;
-	flex-direction: column;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
 }
 
 .tituloTran {
-	color: black;
+    color: black;
 }
 
 .input {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
 }
 
 .btnOpcoes {
-	display: flex;
-	justify-content: space-around;
-	height: 100px;
-	align-items: center;
+    display: flex;
+    justify-content: space-around;
+    height: 100px;
+    align-items: center;
 }
 
 .salvar {
-	width: 200px;
-	height: 50px;
-	background-color: var(--azul-escuro);
-	color: white;
-	font-size: 20px;
-	border: none;
+    width: 200px;
+    height: 50px;
+    background-color: var(--azul-escuro);
+    color: white;
+    font-size: 20px;
+    border: none;
 }
 
 .cancelar {
-	width: 200px;
-	height: 50px;
-	border: 1px solid red;
-	background-color: white;
-	color: red;
-	font-size: 20px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    width: 200px;
+    height: 50px;
+    border: 1px solid red;
+    background-color: white;
+    color: red;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (max-width: 1224px) {
-	.modal {
-		width: 35%;
-	}
-
-	input {
-		width: 150px;
-		height: 50px;
-		border: 1px solid green;
-		font-size: 18px;
-		text-align: center;
-	}
-	.salvar {
-		width: 150px;
-		height: 40px;
-		background-color: var(--azul-escuro);
-		color: white;
-		font-size: 20px;
-		border: none;
-	}
-
-	.cancelar {
-		width: 150px;
-		height: 40px;
-		border: 1px solid red;
-		background-color: white;
-		color: red;
-		font-size: 20px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	.tituloTran {
-		color: black;
-		
-	}
-
-	.lists {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 50px;
-		width: 70%;
-		margin-top: 20px;
-	}
-	.lista-transacoes {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: flex-start;
-		gap: 15px;
-		margin-top: 40px;
-		font-size: 20px;
-		list-style: none;
-		width: 450px;
-		height: 600px;
-		overflow: auto;
-	}
-	.lista-transacoes-row {
-		border-radius: 15px;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 15px;
-		padding: 10px 15px;
-		width: 100%;
-		font-size: 18px;
-	}
-
-	.lista-transacoes-row .texts {
-		display: flex;
-		gap: 10px;
-		justify-content: flex-start;
-	}
+    .modal {
+        width: 35%;
+    }
+    input {
+        width: 150px;
+        height: 50px;
+        border: 1px solid green;
+        font-size: 18px;
+        text-align: center;
+    }
+    .salvar {
+        width: 150px;
+        height: 40px;
+        background-color: var(--azul-escuro);
+        color: white;
+        font-size: 20px;
+        border: none;
+    }
+    .cancelar {
+        width: 150px;
+        height: 40px;
+        border: 1px solid red;
+        background-color: white;
+        color: red;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .tituloTran {
+        color: black;
+    }
+    .lists {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 50px;
+        width: 70%;
+        margin-top: 20px;
+    }
+    .lista-transacoes {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 15px;
+        margin-top: 40px;
+        font-size: 20px;
+        list-style: none;
+        width: 450px;
+        height: 600px;
+        overflow: auto;
+    }
+    .lista-transacoes-row {
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        padding: 10px 15px;
+        width: 100%;
+        font-size: 18px;
+    }
+    .lista-transacoes-row .texts {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-start;
+    }
 }
+
+.carteira {
+    height: 50px;
+    width: 200px;
+    border: 1px solid blue;
+    font-size: 20px;
+    text-align: center;
+}
+
 .receita {
-	height: 50px;
-	width: 200px;
-	border: 1px solid green;
-	font-size: 20px;
-	text-align: center;
+    height: 50px;
+    width: 200px;
+    border: 1px solid green;
+    font-size: 20px;
+    text-align: center;
 }
