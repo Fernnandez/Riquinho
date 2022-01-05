@@ -4,8 +4,7 @@ session_start();
 
 require "../controller/carteira.controller.php";
 
-if ((!isset($_SESSION['usuario']) === true)) 
-{
+if ((!isset($_SESSION['usuario']) === true)) {
   header('Location: ./login.php');
 }
 
@@ -22,6 +21,7 @@ $carteiras = findCarteira();
   <link rel="stylesheet" href="../../public/css/styles.css" />
   <link rel="stylesheet" href="../../public/css/homepage.css" />
   <link rel="stylesheet" href="../../public/css/global.css">
+  <link rel="stylesheet" href="../../public/css/carteira.css">
   <title>Riquinho</title>
 </head>
 
@@ -55,74 +55,76 @@ $carteiras = findCarteira();
           <img src="../../public/assets/mais.png" alt="icon-mais" id="abre-carteira" />
           Criar Carteira
         </h1>
-        <ul class="lista-transacoes">
+        <div class="lista-carteiras">
           <?php if (isset($carteiras) && $carteiras !== null) : ?>
             <?php foreach ($carteiras as $carteira) : ?>
-              <li class="lista-transacoes-row">
-                <div class="texts">
-                  <span><?= $carteira['NOME'] ?></span>
-                  <span><?= $carteira['DESCRICAO'] ?></span>
+              <div class="card">
+                <div class="card-titulo">
+                  <img src="../../public/assets/wallet.png" alt="carteira">
+                  <h2><?= $carteira['NOME'] ?></h2>
                 </div>
-                <a class="icon" href="../controller/delete.carteira.controller.php?id=<?= $carteira['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
-                <a class="icon" href="carteira.update.php?idcarteira=<?= $carteira['ID'] ?>"><img src="../../public/assets/editar.png" alt="editar"></a>
-              </li>
+                <p><?= $carteira['DESCRICAO'] ?></p>
+                <div class="card-footer">
+                  <a class="icon" href="../controller/delete.carteira.controller.php?id=<?= $carteira['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
+                  <a class="icon" href="carteira.update.php?idcarteira=<?= $carteira['ID'] ?>"><img src="../../public/assets/editar.png" alt="editar"></a>
+                </div>
+              </div>
             <?php endforeach ?>
           <?php endif ?>
-        </ul>
-      </div>
-    </div class="lists">
-  </div>
-
-  <div id="modal-carteira" class="modal-container">
-    <div class="modal">
-      <button id="close-carteira">x</button>
-      <div class="infoTran">
-        <h1 class="tituloTran">Nova Carteira</h1>
-      </div>
-      <form class="form" method="POST" action="../controller/carteira.controller.php">
-        <div class="input-sup">
-          <div class="input">
-            <label for="text"><b>Nome Da Carteira</b></label></b>
-            <input type="text" id="name" name="name" class="receita">
-          </div>
-          <div class="input">
-            <label for="text"><b>Descrição</b></label></b>
-            <textarea nid="description" name="description" class="receita" cols="30" rows="10"></textarea>
-          </div>
         </div>
-        <div class="btnOpcoes">
-          <button class="salvar">Salvar</button>
-          <a href='home.php' class="cancelar">Cancelar</a>
-        </div>
-      </form>
+      </div class="lists">
     </div>
-  </div>
 
-  <script>
-    function abreModal(modalId) {
-      const modal = document.getElementById(modalId);
-      modal.classList.add("ativo");
-    }
+    <div id="modal-carteira" class="modal-container">
+      <div class="modal">
+        <button id="close-carteira">x</button>
+        <div class="infoTran">
+          <h1 class="tituloTran">Nova Carteira</h1>
+        </div>
+        <form class="form" method="POST" action="../controller/carteira.controller.php">
+          <div class="input-sup">
+            <div class="input">
+              <label for="text"><b>Nome Da Carteira</b></label></b>
+              <input type="text" id="name" name="name" class="receita">
+            </div>
+            <div class="input">
+              <label for="text"><b>Descrição</b></label></b>
+              <textarea nid="description" name="description" class="receita" cols="30" rows="10"></textarea>
+            </div>
+          </div>
+          <div class="btnOpcoes">
+            <button class="salvar">Salvar</button>
+            <a href='home.php' class="cancelar">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </div>
 
-    function fechaModal(modalId) {
-      const modal = document.getElementById(modalId);
-      modal.classList.remove("ativo");
-    }
-    // modal gasto
-    const btn_carteira = document.getElementById("abre-carteira");
-    btn_carteira.addEventListener("click", () => {
-      abreModal("modal-carteira");
-    });
-    const close_carteira = document.getElementById("close-carteira")
-    close_carteira.addEventListener("click", () => {
-      fechaModal('modal-carteira')
-    })
-    setTimeout(function() {
-      var a = document.getElementById("msg");
-      console.log(a);
-      a.style = "display:none"
-    }, 2000);
-  </script>
+    <script>
+      function abreModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.add("ativo");
+      }
+
+      function fechaModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.remove("ativo");
+      }
+      // modal gasto
+      const btn_carteira = document.getElementById("abre-carteira");
+      btn_carteira.addEventListener("click", () => {
+        abreModal("modal-carteira");
+      });
+      const close_carteira = document.getElementById("close-carteira")
+      close_carteira.addEventListener("click", () => {
+        fechaModal('modal-carteira')
+      })
+      setTimeout(function() {
+        var a = document.getElementById("msg");
+        console.log(a);
+        a.style = "display:none"
+      }, 2000);
+    </script>
 </body>
 
 </html>
