@@ -24,183 +24,21 @@ $metas = listMetas();
     <link rel="stylesheet" href="../../public/css/styles.css" />
     <link rel="stylesheet" href="../../public/css/homepage.css" />
     <link rel="stylesheet" href="../../public/css/global.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .opcoes {
-            width: 100%;
-            height: 100px;
-
-            display: flex;
-            justify-content: center;
-            flex-direction: row;
-            justify-content: space-around;
-        }
-
-        .filtros {
-            width: 100%;
-            height: 60px;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .filtro {
-            width: 600px;
-            height: 50px;
-
-            display: flex;
-            justify-content: space-around;
-            flex-direction: row;
-            align-items: center;
-        }
-
-        input[type="checkbox"] {
-            width: 30px;
-            height: 30px;
-        }
-
-        .opnivel{
-            display: flex;
-            justify-content: center;
-            flex-direction: row;
-            align-items: center;
-        }
-        .prioridades {
-            width: 100%;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: row;
-            flex-wrap: wrap;
-
-            padding: 40px;
-        }
-
-        .prioridadesCard {
-            width: 400px;
-            height: 200px;
-            border-radius: 4px;
-
-            margin: 20px;
-
-            background-color: whitesmoke;
-        }
-
-        #nivelPrioridade {
-            width: 100%;
-            height: 30px;
-
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            flex-direction: row;
-
-            padding: 10px;
-        }
-
-        #nivel {
-            width: 150px;
-            height: 5px;
-            background-color: red;
-
-            margin-left: 250px;
-        }
-
-        .descricaoObj {
-            width: 100%;
-            min-height: 90px;
-            padding: 20px;
-
-            font-size: 20px;
-            color: darkgrey;
-            font-family: 'Righteous', cursive;
-
-        }
-
-        small {
-            width: 100%;
-            padding: 17px;
-
-            font-size: 18px;
-            font-family: 'Righteous', cursive;
-            color: darkgray;
-        }
-
-        b {
-            color: #363636;
-        }
-
-        .op {
-            width: 100%;
-        }
-
-        .opFiltro {
-            width: 400px;
-        }
-
-        a{
-            width: 130px;
-            height: 30px;
-
-            background-color: darkgrey;
-
-            color: white;
-
-            font: 20px;
-            font-family: 'Righteous', cursive;
-            border: none;
-            border-radius: 4px;
-            margin-left: 260px;
-
-            cursor: pointer;
-        }
-
-        .buttonFiltro {
-            width: 130px;
-            height: 35px;
-
-            background-color: blue;
-
-            color: white;
-
-            font: 20px;
-            font-family: 'Righteous', cursive;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .buttonFiltro:hover {
-            background-color: darkblue;
-            transition: all;
-        }
-
-        a:hover {
-            background-color: #363636;
-            transition: all;
-        }
-    </style>
+    <link rel="stylesheet" href="../../public/css/metas.css">
 </head>
 
 <body>
     <nav class="opcoes">
         <h2 class="logo" style="font-family: 'Righteous', cursive;">
-            <img src="../../public/assets/wallet.png" alt="logo" />Riquinho
+            <img src="../../public/assets/wallet.png" alt="logo"/>Riquinho 
         </h2>
+        
 
         <h2 class="title-section" style="font-family: 'Righteous', cursive;">
             <img src="../../public/assets/mais.png" alt="icon-mais" id="abre-receita" />
             Criar Meta
         </h2>
     </nav>
-
     <div class="filtros">
         <form class="filtro" method="GET" action="../controller/metas.controller.php">
             <div class="opnivel">
@@ -228,32 +66,33 @@ $metas = listMetas();
                 <div id="nivelPrioridade">
                     <?php if ($meta['NIVEL_META'] == 'Urgente') : ?>
                         <div id="nivel" style="background-color: red;">
-                        <?php endif ?>
-                        <?php if ($meta['NIVEL_META'] == 'Moderado') : ?>
-                            <div id="nivel" style="background-color: green;">
                             <?php endif ?>
-                            <?php if ($meta['NIVEL_META'] == 'Dispensavel') : ?>
-                                <div id="nivel" style="background-color: yellow;">
-                                <?php endif ?>
+                            <?php if ($meta['NIVEL_META'] == 'Moderado') : ?>
+                                <div id="nivel" style="background-color: green;">
+                                    <?php endif ?>
+                                    <?php if ($meta['NIVEL_META'] == 'Dispensavel') : ?>
+                                        <div id="nivel" style="background-color: yellow;">
+                                            <?php endif ?>
+                                        </div>
+                                    </div>
+                                    <div class="infoObj">
+                                        <p class="descricaoObj">
+                                            <?= $meta['DESCRICAO_META'] ?>
+                                        </p>
+                                        <?php $diasRestantes = strtotime($meta['DATA_META']) - strtotime($meta['INICIO_META']) ?>
+                                        <small>Dias Restantes: <b><?= floor($diasRestantes / (60 * 60 * 24)) ?> Dias</b></small><br>
+                                        <small>Valor: <b>R$<?= number_format($meta['VALOR_META'], 2, ",", ".") ?></b></small>
+                                    </div>
+                                    <div class="op">
+                                        <a href="../controller/metas.controller.php?id_meta=<?= $meta['ID'] ?>">Excluir</a>
+                                        
+                                    </div>
                                 </div>
+                                <?php endforeach ?>
+                                
                             </div>
-                            <div class="infoObj">
-                                <p class="descricaoObj">
-                                    <?= $meta['DESCRICAO_META'] ?>
-                                </p>
-                                <?php $diasRestantes = strtotime($meta['DATA_META']) - strtotime($meta['INICIO_META']) ?>
-                                <small>Dias Restantes: <b><?= floor($diasRestantes / (60 * 60 * 24)) ?> Dias</b></small><br>
-                                <small>Valor: <b>R$<?= number_format($meta['VALOR_META'], 2, ",", ".") ?></b></small>
-                            </div>
-                            <div class="op">
-                            <a href="../controller/metas.controller.php?id_meta=<?= $meta['ID'] ?>">Excluir</a>
-
-                            </div>
-                        </div>
-                    <?php endforeach ?>
-
-                </div>
-
+                            <a class="" href="../view/home.php">Home</a>
+                            
                 <div id="modal-receita" class="modal-container">
                     <div class="modal">
                         <button id="close-receita">x</button>
@@ -288,9 +127,9 @@ $metas = listMetas();
                                     <button class="salvar">Salvar</button>
                                     <a href='metas.php' class="cancelar">Cancelar</a>
                                 </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
-                </div>
 
                 <script>
                     function abreModal(modalId) {
