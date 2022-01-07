@@ -6,7 +6,7 @@ if ((!isset($_SESSION['usuario']) === true)) {
 }
 require "../controller/update.controller.php";
 
-$receita = transa();
+$receita = findTransacao();
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +18,7 @@ $receita = transa();
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../public/css/styles.css" />
   <link rel="stylesheet" href="../../public/css/update.css" />
+  <link rel="shortcut icon" href="../../public/assets/wallet.png">
   <title>Riquinho</title>
 </head>
 
@@ -39,7 +40,7 @@ $receita = transa();
             <h2 id="tipoGasto">Gasto</h2>
           </div>
 
-          <form class="form" method="POST" action="../controller/update.controller.php">
+          <form class="form" method="POST" action="../controller/update.transacao.controller.php">
             <div class="input-sup">
               <div class="input">
                 <label for="text"><b>tipo</b></label></b>

@@ -22,6 +22,7 @@ $carteiras = findCarteira();
   <link rel="stylesheet" href="../../public/css/homepage.css" />
   <link rel="stylesheet" href="../../public/css/global.css">
   <link rel="stylesheet" href="../../public/css/carteira.css">
+  <link rel="shortcut icon" href="../../public/assets/wallet.png">
   <title>Riquinho</title>
 </head>
 

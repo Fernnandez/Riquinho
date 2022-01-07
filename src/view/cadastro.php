@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../public/css/cadastro.css">
   <link rel="stylesheet" href="../../public/css/global.css">
+  <link rel="shortcut icon" href="../../public/assets/wallet.png">
   <title>Cadastro</title>
 </head>
 

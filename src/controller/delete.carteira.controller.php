@@ -13,5 +13,5 @@ try {
   $del = $query->execute();
   header("Location: ../view/carteira.php?msgsuccess=$msg");
 } catch (Exception $e) {
-  echo $e->getMessage();
+  header("Location: ../view/carteira.php?errormsg=$errormsg");
 }

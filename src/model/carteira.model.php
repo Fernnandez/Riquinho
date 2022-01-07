@@ -36,21 +36,19 @@ function buscarCarteiraEdit($user, $id)
     FROM CARTEIRA WHERE ID_USUARIO = $user AND ID = $id");
     $sql->execute();
     return $sql->fetchAll();
-
   } catch (Exception $e) {
     echo $e->getMessage();
   }
 }
 function updateCarteira($dados)
 {
-  // var_dump($dados);
+
   try {
     global $pdo;
 
     $smt = $pdo->prepare('UPDATE CARTEIRA SET NOME = :NOME, DESCRICAO = :DESCRICAO, ID_USUARIO = :ID_USUARIO 
-    WHERE ID = ID');
+    WHERE ID = :ID');
     $smt->execute($dados);
-    
   } catch (PDOException $e) {
     echo $e->getMessage();
   }

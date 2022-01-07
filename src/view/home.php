@@ -19,6 +19,7 @@ $total = total($receita);
   <link rel="stylesheet" href="../../public/css/styles.css" />
   <link rel="stylesheet" href="../../public/css/homepage.css" />
   <link rel="stylesheet" href="../../public/css/global.css">
+  <link rel="shortcut icon" href="../../public/assets/wallet.png">
   <title>Riquinho</title>
 </head>
 
@@ -37,8 +38,8 @@ $total = total($receita);
         <?php endif ?>
       </div>
       <div class="navbar">
-      <a class="button" href="../view/carteira.php">Carteiras</a>
-      <a class="button" href="../view/metas.php">Metas</a>
+        <a class="button" href="../view/carteira.php">Carteiras</a>
+        <a class="button" href="../view/metas.php">Metas</a>
         <a class="button" href="../controller/login.controller.php">Sair</a>
       </div>
 
