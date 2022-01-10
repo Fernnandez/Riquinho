@@ -67,8 +67,8 @@ $carteiras = findCarteira();
                 </div>
                 <p><?= $carteira['DESCRICAO'] ?></p>
                 <div class="card-footer">
-                <a class="excluir" href="../controller/delete.carteira.controller.php?id=<?= $carteira['ID'] ?>"> Excluir</a>  
-                <a class="editar" href="carteira.update.php?idcarteira=<?= $carteira['ID'] ?>"> Editar</a>
+                  <a class="excluir" href="../controller/delete.carteira.controller.php?id=<?= $carteira['ID'] ?>"> Excluir</a>
+                  <a class="editar" href="carteira.update.php?idcarteira=<?= $carteira['ID'] ?>"> Editar</a>
                 </div>
               </div>
             <?php endforeach ?>
@@ -123,7 +123,6 @@ $carteiras = findCarteira();
       })
       setTimeout(function() {
         var a = document.getElementById("msg");
-        console.log(a);
         a.style = "display:none"
       }, 2000);
     </script>

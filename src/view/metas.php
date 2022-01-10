@@ -29,25 +29,25 @@ $metas = listMetas();
 </head>
 
 <body>
-<header class="header">
-      <h2 class="logo">
-        <img src="../../public/assets/wallet.png" alt="logo" />Riquinho
-      </h2>
-      <div id="msg">
-        <?php if (isset($_GET['msgsuccess']) && $_GET['msgsuccess'] !== null) : ?>
-          <h3 class="sucessmsg"> <?= $_GET['msgsuccess'] ?></h3>
-        <?php endif ?>
-        <?php if (isset($_GET['errormsg']) && $_GET['errormsg'] !== null) : ?>
-          <h3 class="errormsg"> <?= $_GET['errormsg'] ?></h3>
-        <?php endif ?>
-      </div>
-      <div class="navbar">
-        <a class="button" href="../view/carteira.php">Carteiras</a>
-        <a class="button" href="../view/home.php">Home</a>
-        <a class="button" href="../controller/login.controller.php">Sair</a>
-      </div>
-    </header>
-    
+  <header class="header">
+    <h2 class="logo">
+      <img src="../../public/assets/wallet.png" alt="logo" />Riquinho
+    </h2>
+    <div id="msg">
+      <?php if (isset($_GET['msgsuccess']) && $_GET['msgsuccess'] !== null) : ?>
+        <h3 class="sucessmsg"> <?= $_GET['msgsuccess'] ?></h3>
+      <?php endif ?>
+      <?php if (isset($_GET['errormsg']) && $_GET['errormsg'] !== null) : ?>
+        <h3 class="errormsg"> <?= $_GET['errormsg'] ?></h3>
+      <?php endif ?>
+    </div>
+    <div class="navbar">
+      <a class="button" href="../view/carteira.php">Carteiras</a>
+      <a class="button" href="../view/home.php">Home</a>
+      <a class="button" href="../controller/login.controller.php">Sair</a>
+    </div>
+  </header>
+
   <div class="filtros">
     <form class="filtro" method="GET" action="../controller/metas.controller.php">
       <div class="opnivel">
@@ -67,11 +67,11 @@ $metas = listMetas();
       </div>
     </form>
   </div>
-  
+
   <h2 class="title-section" style="font-family: 'Righteous', cursive;">
-      <img src="../../public/assets/mais.png" alt="icon-mais" id="abre-receita" />
-      Criar Meta
-    </h2>
+    <img src="../../public/assets/mais.png" alt="icon-mais" id="abre-receita" />
+    Criar Meta
+  </h2>
 
   <div class="prioridades">
     <?php foreach ($metas as $meta) : ?>
@@ -98,7 +98,7 @@ $metas = listMetas();
               </div>
               <div class="op">
                 <a class="excluir" href="../controller/metas.controller.php?id_meta=<?= $meta['ID'] ?>">Excluir</a>
-              
+
               </div>
             </div>
           <?php endforeach ?>
@@ -161,23 +161,11 @@ $metas = listMetas();
             fechaModal('modal-receita')
           })
 
-          // modal gasto
-          const btn_gasto = document.getElementById("abre-gasto");
-          btn_gasto.addEventListener("click", () => {
-            abreModal("modal-gasto");
-          });
-          const close_gasto = document.getElementById("close-gasto")
-          close_gasto.addEventListener("click", () => {
-            fechaModal('modal-gasto')
-          })
           setTimeout(function() {
-
-            var a = document.getElementById("div-teste");
-
+            var a = document.getElementById("msg");
+            console.log(a)
             a.style = "display:none"
-
-
-          }, 2000);
+          }, 1000);
         </script>
 
 </body>
