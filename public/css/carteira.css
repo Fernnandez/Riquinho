@@ -1,42 +1,74 @@
 .lista-carteiras {
-	margin-top: 20px;
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 15px;
-}
-.card {
-	border: solid 1px #43b05c;
-	background-color: #f5f5f5;
-	border-radius: 15px;
-	display: flex;
-	flex-direction: column;
-	gap: 15px;
-	padding: 8px;
-	font-weight: 600;
-	max-width: 360px;
-	min-height: 200px;
-}
-.card-titulo {
-	display: flex;
-	gap: 10px;
-	align-items: center;
-}
-.card-titulo img {
-	width: 45px;
-	height: 45px;
-}
-.card p {
-	font-size: 18px;
-}
-.card-footer {
-	display: flex;
-	gap: 10px;
-	align-items: center;
-	align-self: flex-end;
-	transition: all ease 0.3s;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
-.card-footer img:hover {
-	opacity: 0.7;
-	cursor: pointer;
+.card {
+    width: 400px;
+    height: 200px;
+    border-radius: 4px;
+    margin: 20px;
+    background-color: whitesmoke;
+}
+
+.card-titulo {
+    width: 100%;
+    min-height: 90px;
+    padding: 20px;
+    font-size: 20px;
+    color: black;
+    font-family: 'Righteous', cursive;
+    display: flex;
+    gap: 10px;
+}
+
+.card p {
+    width: 100%;
+    padding: 17px;
+    font-size: 18px;
+    font-family: 'Righteous', cursive;
+}
+
+.excluir {
+    width: 130px;
+    height: 50px;
+    color: darkblue;
+    font: 20px;
+    font-family: 'Righteous', cursive;
+    border: none;
+    border-radius: 4px;
+    margin-left: 260px;
+    cursor: pointer;
+}
+
+.editar {
+    width: 130px;
+    height: 50px;
+    color: darkblue;
+    font: 20px;
+    font-family: 'Righteous', cursive;
+    border: none;
+    border-radius: 4px;
+    margin-left: 260px;
+    cursor: pointer;
+}
+
+.card-titulo img {
+    width: 45px;
+    height: 45px;
+}
+
+#close-carteira {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 4px solid white;
+    cursor: pointer;
+    font-size: 20px;
 }

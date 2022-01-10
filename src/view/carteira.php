@@ -41,7 +41,8 @@ $carteiras = findCarteira();
         <?php endif ?>
       </div>
       <div class="navbar">
-        <a class="button" href="../view/home.php">Transações</a>
+        <a class="button" href="../view/metas.php">Metas</a>
+        <a class="button" href="../view/home.php">Home</a>
         <a class="button" href="../controller/login.controller.php">Sair</a>
       </div>
 
@@ -66,8 +67,8 @@ $carteiras = findCarteira();
                 </div>
                 <p><?= $carteira['DESCRICAO'] ?></p>
                 <div class="card-footer">
-                  <a class="icon" href="../controller/delete.carteira.controller.php?id=<?= $carteira['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
-                  <a class="icon" href="carteira.update.php?idcarteira=<?= $carteira['ID'] ?>"><img src="../../public/assets/editar.png" alt="editar"></a>
+                <a class="excluir" href="../controller/delete.carteira.controller.php?id=<?= $carteira['ID'] ?>"> Excluir</a>  
+                <a class="editar" href="carteira.update.php?idcarteira=<?= $carteira['ID'] ?>"> Editar</a>
                 </div>
               </div>
             <?php endforeach ?>

@@ -29,17 +29,25 @@ $metas = listMetas();
 </head>
 
 <body>
-  <nav class="opcoes">
-    <h2 class="logo" style="font-family: 'Righteous', cursive;">
-      <img src="../../public/assets/wallet.png" alt="logo" />Riquinho
-    </h2>
-
-
-    <h2 class="title-section" style="font-family: 'Righteous', cursive;">
-      <img src="../../public/assets/mais.png" alt="icon-mais" id="abre-receita" />
-      Criar Meta
-    </h2>
-  </nav>
+<header class="header">
+      <h2 class="logo">
+        <img src="../../public/assets/wallet.png" alt="logo" />Riquinho
+      </h2>
+      <div id="msg">
+        <?php if (isset($_GET['msgsuccess']) && $_GET['msgsuccess'] !== null) : ?>
+          <h3 class="sucessmsg"> <?= $_GET['msgsuccess'] ?></h3>
+        <?php endif ?>
+        <?php if (isset($_GET['errormsg']) && $_GET['errormsg'] !== null) : ?>
+          <h3 class="errormsg"> <?= $_GET['errormsg'] ?></h3>
+        <?php endif ?>
+      </div>
+      <div class="navbar">
+        <a class="button" href="../view/carteira.php">Carteiras</a>
+        <a class="button" href="../view/home.php">Home</a>
+        <a class="button" href="../controller/login.controller.php">Sair</a>
+      </div>
+    </header>
+    
   <div class="filtros">
     <form class="filtro" method="GET" action="../controller/metas.controller.php">
       <div class="opnivel">
@@ -59,9 +67,13 @@ $metas = listMetas();
       </div>
     </form>
   </div>
+  
+  <h2 class="title-section" style="font-family: 'Righteous', cursive;">
+      <img src="../../public/assets/mais.png" alt="icon-mais" id="abre-receita" />
+      Criar Meta
+    </h2>
+
   <div class="prioridades">
-
-
     <?php foreach ($metas as $meta) : ?>
       <div class="prioridadesCard">
         <div id="nivelPrioridade">
@@ -85,41 +97,37 @@ $metas = listMetas();
                 <small>Valor: <b>R$<?= number_format($meta['VALOR_META'], 2, ",", ".") ?></b></small>
               </div>
               <div class="op">
-                <a href="../controller/metas.controller.php?id_meta=<?= $meta['ID'] ?>">Excluir</a>
-
+                <a class="excluir" href="../controller/metas.controller.php?id_meta=<?= $meta['ID'] ?>">Excluir</a>
+              
               </div>
             </div>
           <?php endforeach ?>
 
         </div>
-        <a class="" href="../view/home.php">Home</a>
-
         <div id="modal-receita" class="modal-container">
-          <div class="modal">
+          <div class="modal-metas">
             <button id="close-receita">x</button>
             <div class="infoTran">
-              <h1 class="tituloTran" style="font-family: 'Righteous', cursive;">Nova Meta</h1>
+              <h1 class="tituloTran">Nova Meta</h1>
             </div>
             <form class="form" method="POST" action="../controller/metas.controller.php">
               <div class="input-sup">
                 <div class="input">
                   <label for="text"><b>Valor do Objetivo</b></label></b>
-                  <input type="text" id="name" name="value" class="receita">
+                  <input type="text" id="name" name="value" class="metas">
                 </div>
                 <div class="input">
-                  <label for="text"><b>Data Final Conclusão</b></label></b>
-                  <input type="date" id="data" name="data" class="receita">
+                  <label for="text"><b>Data Final </b></label></b>
+                  <input type="date" id="data" name="data" class="metas">
                 </div>
-
-
                 <div class="input">
                   <label for="text"><b>Descrição</b></label></b>
-                  <textarea nid="description" name="description" class="receita" cols="30" rows="10"></textarea>
+                  <textarea nid="description" name="description" class="metas" cols="30" rows="10"></textarea>
                 </div>
               </div>
               <div class="input">
                 <label for="text"><b>Urgencia</b></label></b>
-                <select name="urgencia">
+                <select name="urgencia" class="select">
                   <option value="Urgente" name="urgencia">Urgente</option>
                   <option value="Moderado" name="urgencia">Moderado</option>
                   <option value="Dispensavel" name="urgencia">Dispensavel</option>
