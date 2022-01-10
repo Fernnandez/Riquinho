@@ -92,7 +92,7 @@ $total = total($receita);
                 </div>
 
                 <a class="icon" href="../controller/delete.transacao.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
-                <a class="icon" href="../controller/redirect.controller.php?id_transacao=<?= $itens['ID'] ?>"><img src="../../public/assets/editar.png" alt="editar"></a>
+                <a class="icon" href="../controller/redirect_receita.php?id_transacao=<?= $itens['ID'] ?>"><img src="../../public/assets/editar.png" alt="editar"></a>
 
               </li>
             <?php endif ?>

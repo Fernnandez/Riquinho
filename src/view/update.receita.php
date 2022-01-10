@@ -37,14 +37,14 @@ $receita = findTransacao();
         <div class="modal">
           <div class="infoTran">
             <h1 class="tituloTran">Atualizar Transação</h1>
-            <h2 id="tipoReceita">Receita</h2>
+            <h2 id="tipoReceita"><?= $receita[0]["TIPO_TRAN"] ?></h2>
           </div>
 
           <form class="form" method="POST" action="../controller/update.transacao.controller.php">
             <div class="input-sup">
               <div class="input">
                 <label for="text"><b>tipo</b></label></b>
-                <input type="text" id="tipo-receita" name="tipo" value="Receita" value="<?= $receita[0]["TIPO_TRAN"] ?>" class="receita">
+                <input type="text" id="tipo-receita" name="tipo" value="<?= $receita[0]["TIPO_TRAN"] ?>" class="receita">
               </div>
 
               <div class="input">
