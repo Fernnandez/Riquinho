@@ -40,16 +40,18 @@ function listMetas()
   header("Location: ../view/metas.php");
 }
 
-function excluirMetas()
-{
-  $usuario = $_SESSION['usuario']['id'];
-  $metaExcluir = $_GET['id_meta'];
+function excluirMetas(){
+    $usuario = $_SESSION['usuario']['id'];
+    $metaExcluir = $_GET['id_meta'];
+    $msg = "Meta excluida com sucesso";
+    $msgError = "Algo deu errado";
 
-  $dados = deleteMetas($usuario, $metaExcluir);
-
-  return $dados;
-
-  header("Location: ../view/metas.php");
+    try {
+        deleteMetas($usuario, $metaExcluir);
+        header("Location: ../view/metas.php?msgsuccess=$msg");
+    } catch (\Throwable $th) {
+        header("Location: ../view/metas.php?errormsg=$msgError");
+    }
 }
 
 /* /* function listMetas(){
@@ -99,10 +101,3 @@ if ($metodo === 'GET') {
   }
 } 
 
-/* if($metodo === 'GET'){
-    try {
-        listMetas();
-    } catch (Exception $e) {
-        //header("location: ../view/cadastro.php?msg=" . $e->getMessage());
-    }
-} */

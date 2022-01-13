@@ -29,79 +29,36 @@ $metas = listMetas();
 </head>
 
 <body>
-  <header class="header">
-    <h2 class="logo">
-      <img src="../../public/assets/wallet.png" alt="logo" />Riquinho
-    </h2>
-    <div id="msg">
-      <?php if (isset($_GET['msgsuccess']) && $_GET['msgsuccess'] !== null) : ?>
-        <h3 class="sucessmsg"> <?= $_GET['msgsuccess'] ?></h3>
-      <?php endif ?>
-      <?php if (isset($_GET['errormsg']) && $_GET['errormsg'] !== null) : ?>
-        <h3 class="errormsg"> <?= $_GET['errormsg'] ?></h3>
-      <?php endif ?>
-    </div>
-    <div class="navbar">
-      <a class="button" href="../view/carteira.php">Carteiras</a>
-      <a class="button" href="../view/home.php">Home</a>
-      <a class="button" href="../controller/login.controller.php">Sair</a>
-    </div>
-  </header>
-
-  <div class="filtros">
-    <form class="filtro" method="GET" action="../controller/metas.controller.php">
-      <div class="opnivel">
-        <input type="checkbox" name="Urgente" id="Urgente">
-        <small><b>Urgente</b></small>
+    <nav class="opcoes">
+        <h2 class="logo" style="font-family: 'Righteous', cursive;">
+            <img src="../../public/assets/wallet.png" alt="logo"/>Riquinho 
+        </h2>
+        
+        <div id="msg" style="margin-top:40px">
+        <?php if (isset($_GET['msgsuccess']) && $_GET['msgsuccess'] !== null) : ?>
+          <h3 class="sucessmsg"> <?= $_GET['msgsuccess'] ?></h3>
+        <?php endif ?>
+        <?php if (isset($_GET['errormsg']) && $_GET['errormsg'] !== null) : ?>
+          <h3 class="erromsg"> <?= $_GET['errormsg'] ?></h3>
+        <?php endif ?>
       </div>
-      <div class="opnivel">
-        <input type="checkbox" name="Moderado" id="Moderado">
-        <small><b>Moderado</b></small>
-      </div>
-      <div class="opnivel">
-        <input type="checkbox" name="Dispensavel" id="Dispensavel">
-        <small><b>Dispensavel</b></small>
-      </div>
-      <div class="opFiltro">
-        <input type="submit" class="buttonFiltro" value="Filtrar"></input>
-      </div>
-    </form>
-  </div>
-
-  <h2 class="title-section" style="font-family: 'Righteous', cursive;">
-    <img src="../../public/assets/mais.png" alt="icon-mais" id="abre-receita" />
-    Criar Meta
-  </h2>
-
-  <div class="prioridades">
-    <?php foreach ($metas as $meta) : ?>
-      <div class="prioridadesCard">
-        <div id="nivelPrioridade">
-          <?php if ($meta['NIVEL_META'] == 'Urgente') : ?>
-            <div id="nivel" style="background-color: red;">
-            <?php endif ?>
-            <?php if ($meta['NIVEL_META'] == 'Moderado') : ?>
-              <div id="nivel" style="background-color: green;">
-              <?php endif ?>
-              <?php if ($meta['NIVEL_META'] == 'Dispensavel') : ?>
-                <div id="nivel" style="background-color: yellow;">
-                <?php endif ?>
-                </div>
-              </div>
-              <div class="infoObj">
-                <p class="descricaoObj">
-                  <?= $meta['DESCRICAO_META'] ?>
-                </p>
-                <?php $diasRestantes = strtotime($meta['DATA_META']) - strtotime($meta['INICIO_META']) ?>
-                <small>Dias Restantes: <b><?= floor($diasRestantes / (60 * 60 * 24)) ?> Dias</b></small><br>
-                <small>Valor: <b>R$<?= number_format($meta['VALOR_META'], 2, ",", ".") ?></b></small>
-              </div>
-              <div class="op">
-                <a class="excluir" href="../controller/metas.controller.php?id_meta=<?= $meta['ID'] ?>">Excluir</a>
-
-              </div>
+      
+        <h2 class="title-section" style="font-family: 'Righteous', cursive;">
+            <img src="../../public/assets/mais.png" alt="icon-mais" id="abre-receita" />
+            Criar Meta
+        </h2>
+    </nav>
+    <div class="filtros">
+<!--         <form class="filtro" method="GET" action="../controller/filtro.metas.controller.php">
+            <div class="opnivel">
+                <input type="checkbox" name="Urgente" id="Urgente">
+                <small><b>Urgente</b></small>
             </div>
-          <?php endforeach ?>
+            <div class="opnivel">
+                <input type="checkbox" name="Moderado" id="Moderado">
+                <small><b>Moderado</b></small>
+            </div>
+          
 
         </div>
         <div id="modal-receita" class="modal-container">
@@ -110,64 +67,143 @@ $metas = listMetas();
             <div class="infoTran">
               <h1 class="tituloTran">Nova Meta</h1>
             </div>
-            <form class="form" method="POST" action="../controller/metas.controller.php">
-              <div class="input-sup">
-                <div class="input">
-                  <label for="text"><b>Valor do Objetivo</b></label></b>
-                  <input type="text" id="name" name="value" class="metas">
-                </div>
-                <div class="input">
-                  <label for="text"><b>Data Final </b></label></b>
-                  <input type="date" id="data" name="data" class="metas">
-                </div>
-                <div class="input">
-                  <label for="text"><b>Descrição</b></label></b>
-                  <textarea nid="description" name="description" class="metas" cols="30" rows="10"></textarea>
-                </div>
-              </div>
-              <div class="input">
-                <label for="text"><b>Urgencia</b></label></b>
-                <select name="urgencia" class="select">
-                  <option value="Urgente" name="urgencia">Urgente</option>
-                  <option value="Moderado" name="urgencia">Moderado</option>
-                  <option value="Dispensavel" name="urgencia">Dispensavel</option>
-                </select>
-                <div class="btnOpcoes">
-                  <button class="salvar">Salvar</button>
-                  <a href='metas.php' class="cancelar">Cancelar</a>
-                </div>
-            </form>
-          </div>
-        </div>
+            <div class="opFiltro">
+                                <input type="submit" class="buttonFiltro" value="Filtrar"></input>
+                            </div>
+    </form> -->
+    </div>
 
-        <script>
-          function abreModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.classList.add("ativo");
-          }
+    <div class="prioridades">
 
-          function fechaModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.classList.remove("ativo");
-          }
 
-          // modal receita
-          const btn_receita = document.getElementById("abre-receita");
-          btn_receita.addEventListener("click", () => {
-            abreModal("modal-receita");
-          });
-          const close_receita = document.getElementById("close-receita")
-          close_receita.addEventListener("click", () => {
-            fechaModal('modal-receita')
-          })
+        <?php foreach ($metas as $meta) : ?>
+            <div class="prioridadesCard">
+                <div id="nivelPrioridade">
+                    <?php if ($meta['NIVEL_META'] == 'Urgente') : ?>
+                        <div id="nivel" style="background-color: red;">
+                            <?php endif ?>
+                            <?php if ($meta['NIVEL_META'] == 'Moderado') : ?>
+                                <div id="nivel" style="background-color: green;">
+                                    <?php endif ?>
+                                    <?php if ($meta['NIVEL_META'] == 'Dispensavel') : ?>
+                                        <div id="nivel" style="background-color: yellow;">
+                                            <?php endif ?>
+                                        </div>
+                                    </div>
+                                    <div class="infoObj">
+                                        <p class="descricaoObj">
+                                            <?= $meta['DESCRICAO_META'] ?>
+                                        </p>
+                                        <?php $diasRestantes = strtotime($meta['DATA_META']) - strtotime($meta['INICIO_META']) ?>
+                                        <small>Dias Restantes: <b><?= floor($diasRestantes / (60 * 60 * 24)) ?> Dias</b></small><br>
+                                        <small>Valor: <b>R$<?= number_format($meta['VALOR_META'], 2, ",", ".") ?></b></small>
+                                    </div>
+                                    <div class="op">
+                                        <a href="../controller/metas.controller.php?id_meta=<?= $meta['ID'] ?>" ><button>Excluir</button></a>
+                                        
+                                    </div>
+                                </div>
+                                <?php endforeach ?>
+                                
+                            </div>
+                            
+                <div id="modal-receita" class="modal-container">
+                    <div class="modal">
+                        <button id="close-receita">x</button>
+                        <div class="infoTran">
+                            <h1 class="tituloTran" style="font-family: 'Righteous', cursive;">Nova Meta</h1>
+                        </div>
+                        <form class="form" method="POST" action="../controller/metas.controller.php">
+                            <div class="input-sup">
+                                <div class="input">
+                                    <label for="text"><b>Valor do Objetivo</b></label></b>
+                                    <input type="text" id="name" name="value" class="receita">
+                                </div>
+                                <div class="input">
+                                    <label for="text"><b>Data Final</b></label></b>
+                                    <input type="date" id="data" name="data" class="receita">
+                                </div>
 
-          setTimeout(function() {
-            var a = document.getElementById("msg");
-            console.log(a)
-            a.style = "display:none"
-          }, 1000);
-        </script>
 
-</body>
+                                <div class="input">
+                                    <label for="text"><b>Descrição</b></label></b>
+                                    <textarea nid="description" name="description" class="receita" cols="30" rows="10"></textarea>
+                                </div>
+                            </div>
+                            <div class="input" style="margin-top:20px">
+                                <label for="text"><b>Urgencia</b></label></b>
+                                <select name="urgencia" class="select" style="width: 150px;
+		height: 50px;
+		border: 1px solid green;
+		font-size: 18px;
+		text-align: center;
+    background:white;
+    "> 
+                                    <option value="Urgente" name="urgencia">Urgente</option>
+                                    <option value="Moderado" name="urgencia">Moderado</option>
+                                    <option value="Dispensavel" name="urgencia">Dispensavel</option>
+                                </select>
+                                <div class="btnOpcoes" style="display:flex; justify-content:space=around;margin:20px">
+                                    <button class="salvar" style="margin-left:20px;margin:20px">Salvar</button>
+                                    <a href='metas.php' class="cancelar" style="margin-left:20px;margin:20px">Cancelar</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                <script>
+                    function abreModal(modalId) {
+                        const modal = document.getElementById(modalId);
+                        modal.classList.add("ativo");
+                    }
+
+                    function fechaModal(modalId) {
+                        const modal = document.getElementById(modalId);
+                        modal.classList.remove("ativo");
+                    }
+
+                    // modal receita
+                    const btn_receita = document.getElementById("abre-receita");
+                    btn_receita.addEventListener("click", () => {
+                        abreModal("modal-receita");
+                    });
+                    const close_receita = document.getElementById("close-receita")
+                    close_receita.addEventListener("click", () => {
+                        fechaModal('modal-receita')
+                    })
+
+                    // modal gasto
+                    const btn_gasto = document.getElementById("abre-gasto");
+                    btn_gasto.addEventListener("click", () => {
+                        abreModal("modal-gasto");
+                    });
+                    const close_gasto = document.getElementById("close-gasto")
+                    close_gasto.addEventListener("click", () => {
+                        fechaModal('modal-gasto')
+                    })
+                    setTimeout(function() {
+
+                        var a = document.getElementById("div-teste");
+
+                        a.style = "display:none"
+
+
+                    }, 2000);
+
+
+
+
+
+                    $(document).ready(function() {
+  $("a").click(function(evento) {
+
+    if (!confirm("Tem certeza?"))
+      evento.preventDefault();
+  });
+})
+                </script>
+
+
 
 </html>
