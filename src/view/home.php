@@ -5,9 +5,11 @@ if ((!isset($_SESSION['usuario']) === true)) {
   header('Location: ./login.php');
 }
 require "../controller/transacao.controller.php";
+require "../controller/carteira.controller.php";
 
 $receita = findTransacao();
 $total = total($receita);
+$carteiras = findCarteira($_SESSION['usuario']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -131,6 +133,13 @@ $total = total($receita);
             <input type="text" id="info" name="info" class="receita">
           </div>
         </div>
+        <label for="carteira">Carteira</label>
+        <select name="carteira" id="carteira">
+          <option value="">Sem carteira</option>
+          <?php foreach ($carteiras as $carteira) : ?>
+            <option value="<?= $carteira['ID'] ?>"><?= $carteira['NOME'] ?></option>
+          <?php endforeach ?>
+        </select>
         <div class="btnOpcoes">
           <button class="salvar">Salvar</button>
           <a href='home.php' class="cancelar">Cancelar</a>
@@ -168,6 +177,13 @@ $total = total($receita);
             <input type="text" id="info" name="info" class="gasto">
           </div>
         </div>
+        <label for="carteira">Carteira</label>
+        <select name="carteira" id="carteira">
+          <option value="">Sem carteira</option>
+          <?php foreach ($carteiras as $carteira) : ?>
+            <option value="<?= $carteira['ID'] ?>"><?= $carteira['NOME'] ?></option>
+          <?php endforeach ?>
+        </select>
         <div class="btnOpcoes">
           <button class="salvar">Salvar</button>
           <a href='home.php' class="cancelar">Cancelar</a>
