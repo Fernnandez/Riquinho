@@ -28,29 +28,39 @@ $carteiras = findCarteira();
 
 <body>
   <div class="main">
-    <header class="header">
-      <h2 class="logo">
-        <img src="../../public/assets/wallet.png" alt="logo" />Riquinho
-      </h2>
-      <div id="msg">
-        <?php if (isset($_GET['msgsuccess']) && $_GET['msgsuccess'] !== null) : ?>
-          <h3 class="sucessmsg"> <?= $_GET['msgsuccess'] ?></h3>
-        <?php endif ?>
-        <?php if (isset($_GET['errormsg']) && $_GET['errormsg'] !== null) : ?>
-          <h3 class="errormsg"> <?= $_GET['errormsg'] ?></h3>
-        <?php endif ?>
-      </div>
-      <div class="navbar">
-        <a class="button" href="../view/metas.php">Metas</a>
-        <a class="button" href="../view/home.php">Home</a>
-        <a class="button" href="../controller/login.controller.php">Sair</a>
-      </div>
+  <div class="navbar">
+      <a href="../view/home.php" class="logo">
+        <h2 class="logo">
+          <img src="../../public/assets/wallet.png" alt="logo" />Riquinho
+        </h2>
+      </a>
 
-    </header>
-
-    <div class="info">
-      <span>Bem-vindo <?= $_SESSION['usuario']['nome'] ?></span>
+      <div class="dropdown">
+        <button class="dropbtn">
+          <h2 class="profile">
+          <img src="../../public/assets/perfil-de-usuario.png">
+          <?= $_SESSION['usuario']['nome'] ?>
+          </h2>
+        </button>
+        <div class="dropdown-content">
+          <a href="../view/carteira.php">Carteiras</a>
+          <a href="../view/metas.php">Metas</a>
+          <a href="../controller/login.controller.php"> Sair</a>
+         </h2>
+        </div>
+      </div>
     </div>
+
+
+    <div id="msg">
+      <?php if (isset($_GET['msgsuccess']) && $_GET['msgsuccess'] !== null) : ?>
+        <h3 class="sucessmsg"> <?= $_GET['msgsuccess'] ?></h3>
+      <?php endif ?>
+      <?php if (isset($_GET['errormsg']) && $_GET['errormsg'] !== null) : ?>
+        <h3 class="erromsg-carteira"> <?= $_GET['errormsg'] ?></h3>
+      <?php endif ?>
+    </div>
+
     <div class="lists">
       <div class="receitas">
         <h1 class="title-section">
@@ -67,8 +77,8 @@ $carteiras = findCarteira();
                 </div>
                 <p><?= $carteira['DESCRICAO'] ?></p>
                 <div class="card-footer">
-                  <a class="excluir" href="../controller/delete.carteira.controller.php?id=<?= $carteira['ID'] ?>"> Excluir</a>
-                  <a class="editar" href="carteira.update.php?idcarteira=<?= $carteira['ID'] ?>"> Editar</a>
+                  <a class="editar" href="carteira.update.php?idcarteira=<?= $carteira['ID'] ?>"><img src="../../public/assets/editar.png" alt="editar"></a>
+                  <a class="excluir" href="../controller/delete.carteira.controller.php?id=<?= $carteira['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
                 </div>
               </div>
             <?php endforeach ?>
@@ -85,15 +95,16 @@ $carteiras = findCarteira();
         </div>
         <form class="form" method="POST" action="../controller/carteira.controller.php">
           <div class="input-sup">
-            <div class="input">
-              <label for="text"><b>Nome Da Carteira</b></label></b>
-              <input type="text" id="name" name="name" class="receita">
-            </div>
-            <div class="input">
+          <div class="input">
               <label for="text"><b>Descrição</b></label></b>
-              <textarea nid="description" name="description" class="receita" cols="30" rows="10"></textarea>
+              <textarea nid="description" name="description" class="carteira-desc" cols="30" rows="10"></textarea>
             </div>
           </div>
+            <div class="input">
+              <label for="text"><b>Nome Da Carteira</b></label></b>
+              <input type="text" id="name" name="name" class="carteira-name">
+            </div>
+
           <div class="btnOpcoes">
             <button class="salvar">Salvar</button>
             <a href='home.php' class="cancelar">Cancelar</a>

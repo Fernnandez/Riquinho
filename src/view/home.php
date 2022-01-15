@@ -27,43 +27,55 @@ $carteiras = findCarteira($_SESSION['usuario']);
 
 <body>
   <div class="main">
-    <header class="header">
-      <h2 class="logo">
-        <img src="../../public/assets/wallet.png" alt="logo" />Riquinho
-      </h2>
-      <div id="msg">
-        <?php if (isset($_GET['msgsuccess']) && $_GET['msgsuccess'] !== null) : ?>
-          <h3 class="sucessmsg"> <?= $_GET['msgsuccess'] ?></h3>
-        <?php endif ?>
-        <?php if (isset($_GET['errormsg']) && $_GET['errormsg'] !== null) : ?>
-          <h3 class="erromsg"> <?= $_GET['errormsg'] ?></h3>
-        <?php endif ?>
-      </div>
-      <div class="navbar">
-        <a class="button" href="../view/carteira.php">Carteiras</a>
-        <a class="button" href="../view/metas.php">Metas</a>
-        <a class="button" href="../controller/login.controller.php">Sair</a>
-      </div>
+    <div class="navbar">
+      <a href="../view/home.php" class="logo">
+        <h2 class="logo">
+          <img src="../../public/assets/wallet.png" alt="logo" />Riquinho
+        </h2>
+      </a>
 
-    </header>
+      <div class="dropdown">
+        <button class="dropbtn">
+          <h2 class="profile">
+          <img src="../../public/assets/perfil-de-usuario.png">
+          <?= $_SESSION['usuario']['nome'] ?>
+          </h2>
+        </button>
+        <div class="dropdown-content">
+          <a href="../view/carteira.php">Carteiras</a>
+          <a href="../view/metas.php">Metas</a>
+          <a href="../controller/login.controller.php"> Sair</a>
+         </h2>
+        </div>
+      </div>
+    </div>
+
+    <div id="msg">
+      <?php if (isset($_GET['msgsuccess']) && $_GET['msgsuccess'] !== null) : ?>
+        <h3 class="sucessmsg"> <?= $_GET['msgsuccess'] ?></h3>
+      <?php endif ?>
+      <?php if (isset($_GET['errormsg']) && $_GET['errormsg'] !== null) : ?>
+        <h3 class="erromsg"> <?= $_GET['errormsg'] ?></h3>
+      <?php endif ?>
+    </div>
 
     <div class="info">
-      <span>Bem-vindo <?= $_SESSION['usuario']['nome'] ?></span>
-      <h1>Saldo Livre</h1>
+      <h1>Saldo Disponível</h1>
       <h2>R$<?= $total['RECEITA'] - $total['GASTO'] ?></h2>
     </div>
+
     <div class="lists">
       <div class="receitas">
         <h1 class="title-section">
-          <img src="../../public/assets/mais.png" alt="icon-mais" id="abre-receita" />
+          <img src="../../public/assets/mais.png" class="img-receita" alt="icon-mais" id="abre-receita" />
           Receitas
         </h1>
 
-        <h2 style="color: green;font-size: 35px">R$<?= $total['RECEITA'] ?></h2>
+        <h2 class="h2-receita">R$<?= $total['RECEITA'] ?></h2>
         <ul class="lista-transacoes">
           <?php foreach ($receita as $itens) : ?>
             <?php if ($itens['TIPO_TRAN'] == 'Receita') : ?>
-              <li class="lista-transacoes-row">
+              <li class="lista-transacoes-row-receita">
                 <div class="texts">
                   <span>R$<?= number_format($itens['VALOR_TRAN'], 2, ",", ".") ?></span>
                   <span><?= str_replace("00:00:00", "", $itens['DATA_TRAN']) ?></span>
@@ -71,22 +83,21 @@ $carteiras = findCarteira($_SESSION['usuario']);
                 </div>
                 <a class="icon" href="../controller/delete.transacao.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
                 <a class="icon" href="../controller/redirect_receita.php?id_transacao=<?= $itens['ID'] ?>"><img src="../../public/assets/editar.png" alt="editar"></a>
-
               </li>
             <?php endif ?>
           <?php endforeach ?>
         </ul>
       </div>
       <div class="gastos">
-        <h1 class="title-section">
-          <img src="../../public/assets/botao-de-menos.png" alt="icon-menos" id="abre-gasto" />
+        <h1 class="title-section-gasto">
+          <img src="../../public/assets/botao-de-menos.png" class="img-gasto" alt="icon-menos" id="abre-gasto" />
           Gastos
         </h1>
-        <h2 style="color:red; font-size: 35px;">R$-<?= $total['GASTO'] ?></h2>
+        <h2 class="h2-gasto">R$-<?= $total['GASTO'] ?></h2>
         <ul class="lista-transacoes">
           <?php foreach ($receita as $itens) : ?>
             <?php if ($itens['TIPO_TRAN'] == 'Gasto') : ?>
-              <li class="lista-transacoes-row">
+              <li class="lista-transacoes-row-gasto">
                 <div class="texts">
                   <span>R$<?= number_format($itens['VALOR_TRAN'], 2, ",", ".") ?></span>
                   <span><?= str_replace("00:00:00", "", $itens['DATA_TRAN']) ?></span>
@@ -134,7 +145,7 @@ $carteiras = findCarteira($_SESSION['usuario']);
           </div>
         </div>
         <label for="carteira">Carteira</label>
-        <select name="carteira" id="carteira">
+        <select name="carteira" id="carteira" class="carteira-receita">
           <option value="">Sem carteira</option>
           <?php foreach ($carteiras as $carteira) : ?>
             <option value="<?= $carteira['ID'] ?>"><?= $carteira['NOME'] ?></option>
@@ -178,7 +189,7 @@ $carteiras = findCarteira($_SESSION['usuario']);
           </div>
         </div>
         <label for="carteira">Carteira</label>
-        <select name="carteira" id="carteira">
+        <select name="carteira" id="carteira" class="carteira-gasto">
           <option value="">Sem carteira</option>
           <?php foreach ($carteiras as $carteira) : ?>
             <option value="<?= $carteira['ID'] ?>"><?= $carteira['NOME'] ?></option>
