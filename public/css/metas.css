@@ -100,13 +100,14 @@ b {
 
 .op {
     width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .opFiltro {
     width: 400px;
 }
-
-
 
 .buttonFiltro {
     width: 130px;
@@ -127,30 +128,26 @@ b {
 
 
 
-button{
+button {
     width: 130px;
     height: 30px;
-
     background-color: darkgrey;
-
     color: white;
-
     font: 20px;
     font-family: 'Righteous', cursive;
     border: none;
     border-radius: 4px;
-    margin-left: 260px;
-    
+    margin: 10px;
     cursor: pointer;
 }
-button:hover{
+
+button:hover {
     background-color: #363636;
     transition: all;
 }
 
-.selects{
+.selects {
     width: 100%;
-
     display: flex;
     justify-content: center;
     flex-direction: row;

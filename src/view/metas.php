@@ -99,8 +99,8 @@ $carteiras = findCarteira();
                                         <small>Carteira: <b><?= $meta['NOME'] ?></b></small>
                                     </div>
                                     <div class="op">
-                                        <a href="../controller/metas.controller.php?id_meta=<?= $meta['ID'] ?>" ><button>Excluir</button></a>
-                                        
+                                        <a href="metas.update.php?idmeta=<?= $meta['ID_META'] ?>" ><button style="background-color: green;">EDITAR</button></a>
+                                        <a href="../controller/metas.controller.php?id_meta=<?= $meta['ID_META'] ?>" ><button style="background-color: red;">Excluir</button></a>
                                     </div>
                                 </div>
                                 <?php endforeach ?>
