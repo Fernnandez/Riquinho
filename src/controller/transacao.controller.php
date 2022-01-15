@@ -7,13 +7,13 @@ function Transacao()
 {
   $msg = "Transação cadastrada com sucesso";
   $msgError = "Algo deu errado";
-  
+
   session_start();
 
   $today = date("Y-m-d");
-  
+
   $dados = [
-    
+
     'ID_USUARIO' => $_SESSION['usuario']['id'],
     'ID_CARTEIRA' => isset($_POST['carteira']) ? $_POST['carteira'] : null,
     'TIPO_TRAN' => $_POST['tipo'],
@@ -22,11 +22,14 @@ function Transacao()
     'INFO' => $_POST['info']
   ];
 
+  if ($dados['ID_CARTEIRA'] === "") {
+    $dados['ID_CARTEIRA'] = null;
+  }
+
   try {
 
     criarTransacao($dados);
-    header("Location: ../view/home.php?msgsuccess=$msg");
-    
+    // header("Location: ../view/home.php?msgsuccess=$msg");
   } catch (\Throwable $th) {
 
     header("Location: ../view/home.php?errormsg=$msgError");

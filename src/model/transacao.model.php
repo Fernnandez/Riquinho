@@ -3,6 +3,7 @@ require '../../database/conectar.php';
 
 function criarTransacao($dados)
 {
+  var_dump($dados);
   try {
     global $pdo;
     $query = $pdo->prepare('INSERT INTO TRANSACOES (ID_USUARIO, ID_CARTEIRA, TIPO_TRAN, DATA_TRAN, VALOR_TRAN, INFO)
