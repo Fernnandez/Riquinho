@@ -45,7 +45,7 @@ function update()
 
 if ($metodo === 'POST') {
   try {
-    $msg = "Carteira atualizada com sucesso";
+    $msg = "Meta atualizada com sucesso";
     update();
     header("Location: ../view/metas.php?msgsuccess=$msg");
   } catch (Exception $e) {
