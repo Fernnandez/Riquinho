@@ -1,87 +1,49 @@
 /* Var color */
+
 :root {
-	--verde: #11c76f;
-	--azul-claro: #166fe5;
-	--azul-escuro: #06078d;
-	--azul-opaco: #3555a2;
-	--vermelho: #f34235;
-}
-/* Reset CSS */
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: "Poppins", sans-serif;
+    --verde: #11c76f;
+    --azul-claro: #166fe5;
+    --azul-escuro: #06078d;
+    --azul-opaco: #3555a2;
+    --vermelho: #f34235;
 }
 
-/* body {
-	height: 100vh;
-	width: 100vw;
-} */
-/* 
-nav {
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-} */
+
+/* Reset CSS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
 
 a {
-	/* 	 */
-	text-decoration: none;
-	cursor: pointer;
-	font-family: Poppins;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: Poppins;
 }
-/* .nav-list {
-	list-style: none;
-	display: flex;
-	font-size: 20px;
-	align-content: flex-end;
-	align-items: center;
-	justify-content: flex-start;
-	flex-direction: row;
-	flex-wrap: nowrap;
-} */
-/* .nav-list li {
-	display: inline-block;
-	padding: 1em 1em;
-} */
-/* .header {
-	position: absolute;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	height: 110px;
-	width: 100%;
-	margin: auto;
-	padding: 30px 10%;
-} */
-
-/* .container {
-	width: 100%;
-	height: 100%;
-} */
 
 .button {
-	background-color: var(--azul-escuro);
-	color: #fff;
-	border-radius: 20px;
-	padding: 10px 20px;
-	border: none;
-	display: flex;
-	align-items: center;
-	gap: 10px;
-	justify-content: center;
-	font-size: 19px;
-	font-weight: 600;
-	/* margin-left: 17em; */
-	transition: all ease 0.5s;
+    background-color: var(--azul-escuro);
+    color: #fff;
+    border-radius: 20px;
+    padding: 10px 20px;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    font-size: 19px;
+    font-weight: 600;
+    transition: all ease 0.5s;
 }
 
 button:hover {
-	opacity: 0.7;
+    opacity: 0.7;
 }
 
-.button > span > img {
-	width: 22px;
-	height: 22px;
+.button>span>img {
+    width: 22px;
+    height: 22px;
 }

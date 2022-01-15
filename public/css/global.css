@@ -1,122 +1,140 @@
 .erromsg {
-	width: 400px;
-	height: 75px;
-	border-radius: 30px;
-	margin: -5%;
-	color: white;
-	font-size: 20px;
-	background-color: red;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	align-content: center;
-	animation-name: msgs;
-	transition: all 0.4s ease-out;
-	animation-iteration-count: infinite;
-	animation-duration: 3000;
-	animation-delay: 2s;
+    width: 400px;
+    height: 75px;
+    border-radius: 30px;
+    margin: -5%;
+    color: white;
+    font-size: 20px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+    animation-name: msgs;
+    transition: all 0.4s ease-out;
+    animation-iteration-count: infinite;
+    animation-duration: 3000;
+    animation-delay: 2s;
+}
+
+.erromsg-carteira {
+    height: 75px;
+    border-radius: 30px;
+    margin: 0%;
+    color: white;
+    font-size: 20px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+    animation-name: msgs;
+    transition: all 0.4s ease-out;
+    animation-iteration-count: infinite;
+    animation-duration: 3000;
+    animation-delay: 2s;
 }
 
 .sucessmsg {
-	width: 400px;
-	height: 75px;
-	border-radius: 30px;
-	margin: -5%;
-	/* 1920 * 1080 */
-	color: white;
-	font-size: 20px;
-	background-color: green;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	align-content: center;
-	animation-name: msgs;
-	transition: all 0.4s ease-out;
-	animation-iteration-count: infinite;
-	animation-duration: 2000;
-	animation-delay: 2s;
+    width: 400px;
+    height: 75px;
+    border-radius: 30px;
+    margin: 0%;
+    color: white;
+    font-size: 20px;
+    background-color: #43B05C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+    animation-name: msgs;
+    transition: all 0.4s ease-out;
+    animation-iteration-count: infinite;
+    animation-duration: 2000;
+    animation-delay: 2s;
 }
 
 @keyframes msgs {
-	0% {
-		background-color: white;
-	}
-	25% {
-		background-color: white;
-	}
-	50% {
-		background-color: white;
-	}
-	75% {
-		background-color: white;
-	}
-	100% {
-		background-color: white;
-	}
+    0% {
+        background-color: white;
+    }
+    25% {
+        background-color: white;
+    }
+    50% {
+        background-color: white;
+    }
+    75% {
+        background-color: white;
+    }
+    100% {
+        background-color: white;
+    }
 }
 
 .sucessmsgcad {
-	width: 450px;
-	height: 80px;
-	color: white;
-	font-size: 20px;
-	background-color: green;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	align-content: center;
-	animation-name: msgcadastro;
-	transition: all 0.4s ease-out;
-	animation-iteration-count: infinite;
-	animation-duration: 3s;
-	animation-delay: 2s;
+    width: 450px;
+    height: 80px;
+    color: white;
+    font-size: 20px;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+    animation-name: msgcadastro;
+    transition: all 0.4s ease-out;
+    animation-iteration-count: infinite;
+    animation-duration: 3s;
+    animation-delay: 2s;
 }
 
 @keyframes msgcadastro {
-	0% {
-		background-color: #166fe5;
-		color: #166fe5;
-	}
-	25% {
-		background-color: #166fe5;
-		color: #166fe5;
-	}
-	50% {
-		background-color: #166fe5;
-		color: #166fe5;
-	}
-	75% {
-		background-color: #166fe5;
-		color: #166fe5;
-	}
-	100% {
-		background-color: #166fe5;
-		color: #166fe5;
-	}
+    0% {
+        background-color: #166fe5;
+        color: #166fe5;
+    }
+    25% {
+        background-color: #166fe5;
+        color: #166fe5;
+    }
+    50% {
+        background-color: #166fe5;
+        color: #166fe5;
+    }
+    75% {
+        background-color: #166fe5;
+        color: #166fe5;
+    }
+    100% {
+        background-color: #166fe5;
+        color: #166fe5;
+    }
 }
 
 @keyframes msge {
-	0% {
-		background-color: #166fe5;
-		color: #166fe5;
-	}
-	25% {
-		background-color: #166fe5;
-		color: #166fe5;
-	}
-	50% {
-		background-color: #166fe5;
-		color: #166fe5;
-	}
-	75% {
-		background-color: #166fe5;
-		color: #166fe5;
-	}
-	100% {
-		background-color: #166fe5;
-		color: #166fe5;
-	}
+    0% {
+        background-color: #166fe5;
+        color: #166fe5;
+    }
+    25% {
+        background-color: #166fe5;
+        color: #166fe5;
+    }
+    50% {
+        background-color: #166fe5;
+        color: #166fe5;
+    }
+    75% {
+        background-color: #166fe5;
+        color: #166fe5;
+    }
+    100% {
+        background-color: #166fe5;
+        color: #166fe5;
+    }
 }
