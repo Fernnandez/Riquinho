@@ -54,7 +54,7 @@ input[type="checkbox"] {
 
 .prioridadesCard {
     width: 400px;
-    height: 200px;
+    height: 230px;
     border-radius: 4px;
     margin: 20px;
     background-color: whitesmoke;
@@ -146,4 +146,12 @@ button{
 button:hover{
     background-color: #363636;
     transition: all;
+}
+
+.selects{
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 }

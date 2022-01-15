@@ -8,7 +8,8 @@ function handleMetas()
   $today = date("Y-m-d");
 
   session_start();
-
+  error_log("valor da carteira");
+  error_log($_POST['carteira']);
 
   if ($_POST['urgencia'] != null && $_POST['data'] != null && $_POST['description'] != null && $_POST['value'] != null) {
     $dados = [
@@ -18,6 +19,7 @@ function handleMetas()
       'INICIO_META' => $today,
       'DESCRICAO_META' => $_POST['description'],
       'VALOR_META' => $_POST['value'],
+      'ID_CARTEIRA' => $_POST['carteira']
     ];
   }
 

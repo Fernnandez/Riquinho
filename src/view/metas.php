@@ -5,8 +5,10 @@ if ((!isset($_SESSION['usuario']) === true)) {
   header('Location: ./login.php');
 }
 require "../controller/metas.controller.php";
+require "../controller/carteira.controller.php";
 
 $metas = listMetas();
+$carteiras = findCarteira();
 //var_dump($metas);
 ?>
 
@@ -29,49 +31,46 @@ $metas = listMetas();
 </head>
 
 <body>
-    <nav class="opcoes">
-        <h2 class="logo" style="font-family: 'Righteous', cursive;">
-            <img src="../../public/assets/wallet.png" alt="logo"/>Riquinho 
+<div class="main">
+  <div class="navbar">
+      <a href="../view/home.php" class="logo">
+        <h2 class="logo">
+          <img src="../../public/assets/wallet.png" alt="logo" />Riquinho
         </h2>
-        
-        <div id="msg" style="margin-top:40px">
-        <?php if (isset($_GET['msgsuccess']) && $_GET['msgsuccess'] !== null) : ?>
-          <h3 class="sucessmsg"> <?= $_GET['msgsuccess'] ?></h3>
-        <?php endif ?>
-        <?php if (isset($_GET['errormsg']) && $_GET['errormsg'] !== null) : ?>
-          <h3 class="erromsg"> <?= $_GET['errormsg'] ?></h3>
-        <?php endif ?>
-      </div>
-      
-        <h2 class="title-section" style="font-family: 'Righteous', cursive;">
-            <img src="../../public/assets/mais.png" alt="icon-mais" id="abre-receita" />
-            Criar Meta
-        </h2>
-    </nav>
-    <div class="filtros">
-<!--         <form class="filtro" method="GET" action="../controller/filtro.metas.controller.php">
-            <div class="opnivel">
-                <input type="checkbox" name="Urgente" id="Urgente">
-                <small><b>Urgente</b></small>
-            </div>
-            <div class="opnivel">
-                <input type="checkbox" name="Moderado" id="Moderado">
-                <small><b>Moderado</b></small>
-            </div>
-          
+      </a>
 
+      <div class="dropdown">
+        <button class="dropbtn">
+          <h2 class="profile">
+          <img src="../../public/assets/perfil-de-usuario.png">
+          <?= $_SESSION['usuario']['nome'] ?>
+          </h2>
+        </button>
+        <div class="dropdown-content">
+          <a href="../view/carteira.php">Carteiras</a>
+          <a href="../view/metas.php">Metas</a>
+          <a href="../controller/login.controller.php"> Sair</a>
+         </h2>
         </div>
-        <div id="modal-receita" class="modal-container">
-          <div class="modal-metas">
-            <button id="close-receita">x</button>
-            <div class="infoTran">
-              <h1 class="tituloTran">Nova Meta</h1>
-            </div>
-            <div class="opFiltro">
-                                <input type="submit" class="buttonFiltro" value="Filtrar"></input>
-                            </div>
-    </form> -->
+      </div>
     </div>
+
+
+    <div id="msg">
+      <?php if (isset($_GET['msgsuccess']) && $_GET['msgsuccess'] !== null) : ?>
+        <h3 class="sucessmsg"> <?= $_GET['msgsuccess'] ?></h3>
+      <?php endif ?>
+      <?php if (isset($_GET['errormsg']) && $_GET['errormsg'] !== null) : ?>
+        <h3 class="erromsg-carteira"> <?= $_GET['errormsg'] ?></h3>
+      <?php endif ?>
+    </div>
+
+    <div class="lists">
+      <div class="receitas">
+        <h1 class="title-section">
+          <img src="../../public/assets/mais.png" alt="icon-mais" id="abre-carteira" />
+          Criar Metas
+        </h1>
 
     <div class="prioridades">
 
@@ -96,7 +95,8 @@ $metas = listMetas();
                                         </p>
                                         <?php $diasRestantes = strtotime($meta['DATA_META']) - strtotime($meta['INICIO_META']) ?>
                                         <small>Dias Restantes: <b><?= floor($diasRestantes / (60 * 60 * 24)) ?> Dias</b></small><br>
-                                        <small>Valor: <b>R$<?= number_format($meta['VALOR_META'], 2, ",", ".") ?></b></small>
+                                        <small>Valor: <b>R$<?= number_format($meta['VALOR_META'], 2, ",", ".") ?></b></small><br>
+                                        <small>Carteira: <b><?= $meta['NOME'] ?></b></small>
                                     </div>
                                     <div class="op">
                                         <a href="../controller/metas.controller.php?id_meta=<?= $meta['ID'] ?>" ><button>Excluir</button></a>
@@ -129,20 +129,27 @@ $metas = listMetas();
                                     <label for="text"><b>Descrição</b></label></b>
                                     <textarea nid="description" name="description" class="receita" cols="30" rows="10"></textarea>
                                 </div>
+
                             </div>
+                            <div class="selects">
                             <div class="input" style="margin-top:20px">
                                 <label for="text"><b>Urgencia</b></label></b>
-                                <select name="urgencia" class="select" style="width: 150px;
-		height: 50px;
-		border: 1px solid green;
-		font-size: 18px;
-		text-align: center;
-    background:white;
-    "> 
+                                <select name="urgencia" class="select" style="width: 150px;height: 50px;border: 1px solid green;font-size: 18px;text-align: center;background:white;"> 
                                     <option value="Urgente" name="urgencia">Urgente</option>
                                     <option value="Moderado" name="urgencia">Moderado</option>
                                     <option value="Dispensavel" name="urgencia">Dispensavel</option>
                                 </select>
+                            </div>
+                            <div class="input" style="margin-top:20px">
+                                <label for="text"><b>Carteira</b></label></b>
+                                <select name="carteira" class="select" style="width: 150px;height: 50px;border: 1px solid green;font-size: 18px;text-align: center;background:white;"> 
+                                <?php foreach ($carteiras as $carteira) : ?>
+                                    <option value="<?= $carteira['ID'] ?>" name="<?= $carteira['ID'] ?>"><?= $carteira['NOME'] ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                            </div>
+                            </div>
+
                                 <div class="btnOpcoes" style="display:flex; justify-content:space=around;margin:20px">
                                     <button class="salvar" style="margin-left:20px;margin:20px">Salvar</button>
                                     <a href='metas.php' class="cancelar" style="margin-left:20px;margin:20px">Cancelar</a>
@@ -164,7 +171,7 @@ $metas = listMetas();
                     }
 
                     // modal receita
-                    const btn_receita = document.getElementById("abre-receita");
+                    const btn_receita = document.getElementById("abre-carteira");
                     btn_receita.addEventListener("click", () => {
                         abreModal("modal-receita");
                     });
