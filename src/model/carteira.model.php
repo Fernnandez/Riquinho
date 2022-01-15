@@ -3,7 +3,6 @@ require '../../database/conectar.php';
 
 function criarCarteira($dados)
 {
-  // var_dump($dados);
   try {
     global $pdo;
     $query = $pdo->prepare('INSERT INTO CARTEIRA (NOME, ID_USUARIO, DESCRICAO) VALUES 

@@ -29,7 +29,7 @@ function Transacao()
   try {
 
     criarTransacao($dados);
-    // header("Location: ../view/home.php?msgsuccess=$msg");
+    header("Location: ../view/home.php?msgsuccess=$msg");
   } catch (\Throwable $th) {
 
     header("Location: ../view/home.php?errormsg=$msgError");

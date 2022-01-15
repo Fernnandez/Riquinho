@@ -3,23 +3,23 @@ require '../../database/conectar.php';
 
 function createMetas($dados)
 {
-    session_start();
-    $msgError = "Usuario Invalido/não autenticado";
-    $user_identification = $_SESSION['usuario']['id'];
+  session_start();
+  $msgError = "Usuario Invalido/não autenticado";
+  $user_identification = $_SESSION['usuario']['id'];
 
-    if ($user_identification) {
-        try {
-            global $pdo;
-            $query = $pdo->prepare("INSERT INTO METAS (ID_USUARIO,NIVEL_META,DATA_META,INICIO_META,DESCRICAO_META,VALOR_META,ID_CARTEIRA)
+  if ($user_identification) {
+    try {
+      global $pdo;
+      $query = $pdo->prepare("INSERT INTO METAS (ID_USUARIO,NIVEL_META,DATA_META,INICIO_META,DESCRICAO_META,VALOR_META,ID_CARTEIRA)
              VALUES (:ID_USUARIO, :NIVEL_META, :DATA_META,:INICIO_META, :DESCRICAO_META, :VALOR_META, :ID_CARTEIRA)");
-            $query->execute($dados);
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
-    } else {
-        error_log("usuario não está logado");
-        header("Location: ../view/metas.php?errormsg=$msgError");
+      $query->execute($dados);
+    } catch (PDOException $e) {
+      echo $e->getMessage();
     }
+  } else {
+    error_log("usuario não está logado");
+    header("Location: ../view/metas.php?errormsg=$msgError");
+  }
 }
 
 function updateMetas($dados)
@@ -48,7 +48,6 @@ function searchMetas($user)
     $query = $pdo->prepare("SELECT ID_META, NIVEL_META, DATA_META,INICIO_META, DESCRICAO_META, VALOR_META, NOME FROM METAS JOIN CARTEIRA ON CARTEIRA.ID = METAS.ID_CARTEIRA WHERE METAS.ID_USUARIO = $user");
 
     $query->execute();
-    //var_dump($query);
     return $query->fetchAll();
   } catch (Exception $e) {
     echo $e->getMessage();
@@ -64,22 +63,21 @@ function searchMetasEdit($user, $idMeta)
     $query = $pdo->prepare("SELECT ID_META, NIVEL_META, DATA_META,INICIO_META, DESCRICAO_META, VALOR_META, NOME FROM METAS JOIN CARTEIRA ON CARTEIRA.ID = METAS.ID_CARTEIRA WHERE METAS.ID_USUARIO = $user AND ID_META = $idMeta");
 
     $query->execute();
-    //var_dump($query);
     return $query->fetchAll();
   } catch (Exception $e) {
     echo $e->getMessage();
   }
 }
 
-function deleteMetas($user,$idMeta){
-    try {
-        global $pdo;
-        $query = $pdo->prepare("DELETE FROM METAS WHERE ID_META = ?");
-        $query->bindParam(1, $idMeta);
-        $query->execute();
-        return $query->fetchAll();
-      } catch (Exception $e) {
-        echo $e->getMessage();
-      }
+function deleteMetas($user, $idMeta)
+{
+  try {
+    global $pdo;
+    $query = $pdo->prepare("DELETE FROM METAS WHERE ID_META = ?");
+    $query->bindParam(1, $idMeta);
+    $query->execute();
+    return $query->fetchAll();
+  } catch (Exception $e) {
+    echo $e->getMessage();
+  }
 }
-

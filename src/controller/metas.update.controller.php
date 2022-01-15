@@ -6,8 +6,6 @@ require_once '../model/metas.model.php';
 function metas()
 
 {
-    var_dump("entrou");
-    error_log("entrou");
   $id = $_GET['idmeta'];
 
   $user = $_SESSION['usuario']['id'];
@@ -22,9 +20,9 @@ $metodo = $_SERVER['REQUEST_METHOD'];
 
 function update()
 {
-    error_log("valor do id da meta");
-    error_log($_POST['ID_META']);
-    $today = date("Y-m-d");
+  error_log("valor do id da meta");
+  error_log($_POST['ID_META']);
+  $today = date("Y-m-d");
   session_start();
 
   if ($_POST['urgencia'] != null && $_POST['data'] != null && $_POST['description'] != null && $_POST['value'] != null && $_POST['carteira'] != null) {
