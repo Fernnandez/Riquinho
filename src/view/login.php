@@ -16,7 +16,7 @@
   <div class="wrapper fadeInDown">
     <div id="formContent">
       <!-- Tabs Titles -->
-      <h2 class="active"> Login</h2>
+      <h2 class="active"> Entrar</h2>
       <a class="underlineHover" href="./cadastro.php">cadastro</a>
 
       <!-- Icon -->
@@ -35,12 +35,6 @@
         <input type="password" id="senha" class="fadeIn third" name="senha" placeholder="senha">
         <input type="submit" class="fadeIn fourth" value="Entrar">
       </form>
-
-      <!-- Remind Passowrd -->
-      <div id="formFooter">
-        <a class="underlineHover" href="recuperar.php">Esqueceu a senha ?</a>
-      </div>
-
     </div>
   </div>
 

@@ -202,7 +202,14 @@ $carteiras = findCarteira($_SESSION['usuario']);
       </form>
     </div>
   </div>
-
+  <footer class="footer">
+        <img src="../../public/assets/wallet.png" alt="logo" /> Riquinho  
+       <div class="itens">
+           <a href=""> Termo de Privacidade</a>
+           <a href=""> Quem somos</a>
+           <a href=""> Ajuda</a>
+       </div>
+    </footer>
 
   <script>
     function abreModal(modalId) {

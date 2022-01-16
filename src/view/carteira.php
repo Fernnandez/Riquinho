@@ -28,7 +28,7 @@ $carteiras = findCarteira();
 
 <body>
   <div class="main">
-  <div class="navbar">
+    <div class="navbar">
       <a href="../view/home.php" class="logo">
         <h2 class="logo">
           <img src="../../public/assets/wallet.png" alt="logo" />Riquinho
@@ -38,15 +38,15 @@ $carteiras = findCarteira();
       <div class="dropdown">
         <button class="dropbtn">
           <h2 class="profile">
-          <img src="../../public/assets/perfil-de-usuario.png">
-          <?= $_SESSION['usuario']['nome'] ?>
+            <img src="../../public/assets/perfil-de-usuario.png">
+            <?= $_SESSION['usuario']['nome'] ?>
           </h2>
         </button>
         <div class="dropdown-content">
           <a href="../view/carteira.php">Carteiras</a>
           <a href="../view/metas.php">Metas</a>
           <a href="../controller/login.controller.php"> Sair</a>
-         </h2>
+          </h2>
         </div>
       </div>
     </div>
@@ -95,15 +95,15 @@ $carteiras = findCarteira();
         </div>
         <form class="form" method="POST" action="../controller/carteira.controller.php">
           <div class="input-sup">
-          <div class="input">
+            <div class="input">
               <label for="text"><b>Descrição</b></label></b>
               <textarea nid="description" name="description" class="carteira-desc" cols="30" rows="10"></textarea>
             </div>
           </div>
-            <div class="input">
-              <label for="text"><b>Nome Da Carteira</b></label></b>
-              <input type="text" id="name" name="name" class="carteira-name">
-            </div>
+          <div class="input">
+            <label for="text"><b>Nome Da Carteira</b></label></b>
+            <input type="text" id="name" name="name" class="carteira-name">
+          </div>
 
           <div class="btnOpcoes">
             <button class="salvar">Salvar</button>
@@ -112,31 +112,42 @@ $carteiras = findCarteira();
         </form>
       </div>
     </div>
+  </div>
+  </div>
+    <footer class="footer-cart">
+        <img src="../../public/assets/wallet.png" alt="logo" /> Riquinho  
+       <div class="itens">
+           <a href=""> Termo de Privacidade</a>
+           <a href=""> Quem somos</a>
+           <a href=""> Ajuda</a>
+       </div>
+    </footer>
 
-    <script>
-      function abreModal(modalId) {
-        const modal = document.getElementById(modalId);
-        modal.classList.add("ativo");
-      }
+</body>
+<script>
+  function abreModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.classList.add("ativo");
+  }
 
-      function fechaModal(modalId) {
-        const modal = document.getElementById(modalId);
-        modal.classList.remove("ativo");
-      }
-      // modal gasto
-      const btn_carteira = document.getElementById("abre-carteira");
-      btn_carteira.addEventListener("click", () => {
-        abreModal("modal-carteira");
-      });
-      const close_carteira = document.getElementById("close-carteira")
-      close_carteira.addEventListener("click", () => {
-        fechaModal('modal-carteira')
-      })
-      setTimeout(function() {
-        var a = document.getElementById("msg");
-        a.style = "display:none"
-      }, 2000);
-    </script>
+  function fechaModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.classList.remove("ativo");
+  }
+  // modal gasto
+  const btn_carteira = document.getElementById("abre-carteira");
+  btn_carteira.addEventListener("click", () => {
+    abreModal("modal-carteira");
+  });
+  const close_carteira = document.getElementById("close-carteira")
+  close_carteira.addEventListener("click", () => {
+    fechaModal('modal-carteira')
+  })
+  setTimeout(function() {
+    var a = document.getElementById("msg");
+    a.style = "display:none"
+  }, 2000);
+</script>
 </body>
 
 </html>

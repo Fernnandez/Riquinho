@@ -16,7 +16,7 @@
     <div id="formContent">
 
       <!-- Tabs Titles -->
-      <a class="underlineHover" href="./login.php">Login</a>
+      <a class="underlineHover" href="./login.php">Entrar</a>
       <h2 class="active"> cadastro</h2>
 
       <!-- Icon -->
