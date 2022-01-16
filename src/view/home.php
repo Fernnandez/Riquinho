@@ -1,4 +1,3 @@
-<!--Esta parte de codigo verifica se o usuario esta logado, dando acesso a pagina de cadastro  !-->
 <?php
 session_start();
 if ((!isset($_SESSION['usuario']) === true)) {
@@ -37,15 +36,15 @@ $carteiras = findCarteira($_SESSION['usuario']);
       <div class="dropdown">
         <button class="dropbtn">
           <h2 class="profile">
-          <img src="../../public/assets/perfil-de-usuario.png">
-          <?= $_SESSION['usuario']['nome'] ?>
+            <img src="../../public/assets/perfil-de-usuario.png">
+            <?= $_SESSION['usuario']['nome'] ?>
           </h2>
         </button>
         <div class="dropdown-content">
           <a href="../view/carteira.php">Carteiras</a>
           <a href="../view/metas.php">Metas</a>
           <a href="../controller/login.controller.php"> Sair</a>
-         </h2>
+          </h2>
         </div>
       </div>
     </div>
@@ -81,7 +80,7 @@ $carteiras = findCarteira($_SESSION['usuario']);
                   <span><?= str_replace("00:00:00", "", $itens['DATA_TRAN']) ?></span>
                   <span class="row-info" title="<?= $itens['INFO'] ?>"><?= $itens['INFO'] ?></span>
                 </div>
-                <a class="icon" href="../controller/delete.transacao.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
+                <a class="icon excluir" href="../controller/delete.transacao.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
                 <a class="icon" href="../controller/redirect_receita.php?id_transacao=<?= $itens['ID'] ?>"><img src="../../public/assets/editar.png" alt="editar"></a>
               </li>
             <?php endif ?>
@@ -104,7 +103,7 @@ $carteiras = findCarteira($_SESSION['usuario']);
                   <span class="row-info" title="<?= $itens['INFO'] ?>"><?= $itens['INFO'] ?></span>
                 </div>
 
-                <a class="icon" href="../controller/delete.transacao.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
+                <a class="icon excluir" href="../controller/delete.transacao.controller.php?id=<?= $itens['ID'] ?>"><img src="../../public/assets/bin.png" alt="excluir"></a>
                 <a class="icon" href="../controller/redirect_receita.php?id_transacao=<?= $itens['ID'] ?>"><img src="../../public/assets/editar.png" alt="editar"></a>
 
               </li>
@@ -203,14 +202,17 @@ $carteiras = findCarteira($_SESSION['usuario']);
     </div>
   </div>
   <footer class="footer">
-        <img src="../../public/assets/wallet.png" alt="logo" /> Riquinho  
-       <div class="itens">
-           <a href=""> Termo de Privacidade</a>
-           <a href=""> Quem somos</a>
-           <a href=""> Ajuda</a>
-       </div>
-    </footer>
+    <div class="footer-cart">
+      <img src="../../public/assets/wallet.png" alt="logo" /> Riquinho
+      <div class="itens">
+        <a href=""> Termo de Privacidade</a>
+        <a href=""> Quem somos</a>
+        <a href=""> Ajuda</a>
+      </div>
+    </div>
+  </footer>
 
+  <!-- modais -->
   <script>
     function abreModal(modalId) {
       const modal = document.getElementById(modalId);
@@ -245,6 +247,17 @@ $carteiras = findCarteira($_SESSION['usuario']);
       var a = document.getElementById("msg");
       a.style = "display:none"
     }, 2000);
+  </script>
+  <!-- confirm exclusão -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("a.excluir").click(function(evento) {
+
+        if (!confirm("Tem certeza?"))
+          evento.preventDefault();
+      });
+    })
   </script>
 </body>
 

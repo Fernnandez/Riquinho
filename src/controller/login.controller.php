@@ -29,7 +29,7 @@ function logout()
 {
   session_start();
   session_destroy();
-  redirect("../view/login.php");
+  redirect("../../index.php");
 }
 
 $metodo = $_SERVER['REQUEST_METHOD'];

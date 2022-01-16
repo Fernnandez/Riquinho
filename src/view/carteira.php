@@ -43,7 +43,6 @@ $carteiras = findCarteira();
           </h2>
         </button>
         <div class="dropdown-content">
-          <a href="../view/carteira.php">Carteiras</a>
           <a href="../view/metas.php">Metas</a>
           <a href="../controller/login.controller.php"> Sair</a>
           </h2>
@@ -114,14 +113,17 @@ $carteiras = findCarteira();
     </div>
   </div>
   </div>
-    <footer class="footer-cart">
-        <img src="../../public/assets/wallet.png" alt="logo" /> Riquinho  
-       <div class="itens">
-           <a href=""> Termo de Privacidade</a>
-           <a href=""> Quem somos</a>
-           <a href=""> Ajuda</a>
-       </div>
-    </footer>
+  <footer class="footer">
+    <div class="footer-cart">
+      <img src="../../public/assets/wallet.png" alt="logo" /> Riquinho
+      <div class="itens">
+        <a href=""> Termo de Privacidade</a>
+        <a href=""> Quem somos</a>
+        <a href=""> Ajuda</a>
+      </div>
+    </div>
+
+  </footer>
 
 </body>
 <script>

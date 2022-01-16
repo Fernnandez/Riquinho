@@ -8,8 +8,6 @@ function handleMetas()
   $today = date("Y-m-d");
 
   session_start();
-  error_log("valor da carteira");
-  error_log($_POST['carteira']);
 
   if ($_POST['urgencia'] != null && $_POST['data'] != null && $_POST['description'] != null && $_POST['value'] != null) {
     $dados = [
@@ -21,6 +19,9 @@ function handleMetas()
       'VALOR_META' => $_POST['value'],
       'ID_CARTEIRA' => $_POST['carteira']
     ];
+    if ($dados['ID_CARTEIRA'] === "") {
+      $dados['ID_CARTEIRA'] = null;
+    }
   }
 
   try {
@@ -42,50 +43,24 @@ function listMetas()
   header("Location: ../view/metas.php");
 }
 
-function excluirMetas(){
-    $usuario = $_SESSION['usuario']['id'];
-    $metaExcluir = $_GET['id_meta'];
-    $msg = "Meta excluida com sucesso";
-    $msgError = "Algo deu errado";
+function excluirMetas()
+{
+  $usuario = $_SESSION['usuario']['id'];
+  $metaExcluir = $_GET['id_meta'];
+  $msg = "Meta excluida com sucesso";
+  $msgError = "Algo deu errado";
 
-    try {
-        deleteMetas($usuario, $metaExcluir);
-        header("Location: ../view/metas.php?msgsuccess=$msg");
-    } catch (\Throwable $th) {
-        header("Location: ../view/metas.php?errormsg=$msgError");
-    }
+  try {
+    deleteMetas($usuario, $metaExcluir);
+    header("Location: ../view/metas.php?msgsuccess=$msg");
+  } catch (\Throwable $th) {
+    header("Location: ../view/metas.php?errormsg=$msgError");
+  }
 }
-
-/* /* function listMetas(){
-    $msg = "Busca realizada com sucesso";
-    $msgError = "Algo deu errado na busca";
-    $usuario = $_SESSION['usuario']['id'];
-
-    if($_GET['Urgente'] != null || $_GET['Moderado'] != null || $_GET['Dispensavel'] != null){
-        error_log("Os filtros chegaram");
-        $filter = [
-            'DISPENSAVEL' => $_GET['Dispensavel'],
-            'URGENTE' => $_GET['Urgente'],
-            'MODERADO' => $_GET['Moderado']
-
-        ];
-        var_dump($filter);
-
-        try {
-            searchMetas($usuario,$filter);
-            header("Location: ../view/metas.php?msgsuccess=$msg");
-    
-        } catch (\Throwable $th) {
-            header("Location: ../view/metas.php?errormsg=$msgError");
-        }
-    }
-     } */
-
 
 //verificação do metodo de envio de dados
 $metodo = $_SERVER['REQUEST_METHOD'];
 if ($metodo === 'POST') {
-  error_log("entrou no if");
   try {
     handleMetas();
   } catch (Exception $e) {
@@ -101,5 +76,4 @@ if ($metodo === 'GET') {
       //header("location: ../view/cadastro.php?msg=" . $e->getMessage());
     }
   }
-} 
-
+}
