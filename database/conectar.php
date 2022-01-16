@@ -2,7 +2,7 @@
 
 $host = "localhost";
 $dbname = "riquinho";
-$username = "root";
+$username = "";
 $password = "";
 
 global $pdo;
